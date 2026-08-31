@@ -1,66 +1,90 @@
 ```html
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>BLUEPRINTS — Das Betriebssystem der Schwammstadt</title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    BLUEPRINTS — Das Betriebssystem der Schwammstadt
+  </title>
 
   <meta
     name="description"
-    content="BLUEPRINTS entwickelt die Blaupausen für eine neue Generation urbaner Wasserinfrastrukturen – resilient, flexibel, multifunktional, smart und zirkulär."
+    content="BLUEPRINTS entwickelt die Blaupausen für eine neue Generation urbaner Wasserinfrastrukturen – resilient, flexibel, multifunktional, intelligent und zirkulär."
   >
+
 
   <style>
 
     /* =========================================================
        BLUEPRINTS
-       Urban Water Infrastructure
+       Urbane Wasserinfrastruktur der Zukunft
        ========================================================= */
 
     :root {
-      --bg: #050b14;
-      --bg-soft: #081321;
-      --panel: #0b1828;
-      --panel-light: #10243a;
+
+      --hintergrund: #050b14;
+      --hintergrund-weich: #081321;
+
+      --flaeche: #0b1828;
+      --flaeche-hell: #10243a;
 
       --text: #eef7ff;
-      --muted: #8da3b8;
+      --text-gedaempft: #8da3b8;
 
-      --line: rgba(180, 215, 255, 0.12);
+      --linie: rgba(180, 215, 255, 0.12);
 
-      --blue: #4da3ff;
-      --blue-bright: #83caff;
-      --blue-light: #b9e4ff;
-      --blue-deep: #1264b8;
-      --blue-dark: #032a58;
+      --blau: #4da3ff;
+      --blau-hell: #83caff;
+      --blau-licht: #b9e4ff;
 
-      --aqua: #6be5e0;
+      --blau-tief: #1264b8;
+      --blau-dunkel: #032a58;
 
-      --white: #ffffff;
+      --tuerkis-akzent: #6be5e0;
+
+      --weiss: #ffffff;
 
       --radius: 28px;
-      --max: 1400px;
+
+      --max-breite: 1400px;
+
     }
 
 
     /* =========================================================
-       RESET
+       GRUNDLAGEN
        ========================================================= */
 
     * {
+
       box-sizing: border-box;
+
       margin: 0;
+
       padding: 0;
+
     }
+
 
     html {
+
       scroll-behavior: smooth;
+
     }
 
+
     body {
-      background: var(--bg);
+
+      background: var(--hintergrund);
+
       color: var(--text);
 
       font-family:
@@ -73,93 +97,140 @@
         sans-serif;
 
       line-height: 1.5;
+
       overflow-x: hidden;
+
     }
+
 
     a {
+
       color: inherit;
+
       text-decoration: none;
+
     }
 
+
     button {
+
       font: inherit;
+
     }
 
 
     /* =========================================================
-       GLOBAL
+       ALLGEMEINE ELEMENTE
        ========================================================= */
 
     .container {
-      width: min(calc(100% - 48px), var(--max));
+
+      width:
+        min(
+          calc(100% - 48px),
+          var(--max-breite)
+        );
+
       margin-inline: auto;
+
     }
 
-    .section {
+
+    .abschnitt {
+
       padding: 140px 0;
+
       position: relative;
+
     }
 
-    .eyebrow {
+
+    .ueberzeile {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 9px;
 
-      color: var(--blue-bright);
+      color: var(--blau-hell);
 
       font-size: .72rem;
+
       font-weight: 700;
 
       letter-spacing: .18em;
+
       text-transform: uppercase;
+
     }
 
-    .eyebrow::before {
+
+    .ueberzeile::before {
+
       content: "";
 
       width: 7px;
+
       height: 7px;
 
       border-radius: 50%;
 
-      background: var(--blue-bright);
+      background: var(--blau-hell);
 
       box-shadow:
-        0 0 15px var(--blue),
+        0 0 15px var(--blau),
         0 0 30px rgba(77,163,255,.35);
+
     }
 
-    .section-title {
+
+    .abschnitt-titel {
+
       max-width: 1000px;
 
       margin-top: 22px;
 
       font-size:
-        clamp(2.8rem, 6vw, 6.8rem);
+        clamp(
+          2.8rem,
+          6vw,
+          6.8rem
+        );
 
       line-height: .94;
 
       letter-spacing: -.065em;
 
       font-weight: 600;
+
     }
 
-    .section-title span {
-      color: var(--muted);
+
+    .abschnitt-titel span {
+
+      color: var(--text-gedaempft);
+
     }
 
-    .body-copy {
-      color: var(--muted);
+
+    .fliesstext {
+
+      color: var(--text-gedaempft);
 
       font-size: 1.08rem;
 
       line-height: 1.8;
 
       max-width: 700px;
+
     }
 
-    .grid-bg {
+
+    .raster-hintergrund {
+
       position: absolute;
+
       inset: 0;
 
       pointer-events: none;
@@ -167,8 +238,17 @@
       opacity: .16;
 
       background-image:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+
+        linear-gradient(
+          var(--linie) 1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          90deg,
+          var(--linie) 1px,
+          transparent 1px
+        );
 
       background-size: 70px 70px;
 
@@ -180,6 +260,7 @@
           black 85%,
           transparent
         );
+
     }
 
 
@@ -188,6 +269,7 @@
        ========================================================= */
 
     nav {
+
       position: fixed;
 
       top: 0;
@@ -199,38 +281,55 @@
       padding: 20px 0;
 
       transition: .35s ease;
+
     }
+
 
     nav.scrolled {
-      background: rgba(5,11,20,.78);
 
-      backdrop-filter: blur(20px);
+      background:
+        rgba(5,11,20,.78);
+
+      backdrop-filter:
+        blur(20px);
 
       border-bottom:
-        1px solid var(--line);
+        1px solid var(--linie);
+
     }
 
-    .nav-inner {
+
+    .navigation-innen {
+
       display: flex;
 
       align-items: center;
 
       justify-content: space-between;
+
     }
 
+
     .logo {
+
       font-size: 1.35rem;
 
       font-weight: 800;
 
       letter-spacing: -.05em;
+
     }
 
-    .logo-mark {
-      color: var(--blue-bright);
+
+    .logo-markierung {
+
+      color: var(--blau-hell);
+
     }
 
-    .nav-links {
+
+    .navigations-links {
+
       display: flex;
 
       gap: 34px;
@@ -238,35 +337,49 @@
       color: #aebed0;
 
       font-size: .9rem;
+
     }
 
-    .nav-links a {
+
+    .navigations-links a {
+
       transition: color .25s;
+
     }
 
-    .nav-links a:hover {
-      color: var(--blue-bright);
+
+    .navigations-links a:hover {
+
+      color: var(--blau-hell);
+
     }
 
-    .nav-cta {
+
+    .navigation-knopf {
+
       padding: 11px 17px;
 
       border:
-        1px solid rgba(77,163,255,.35);
+        1px solid
+        rgba(77,163,255,.35);
 
       border-radius: 100px;
 
-      color: var(--blue-bright);
+      color: var(--blau-hell);
 
       font-size: .8rem;
 
       transition: .25s;
+
     }
 
-    .nav-cta:hover {
-      background: var(--blue-bright);
+
+    .navigation-knopf:hover {
+
+      background: var(--blau-hell);
 
       color: #06111d;
+
     }
 
 
@@ -275,6 +388,7 @@
        ========================================================= */
 
     .hero {
+
       min-height: 100vh;
 
       display: flex;
@@ -286,19 +400,24 @@
       overflow: hidden;
 
       padding-top: 100px;
+
     }
 
+
     .hero::after {
+
       content: "";
 
       position: absolute;
 
       width: 850px;
+
       height: 850px;
 
       border-radius: 50%;
 
       right: -300px;
+
       top: 5%;
 
       background:
@@ -307,19 +426,29 @@
       filter: blur(110px);
 
       pointer-events: none;
+
     }
 
-    .hero-content {
+
+    .hero-inhalt {
+
       position: relative;
 
       z-index: 3;
 
       width: 58%;
+
     }
 
+
     .hero h1 {
+
       font-size:
-        clamp(4.5rem, 10vw, 10.5rem);
+        clamp(
+          4.5rem,
+          10vw,
+          10.5rem
+        );
 
       line-height: .82;
 
@@ -328,29 +457,43 @@
       font-weight: 600;
 
       margin: 28px 0 38px;
+
     }
+
 
     .hero h1 em {
+
       font-style: normal;
 
-      color: var(--blue-bright);
+      color: var(--blau-hell);
 
       text-shadow:
-        0 0 50px rgba(77,163,255,.12);
+        0 0 50px
+        rgba(77,163,255,.12);
+
     }
 
-    .hero-subtitle {
+
+    .hero-untertitel {
+
       font-size:
-        clamp(1.1rem, 2vw, 1.45rem);
+        clamp(
+          1.1rem,
+          2vw,
+          1.45rem
+        );
 
       color: #b9c9d8;
 
       max-width: 650px;
 
       line-height: 1.6;
+
     }
 
-    .hero-actions {
+
+    .hero-aktionen {
+
       display: flex;
 
       gap: 14px;
@@ -358,9 +501,12 @@
       margin-top: 40px;
 
       flex-wrap: wrap;
+
     }
 
-    .button {
+
+    .knopf {
+
       border: 0;
 
       border-radius: 100px;
@@ -378,65 +524,96 @@
       transition:
         transform .25s,
         background .25s;
+
     }
 
-    .button:hover {
-      transform: translateY(-3px);
+
+    .knopf:hover {
+
+      transform:
+        translateY(-3px);
+
     }
 
-    .button-primary {
-      background: var(--blue-bright);
 
-      color: #04101c;
+    .knopf-primaer {
+
+      background:
+        var(--blau-hell);
+
+      color:
+        #04101c;
 
       font-weight: 700;
 
       box-shadow:
-        0 10px 40px rgba(77,163,255,.15);
+        0 10px 40px
+        rgba(77,163,255,.15);
+
     }
 
-    .button-secondary {
-      background: transparent;
+
+    .knopf-sekundaer {
+
+      background:
+        transparent;
 
       border:
-        1px solid var(--line);
+        1px solid var(--linie);
 
-      color: var(--text);
+      color:
+        var(--text);
+
     }
 
 
     /* =========================================================
-       HERO WATER SYSTEM
+       HERO — WASSERTROPFEN
        ========================================================= */
 
-    .hero-visual {
+    .hero-visualisierung {
+
       position: absolute;
 
-      width: min(52vw, 760px);
-      height: min(52vw, 760px);
+      width:
+        min(
+          52vw,
+          760px
+        );
+
+      height:
+        min(
+          52vw,
+          760px
+        );
 
       right: -4%;
+
       top: 50%;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
       z-index: 2;
 
-      transition: transform .3s ease-out;
+      transition:
+        transform .3s ease-out;
+
     }
 
 
-    /* -----------------------------
-       DROP
-       ----------------------------- */
+    /* Wassertropfen */
 
-    .water-drop {
+    .wassertropfen {
+
       position: absolute;
 
       width: 245px;
+
       height: 300px;
 
       left: 50%;
+
       top: 50%;
 
       transform:
@@ -448,8 +625,10 @@
         60% 55% 45% 40%;
 
       background:
+
         radial-gradient(
           circle at 32% 24%,
+
           #e5f7ff 0%,
           #9bd7ff 8%,
           #4da3ff 25%,
@@ -475,26 +654,30 @@
           rgba(30,115,220,.12);
 
       animation:
-        dropFloat 6s ease-in-out infinite;
+        tropfen-schweben
+        6s ease-in-out infinite;
+
     }
 
 
-    /* -----------------------------
-       LIGHT REFLECTION
-       ----------------------------- */
+    /* Lichtreflex */
 
-    .drop-highlight {
+    .tropfen-reflex {
+
       position: absolute;
 
       width: 75px;
+
       height: 130px;
 
       top: 25px;
+
       left: 35px;
 
       border-radius: 50%;
 
       background:
+
         linear-gradient(
           135deg,
           rgba(255,255,255,.75),
@@ -503,18 +686,20 @@
 
       filter: blur(2px);
 
-      transform: rotate(-45deg);
+      transform:
+        rotate(-45deg);
+
     }
 
 
-    /* -----------------------------
-       DROP LOGO
-       ----------------------------- */
+    /* Schrift im Tropfen */
 
-    .drop-inner {
+    .tropfen-inhalt {
+
       position: absolute;
 
       left: 50%;
+
       top: 50%;
 
       transform:
@@ -526,9 +711,12 @@
       color: white;
 
       letter-spacing: -.05em;
+
     }
 
-    .drop-inner span {
+
+    .tropfen-inhalt span {
+
       display: block;
 
       font-size: .8rem;
@@ -536,9 +724,12 @@
       letter-spacing: .25em;
 
       opacity: .72;
+
     }
 
-    .drop-inner strong {
+
+    .tropfen-inhalt strong {
+
       display: block;
 
       font-size: 1.5rem;
@@ -546,17 +737,20 @@
       font-weight: 700;
 
       letter-spacing: -.06em;
+
     }
 
 
     /* =========================================================
-       ORBITS
+       WASSERKREISLÄUFE
        ========================================================= */
 
-    .water-orbit {
+    .wasserbahn {
+
       position: absolute;
 
       left: 50%;
+
       top: 50%;
 
       border:
@@ -566,10 +760,14 @@
       border-radius: 50%;
 
       pointer-events: none;
+
     }
 
-    .orbit-1 {
+
+    .wasserbahn-1 {
+
       width: 72%;
+
       height: 32%;
 
       transform:
@@ -577,11 +775,16 @@
         rotate(-25deg);
 
       animation:
-        waterFlow 14s linear infinite;
+        wasserfluss
+        14s linear infinite;
+
     }
 
-    .orbit-2 {
+
+    .wasserbahn-2 {
+
       width: 88%;
+
       height: 42%;
 
       transform:
@@ -592,11 +795,16 @@
         rgba(120,190,255,.16);
 
       animation:
-        waterFlowReverse 19s linear infinite;
+        wasserfluss-rueckwaerts
+        19s linear infinite;
+
     }
 
-    .orbit-3 {
+
+    .wasserbahn-3 {
+
       width: 105%;
+
       height: 55%;
 
       transform:
@@ -607,39 +815,49 @@
         rgba(80,150,230,.10);
 
       animation:
-        waterFlow 25s linear infinite;
+        wasserfluss
+        25s linear infinite;
+
     }
 
-    .water-orbit::after {
+
+    .wasserbahn::after {
+
       content: "";
 
       position: absolute;
 
       width: 8px;
+
       height: 8px;
 
       border-radius: 50%;
 
       background:
-        var(--blue-bright);
+        var(--blau-hell);
 
       box-shadow:
-        0 0 18px var(--blue),
-        0 0 35px rgba(77,163,255,.5);
+        0 0 18px var(--blau),
+        0 0 35px
+        rgba(77,163,255,.5);
 
       top: 0;
+
       left: 50%;
+
     }
 
 
     /* =========================================================
-       PARTICLES
+       WASSERPARTIKEL
        ========================================================= */
 
-    .water-particle {
+    .wasserpartikel {
+
       position: absolute;
 
       width: 5px;
+
       height: 5px;
 
       border-radius: 50%;
@@ -651,37 +869,55 @@
         0 0 15px #4da3ff;
 
       animation:
-        particlePulse 3s ease-in-out infinite;
+        partikel-pulsieren
+        3s ease-in-out infinite;
+
     }
 
-    .particle-1 {
+
+    .partikel-1 {
+
       left: 20%;
+
       top: 35%;
+
     }
 
-    .particle-2 {
+
+    .partikel-2 {
+
       right: 18%;
+
       top: 65%;
 
-      animation-delay: .8s;
+      animation-delay:
+        .8s;
+
     }
 
-    .particle-3 {
+
+    .partikel-3 {
+
       left: 70%;
+
       top: 18%;
 
-      animation-delay: 1.5s;
+      animation-delay:
+        1.5s;
+
     }
 
 
     /* =========================================================
-       HERO LABEL
+       HERO BESCHRIFTUNG
        ========================================================= */
 
-    .hero-label {
+    .hero-beschriftung {
+
       position: absolute;
 
       bottom: 7%;
+
       right: 10%;
 
       padding: 15px 18px;
@@ -689,49 +925,64 @@
       background:
         rgba(7,19,32,.72);
 
-      backdrop-filter: blur(16px);
+      backdrop-filter:
+        blur(16px);
 
       border:
-        1px solid var(--line);
+        1px solid var(--linie);
 
       border-radius: 15px;
 
       font-size: .72rem;
 
-      color: var(--muted);
+      color:
+        var(--text-gedaempft);
+
     }
 
-    .hero-label strong {
+
+    .hero-beschriftung strong {
+
       display: block;
 
-      color: var(--blue-bright);
+      color:
+        var(--blau-hell);
 
       font-size: 1rem;
 
       margin-top: 3px;
+
     }
 
 
     /* =========================================================
-       INTRO
+       AUSGANGSLAGE
        ========================================================= */
 
-    .intro {
+    .ausgangslage {
+
       background:
         #07111d;
+
     }
 
-    .intro-layout {
+
+    .ausgangslage-layout {
+
       display: grid;
 
-      grid-template-columns: .7fr 1.3fr;
+      grid-template-columns:
+        .7fr 1.3fr;
 
       gap: 100px;
 
       align-items: start;
+
     }
 
-    .intro-number {
+
+    .ausgangslage-nummer {
+
       font-size: 10rem;
 
       line-height: .8;
@@ -742,11 +993,18 @@
       font-weight: 700;
 
       letter-spacing: -.1em;
+
     }
 
-    .intro-text h2 {
+
+    .ausgangslage-text h2 {
+
       font-size:
-        clamp(2.5rem, 5vw, 5.5rem);
+        clamp(
+          2.5rem,
+          5vw,
+          5.5rem
+        );
 
       line-height: .98;
 
@@ -755,24 +1013,33 @@
       font-weight: 500;
 
       margin-bottom: 35px;
+
     }
 
-    .intro-text h2 strong {
-      color: var(--blue-bright);
+
+    .ausgangslage-text h2 strong {
+
+      color:
+        var(--blau-hell);
 
       font-weight: 500;
+
     }
 
 
     /* =========================================================
-       SYSTEM
+       SYSTEMARCHITEKTUR
        ========================================================= */
 
     .system {
+
       overflow: hidden;
+
     }
 
-    .system-header {
+
+    .system-kopf {
+
       display: flex;
 
       justify-content: space-between;
@@ -782,34 +1049,46 @@
       align-items: end;
 
       margin-bottom: 80px;
+
     }
 
-    .system-header .body-copy {
+
+    .system-kopf .fliesstext {
+
       max-width: 430px;
+
     }
 
-    .system-diagram {
+
+    .system-diagramm {
+
       min-height: 650px;
 
       border:
-        1px solid var(--line);
+        1px solid var(--linie);
 
-      border-radius: var(--radius);
+      border-radius:
+        var(--radius);
 
       position: relative;
 
       overflow: hidden;
 
       background:
+
         radial-gradient(
           circle at 50% 100%,
           rgba(77,163,255,.09),
           transparent 35%
         ),
+
         #07131f;
+
     }
 
-    .diagram-label {
+
+    .diagramm-beschriftung {
+
       position: absolute;
 
       font-size: .68rem;
@@ -818,47 +1097,64 @@
 
       letter-spacing: .18em;
 
-      color: var(--muted);
+      color:
+        var(--text-gedaempft);
+
     }
 
-    .label-top {
+
+    .beschriftung-oben {
+
       top: 28px;
+
       left: 30px;
+
     }
 
-    .label-bottom {
+
+    .beschriftung-unten {
+
       bottom: 28px;
+
       left: 30px;
+
     }
 
 
     /* =========================================================
-       CITY
+       STADT-EBENE
        ========================================================= */
 
-    .city-layer {
+    .stadt-ebene {
+
       position: absolute;
 
       top: 85px;
 
       left: 0;
+
       right: 0;
 
       height: 210px;
 
       border-bottom:
-        1px solid rgba(77,163,255,.25);
+        1px solid
+        rgba(77,163,255,.25);
 
       background:
+
         linear-gradient(
           160deg,
           transparent 55%,
           rgba(77,163,255,.08) 56%,
           transparent 57%
         );
+
     }
 
-    .city-block {
+
+    .stadtblock {
+
       position: absolute;
 
       bottom: 0;
@@ -869,35 +1165,59 @@
         #10243a;
 
       border:
-        1px solid rgba(255,255,255,.06);
+        1px solid
+        rgba(255,255,255,.06);
+
     }
 
-    .city-block:nth-child(1) {
+
+    .stadtblock:nth-child(1) {
+
       height: 110px;
+
       left: 12%;
+
     }
 
-    .city-block:nth-child(2) {
+
+    .stadtblock:nth-child(2) {
+
       height: 170px;
+
       left: 28%;
+
     }
 
-    .city-block:nth-child(3) {
+
+    .stadtblock:nth-child(3) {
+
       height: 125px;
+
       left: 46%;
+
     }
 
-    .city-block:nth-child(4) {
+
+    .stadtblock:nth-child(4) {
+
       height: 190px;
+
       left: 64%;
+
     }
 
-    .city-block:nth-child(5) {
+
+    .stadtblock:nth-child(5) {
+
       height: 135px;
+
       left: 80%;
+
     }
 
-    .green-roof {
+
+    .gruendach {
+
       position: absolute;
 
       height: 7px;
@@ -907,31 +1227,38 @@
       top: -4px;
 
       background:
-        var(--blue);
+        var(--blau);
 
       opacity: .65;
 
       border-radius: 10px;
+
     }
 
 
     /* =========================================================
-       UNDERGROUND
+       BODEN
        ========================================================= */
 
-    .ground {
+    .boden {
+
       position: absolute;
 
       top: 295px;
 
       left: 0;
+
       right: 0;
 
       border-top:
-        2px solid rgba(77,163,255,.4);
+        2px solid
+        rgba(77,163,255,.4);
+
     }
 
-    .underground {
+
+    .untergrund {
+
       position: absolute;
 
       top: 296px;
@@ -939,9 +1266,11 @@
       bottom: 0;
 
       left: 0;
+
       right: 0;
 
       background:
+
         linear-gradient(
           90deg,
           transparent 49.8%,
@@ -957,61 +1286,85 @@
       background-size:
         100% 100%,
         100% 55px;
+
     }
 
 
     /* =========================================================
-       WATER PIPES
+       WASSERLEITUNGEN
        ========================================================= */
 
-    .pipe {
+    .wasserleitung {
+
       position: absolute;
 
       height: 5px;
 
       background:
+
         linear-gradient(
           90deg,
           transparent,
-          var(--blue),
+          var(--blau),
           transparent
         );
 
       box-shadow:
-        0 0 18px rgba(77,163,255,.5);
+        0 0 18px
+        rgba(77,163,255,.5);
 
       animation:
-        flow 3s linear infinite;
+        leitungsfluss
+        3s linear infinite;
+
     }
 
-    .pipe-1 {
+
+    .wasserleitung-1 {
+
       width: 65%;
+
       left: 17%;
+
       top: 56%;
+
     }
 
-    .pipe-2 {
+
+    .wasserleitung-2 {
+
       width: 50%;
+
       left: 25%;
+
       top: 73%;
 
-      animation-delay: 1s;
+      animation-delay:
+        1s;
+
     }
 
-    .pipe-3 {
+
+    .wasserleitung-3 {
+
       width: 35%;
+
       left: 32%;
+
       top: 86%;
 
-      animation-delay: 1.7s;
+      animation-delay:
+        1.7s;
+
     }
 
 
     /* =========================================================
-       SYSTEM MODULES
+       SYSTEMMODULE
        ========================================================= */
 
-    .module {
+    .systemmodul {
+
       position: absolute;
 
       width: 150px;
@@ -1022,30 +1375,40 @@
         rgba(8,24,39,.94);
 
       border:
-        1px solid rgba(77,163,255,.28);
+        1px solid
+        rgba(77,163,255,.28);
 
       border-radius: 17px;
 
-      backdrop-filter: blur(15px);
+      backdrop-filter:
+        blur(15px);
 
       transition: .3s;
+
     }
 
-    .module:hover {
-      transform: translateY(-7px);
+
+    .systemmodul:hover {
+
+      transform:
+        translateY(-7px);
 
       border-color:
-        var(--blue-bright);
+        var(--blau-hell);
 
       box-shadow:
-        0 15px 40px rgba(0,0,0,.3);
+        0 15px 40px
+        rgba(0,0,0,.3);
+
     }
 
-    .module small {
+
+    .systemmodul small {
+
       display: block;
 
       color:
-        var(--blue-bright);
+        var(--blau-hell);
 
       font-size: .65rem;
 
@@ -1054,66 +1417,100 @@
       letter-spacing: .12em;
 
       margin-bottom: 6px;
+
     }
 
-    .module strong {
+
+    .systemmodul strong {
+
       font-size: .9rem;
 
       font-weight: 600;
+
     }
 
-    .module-1 {
+
+    .systemmodul-1 {
+
       left: 8%;
+
       top: 40%;
+
     }
 
-    .module-2 {
+
+    .systemmodul-2 {
+
       right: 8%;
+
       top: 45%;
+
     }
 
-    .module-3 {
+
+    .systemmodul-3 {
+
       left: 24%;
+
       top: 65%;
+
     }
 
-    .module-4 {
+
+    .systemmodul-4 {
+
       right: 23%;
+
       top: 78%;
+
     }
 
 
     /* =========================================================
-       PRINCIPLES
+       GRUNDSÄTZE
        ========================================================= */
 
-    .principles {
+    .grundsaetze {
+
       background:
         #eef6fc;
 
       color:
         #07121e;
+
     }
 
-    .principles .eyebrow {
+
+    .grundsaetze .ueberzeile {
+
       color:
         #176db4;
+
     }
 
-    .principles .eyebrow::before {
+
+    .grundsaetze .ueberzeile::before {
+
       background:
         #176db4;
 
       box-shadow:
         none;
+
     }
 
-    .principles .section-title span {
+
+    .grundsaetze
+    .abschnitt-titel span {
+
       color:
         #7890a5;
+
     }
 
-    .principles-grid {
+
+    .grundsaetze-raster {
+
       margin-top: 75px;
 
       display: grid;
@@ -1126,9 +1523,12 @@
 
       border-left:
         1px solid #c9d8e4;
+
     }
 
-    .principle {
+
+    .grundsatz {
+
       min-height: 330px;
 
       padding: 28px;
@@ -1144,58 +1544,79 @@
       overflow: hidden;
 
       transition: .35s;
+
     }
 
-    .principle:hover {
+
+    .grundsatz:hover {
+
       background:
         white;
+
     }
 
-    .principle-number {
+
+    .grundsatz-nummer {
+
       font-size: .7rem;
 
       color:
         #7890a5;
+
     }
 
-    .principle h3 {
+
+    .grundsatz h3 {
+
       margin-top: 100px;
 
       font-size: 1.7rem;
 
       letter-spacing: -.04em;
+
     }
 
-    .principle p {
+
+    .grundsatz p {
+
       margin-top: 13px;
 
       color:
         #647a8c;
 
       font-size: .9rem;
+
     }
 
-    .principle-icon {
+
+    .grundsatz-symbol {
+
       position: absolute;
 
       right: 25px;
+
       top: 28px;
 
       width: 35px;
+
       height: 35px;
 
       border:
         1px solid #9fb6c8;
 
       border-radius: 50%;
+
     }
 
-    .principle-icon::after {
+
+    .grundsatz-symbol::after {
+
       content: "";
 
       position: absolute;
 
       width: 8px;
+
       height: 8px;
 
       border-radius: 50%;
@@ -1204,43 +1625,53 @@
         #3189d4;
 
       left: 12px;
+
       top: 12px;
+
     }
 
 
     /* =========================================================
-       MODULES SECTION
+       MODULE
        ========================================================= */
 
-    .modules-intro {
+    .module-einleitung {
+
       display: grid;
 
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:
+        1fr 1fr;
 
       gap: 80px;
 
       margin-bottom: 70px;
+
     }
 
-    .module-cards {
+
+    .module-karten {
+
       display: grid;
 
       grid-template-columns:
         repeat(3,1fr);
 
       gap: 15px;
+
     }
 
-    .module-card {
+
+    .modul-karte {
+
       min-height: 420px;
 
       padding: 28px;
 
       background:
-        var(--panel);
+        var(--flaeche);
 
       border:
-        1px solid var(--line);
+        1px solid var(--linie);
 
       border-radius: 23px;
 
@@ -1249,96 +1680,126 @@
       overflow: hidden;
 
       transition: .4s;
+
     }
 
-    .module-card:hover {
+
+    .modul-karte:hover {
+
       transform:
         translateY(-8px);
 
       border-color:
         rgba(77,163,255,.4);
+
     }
 
-    .module-card::before {
+
+    .modul-karte::before {
+
       content: "";
 
       position: absolute;
 
       width: 180px;
+
       height: 180px;
 
       border-radius: 50%;
 
       right: -80px;
+
       bottom: -80px;
 
       background:
         rgba(77,163,255,.09);
 
       filter: blur(20px);
+
     }
 
-    .card-index {
+
+    .karten-index {
+
       font-size: .7rem;
 
       color:
-        var(--blue-bright);
+        var(--blau-hell);
+
     }
 
-    .module-card h3 {
+
+    .modul-karte h3 {
+
       font-size: 1.8rem;
 
       letter-spacing: -.05em;
 
       margin-top: 90px;
+
     }
 
-    .module-card p {
+
+    .modul-karte p {
+
       margin-top: 16px;
 
       color:
-        var(--muted);
+        var(--text-gedaempft);
 
       font-size: .9rem;
+
     }
 
-    .card-line {
+
+    .karten-linie {
+
       position: absolute;
 
       bottom: 28px;
 
       left: 28px;
+
       right: 28px;
 
       height: 1px;
 
       background:
-        var(--line);
+        var(--linie);
+
     }
 
 
     /* =========================================================
-       WATER CYCLE
+       WASSERKREISLAUF
        ========================================================= */
 
-    .cycle {
+    .kreislauf {
+
       background:
         #07131f;
 
       overflow: hidden;
+
     }
 
-    .cycle-content {
+
+    .kreislauf-inhalt {
+
       display: grid;
 
-      grid-template-columns: .8fr 1.2fr;
+      grid-template-columns:
+        .8fr 1.2fr;
 
       gap: 100px;
 
       align-items: center;
+
     }
 
-    .cycle-visual {
+
+    .kreislauf-visualisierung {
+
       aspect-ratio: 1;
 
       position: relative;
@@ -1346,15 +1807,18 @@
       border-radius: 50%;
 
       border:
-        1px solid var(--line);
+        1px solid var(--linie);
 
       display: grid;
 
       place-items: center;
+
     }
 
-    .cycle-visual::before,
-    .cycle-visual::after {
+
+    .kreislauf-visualisierung::before,
+    .kreislauf-visualisierung::after {
+
       content: "";
 
       position: absolute;
@@ -1364,23 +1828,32 @@
       border:
         1px dashed
         rgba(77,163,255,.25);
+
     }
 
-    .cycle-visual::before {
+
+    .kreislauf-visualisierung::before {
+
       inset: 12%;
+
     }
 
-    .cycle-visual::after {
+
+    .kreislauf-visualisierung::after {
+
       inset: 25%;
+
     }
 
-    .cycle-center {
+
+    .kreislauf-mitte {
+
       width: 30%;
 
       aspect-ratio: 1;
 
       background:
-        var(--blue);
+        var(--blau);
 
       color:
         white;
@@ -1404,10 +1877,14 @@
       z-index: 2;
 
       box-shadow:
-        0 0 80px rgba(77,163,255,.25);
+        0 0 80px
+        rgba(77,163,255,.25);
+
     }
 
-    .cycle-point {
+
+    .kreislauf-punkt {
+
       position: absolute;
 
       width: 110px;
@@ -1415,10 +1892,10 @@
       padding: 12px;
 
       background:
-        var(--panel);
+        var(--flaeche);
 
       border:
-        1px solid var(--line);
+        1px solid var(--linie);
 
       border-radius: 13px;
 
@@ -1430,120 +1907,171 @@
         #c9d9e8;
 
       z-index: 4;
+
     }
 
-    .cycle-point:nth-child(2) {
+
+    .kreislauf-punkt:nth-child(2) {
+
       top: 2%;
+
       left: 50%;
 
       transform:
         translateX(-50%);
+
     }
 
-    .cycle-point:nth-child(3) {
+
+    .kreislauf-punkt:nth-child(3) {
+
       top: 28%;
+
       right: -3%;
+
     }
 
-    .cycle-point:nth-child(4) {
+
+    .kreislauf-punkt:nth-child(4) {
+
       bottom: 10%;
+
       right: 8%;
+
     }
 
-    .cycle-point:nth-child(5) {
+
+    .kreislauf-punkt:nth-child(5) {
+
       bottom: 10%;
+
       left: 8%;
+
     }
 
-    .cycle-point:nth-child(6) {
+
+    .kreislauf-punkt:nth-child(6) {
+
       top: 28%;
+
       left: -3%;
+
     }
 
-    .cycle-list {
+
+    .kreislauf-liste {
+
       margin-top: 45px;
 
       display: grid;
 
       gap: 12px;
+
     }
 
-    .cycle-list-item {
+
+    .kreislauf-listenelement {
+
       display: grid;
 
-      grid-template-columns: 50px 1fr;
+      grid-template-columns:
+        50px 1fr;
 
       padding: 20px 0;
 
       border-bottom:
-        1px solid var(--line);
+        1px solid var(--linie);
+
     }
 
-    .cycle-list-item span {
+
+    .kreislauf-listenelement span {
+
       color:
-        var(--blue-bright);
+        var(--blau-hell);
 
       font-size: .75rem;
+
     }
 
-    .cycle-list-item strong {
+
+    .kreislauf-listenelement strong {
+
       font-size: 1.05rem;
+
     }
 
 
     /* =========================================================
-       IMPACT / SDG
+       WIRKUNG / SDG
        ========================================================= */
 
-    .impact {
+    .wirkung {
+
       padding-bottom: 160px;
+
     }
 
-    .impact-grid {
+
+    .wirkungs-raster {
+
       margin-top: 70px;
 
       display: grid;
 
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:
+        1fr 1fr;
 
       gap: 18px;
+
     }
 
-    .impact-card {
+
+    .wirkungskarte {
+
       min-height: 340px;
 
       border-radius:
         var(--radius);
 
       border:
-        1px solid var(--line);
+        1px solid var(--linie);
 
       padding: 35px;
 
       position: relative;
 
       overflow: hidden;
+
     }
 
-    .impact-card:first-child {
+
+    .wirkungskarte:first-child {
+
       background:
         linear-gradient(
           135deg,
           #102a42,
           #091722
         );
+
     }
 
-    .impact-card:last-child {
+
+    .wirkungskarte:last-child {
+
       background:
         linear-gradient(
           135deg,
           #10243a,
           #091722
         );
+
     }
 
-    .sdg-number {
+
+    .sdg-nummer {
+
       font-size: 5rem;
 
       line-height: .8;
@@ -1553,42 +2081,54 @@
       letter-spacing: -.08em;
 
       color:
-        var(--blue-bright);
+        var(--blau-hell);
+
     }
 
-    .impact-card h3 {
+
+    .wirkungskarte h3 {
+
       position: absolute;
 
       left: 35px;
+
       bottom: 70px;
 
       font-size: 1.8rem;
 
       letter-spacing: -.04em;
+
     }
 
-    .impact-card p {
+
+    .wirkungskarte p {
+
       position: absolute;
 
       left: 35px;
+
       right: 35px;
+
       bottom: 30px;
 
       color:
-        var(--muted);
+        var(--text-gedaempft);
 
       font-size: .88rem;
+
     }
 
 
     /* =========================================================
-       CTA
+       ABSCHLUSS / CTA
        ========================================================= */
 
-    .cta {
+    .abschluss {
+
       padding: 150px 0;
 
       background:
+
         radial-gradient(
           circle at 50% 20%,
           rgba(77,163,255,.16),
@@ -1605,33 +2145,46 @@
       position: relative;
 
       overflow: hidden;
+
     }
 
-    .cta h2 {
+
+    .abschluss h2 {
+
       max-width: 1050px;
 
       margin: 25px auto 0;
 
       font-size:
-        clamp(3.2rem, 7vw, 8rem);
+        clamp(
+          3.2rem,
+          7vw,
+          8rem
+        );
 
       line-height: .9;
 
       letter-spacing: -.07em;
 
       font-weight: 600;
+
     }
 
-    .cta p {
+
+    .abschluss p {
+
       max-width: 650px;
 
       margin: 35px auto 0;
 
       color:
         #60788e;
+
     }
 
-    .cta .button-primary {
+
+    .abschluss .knopf-primaer {
+
       margin-top: 40px;
 
       background:
@@ -1639,24 +2192,29 @@
 
       color:
         white;
+
     }
 
 
     /* =========================================================
-       FOOTER
+       FUSSZEILE
        ========================================================= */
 
     footer {
+
       padding: 35px 0;
 
       background:
         #030913;
 
       border-top:
-        1px solid var(--line);
+        1px solid var(--linie);
+
     }
 
-    .footer-inner {
+
+    .fusszeile-innen {
+
       display: flex;
 
       align-items: center;
@@ -1664,117 +2222,152 @@
       justify-content: space-between;
 
       color:
-        var(--muted);
+        var(--text-gedaempft);
 
       font-size: .75rem;
+
     }
 
-    .footer-logo {
+
+    .fusszeile-logo {
+
       color:
         var(--text);
 
       font-weight: 800;
 
       font-size: 1.1rem;
+
     }
 
 
     /* =========================================================
-       ANIMATIONS
+       ANIMATIONEN
        ========================================================= */
 
-    @keyframes dropFloat {
+    @keyframes tropfen-schweben {
 
-      0%,100% {
+      0%, 100% {
+
         transform:
           translate(-50%, -50%)
           rotate(45deg)
           translateY(0);
+
       }
 
       50% {
+
         transform:
           translate(-50%, -50%)
           rotate(45deg)
           translateY(-14px);
+
       }
 
     }
 
-    @keyframes waterFlow {
+
+    @keyframes wasserfluss {
 
       from {
+
         transform:
           translate(-50%, -50%)
           rotate(0deg);
+
       }
 
       to {
+
         transform:
           translate(-50%, -50%)
           rotate(360deg);
+
       }
 
     }
 
-    @keyframes waterFlowReverse {
+
+    @keyframes wasserfluss-rueckwaerts {
 
       from {
+
         transform:
           translate(-50%, -50%)
           rotate(360deg);
+
       }
 
       to {
+
         transform:
           translate(-50%, -50%)
           rotate(0deg);
+
       }
 
     }
 
-    @keyframes flow {
+
+    @keyframes leitungsfluss {
 
       from {
+
         opacity: .15;
 
         transform:
           translateX(-20px);
+
       }
 
       50% {
+
         opacity: 1;
+
       }
 
       to {
+
         opacity: .15;
 
         transform:
           translateX(20px);
+
       }
 
     }
 
-    @keyframes particlePulse {
 
-      0%,100% {
+    @keyframes partikel-pulsieren {
+
+      0%, 100% {
+
         opacity: .3;
-        transform: scale(.7);
+
+        transform:
+          scale(.7);
+
       }
 
       50% {
+
         opacity: 1;
-        transform: scale(1.5);
+
+        transform:
+          scale(1.5);
+
       }
 
     }
 
 
     /* =========================================================
-       SCROLL REVEAL
+       SCROLL-ANIMATION
        ========================================================= */
 
-    .reveal {
+    .einblenden {
+
       opacity: 0;
 
       transform:
@@ -1783,173 +2376,256 @@
       transition:
         opacity .8s ease,
         transform .8s ease;
+
     }
 
-    .reveal.visible {
+
+    .einblenden.sichtbar {
+
       opacity: 1;
 
       transform:
         translateY(0);
+
     }
 
 
     /* =========================================================
-       MOBILE
+       TABLET
        ========================================================= */
 
     @media (max-width: 1000px) {
 
-      .nav-links {
+
+      .navigations-links {
+
         display: none;
+
       }
 
-      .hero-content {
+
+      .hero-inhalt {
+
         width: 100%;
+
       }
 
-      .hero-visual {
+
+      .hero-visualisierung {
+
         opacity: .3;
 
         width: 700px;
 
         right: -300px;
+
       }
 
-      .intro-layout,
-      .cycle-content {
+
+      .ausgangslage-layout,
+      .kreislauf-inhalt {
+
         grid-template-columns: 1fr;
 
         gap: 50px;
+
       }
 
-      .principles-grid {
+
+      .grundsaetze-raster {
+
         grid-template-columns:
           repeat(2,1fr);
+
       }
 
-      .module-cards {
+
+      .module-karten {
+
         grid-template-columns:
           1fr 1fr;
+
       }
 
-      .system-header,
-      .modules-intro {
+
+      .system-kopf,
+      .module-einleitung {
+
         display: block;
+
       }
 
-      .system-header .body-copy,
-      .modules-intro .body-copy {
+
+      .system-kopf .fliesstext,
+      .module-einleitung .fliesstext {
+
         margin-top: 30px;
+
       }
 
     }
 
 
     /* =========================================================
-       SMALL MOBILE
+       SMARTPHONE
        ========================================================= */
 
     @media (max-width: 650px) {
 
+
       .container {
+
         width:
           min(
             calc(100% - 32px),
-            var(--max)
+            var(--max-breite)
           );
+
       }
 
-      .section {
+
+      .abschnitt {
+
         padding: 90px 0;
+
       }
+
 
       .hero {
+
         min-height: 850px;
+
       }
 
+
       .hero h1 {
+
         font-size:
           clamp(
             4rem,
             20vw,
             7rem
           );
+
       }
 
-      .hero-visual {
+
+      .hero-visualisierung {
+
         width: 600px;
 
         right: -310px;
 
         top: 65%;
+
       }
 
-      .intro-number {
+
+      .ausgangslage-nummer {
+
         font-size: 6rem;
+
       }
 
-      .system-diagram {
+
+      .system-diagramm {
+
         min-height: 570px;
+
       }
 
-      .module {
+
+      .systemmodul {
+
         width: 125px;
 
         padding: 12px;
+
       }
 
-      .module-1 {
+
+      .systemmodul-1 {
+
         left: 4%;
+
       }
 
-      .module-2 {
+
+      .systemmodul-2 {
+
         right: 4%;
+
       }
 
-      .module-3 {
+
+      .systemmodul-3 {
+
         left: 8%;
+
       }
 
-      .module-4 {
+
+      .systemmodul-4 {
+
         right: 8%;
+
       }
 
-      .principles-grid,
-      .module-cards,
-      .impact-grid {
+
+      .grundsaetze-raster,
+      .module-karten,
+      .wirkungs-raster {
+
         grid-template-columns:
           1fr;
+
       }
 
-      .principle {
+
+      .grundsatz {
+
         min-height: 250px;
+
       }
 
-      .principle h3 {
+
+      .grundsatz h3 {
+
         margin-top: 70px;
+
       }
 
-      .cycle-visual {
+
+      .kreislauf-visualisierung {
+
         width: 100%;
+
       }
 
-      .cycle-point {
+
+      .kreislauf-punkt {
+
         width: 85px;
 
         font-size: .62rem;
+
       }
 
-      .footer-inner {
+
+      .fusszeile-innen {
+
         gap: 20px;
 
         flex-direction: column;
 
         align-items: flex-start;
+
       }
 
     }
 
   </style>
+
 </head>
 
 
@@ -1960,15 +2636,21 @@
        NAVIGATION
        ======================================================= -->
 
-  <nav id="nav">
+  <nav id="navigation">
 
-    <div class="container nav-inner">
+    <div class="container navigation-innen">
+
 
       <a href="#" class="logo">
-        BLUE<span class="logo-mark">PRINTS</span>
+
+        BLUE<span class="logo-markierung">
+          PRINTS
+        </span>
+
       </a>
 
-      <div class="nav-links">
+
+      <div class="navigations-links">
 
         <a href="#vision">
           Vision
@@ -1978,19 +2660,26 @@
           System
         </a>
 
-        <a href="#modules">
+        <a href="#module">
           Module
         </a>
 
-        <a href="#impact">
-          Impact
+        <a href="#wirkung">
+          Wirkung
         </a>
 
       </div>
 
-      <a href="#contact" class="nav-cta">
+
+      <a
+        href="#kontakt"
+        class="navigation-knopf"
+      >
+
         Projekt entdecken →
+
       </a>
+
 
     </div>
 
@@ -2002,19 +2691,28 @@
        HERO
        ======================================================= -->
 
-  <header class="hero" id="vision">
+  <header
+    class="hero"
+    id="vision"
+  >
 
-    <div class="grid-bg"></div>
+    <div class="raster-hintergrund"></div>
+
 
     <div class="container">
 
-      <div class="hero-content">
 
-        <div class="eyebrow reveal">
-          Urban Water Infrastructure · 2030+
+      <div class="hero-inhalt">
+
+
+        <div class="ueberzeile einblenden">
+
+          Urbane Wasserinfrastruktur · 2030+
+
         </div>
 
-        <h1 class="reveal">
+
+        <h1 class="einblenden">
 
           Das<br>
 
@@ -2024,59 +2722,98 @@
 
         </h1>
 
-        <p class="hero-subtitle reveal">
+
+        <p class="hero-untertitel einblenden">
 
           BLUEPRINTS entwickelt die Blaupausen für eine neue
-          Generation urbaner Wasserinfrastrukturen – resilient,
-          flexibel, multifunktional, smart und zirkulär.
+          Generation urbaner Wasserinfrastrukturen –
+          resilient, flexibel, multifunktional, intelligent
+          und zirkulär.
 
         </p>
 
-        <div class="hero-actions reveal">
+
+        <div class="hero-aktionen einblenden">
+
 
           <a
             href="#system"
-            class="button button-primary"
+            class="knopf knopf-primaer"
           >
+
             System verstehen
-            <span>↓</span>
+
+            <span>
+              ↓
+            </span>
+
           </a>
+
 
           <a
-            href="#modules"
-            class="button button-secondary"
+            href="#module"
+            class="knopf knopf-sekundaer"
           >
+
             Module entdecken
+
           </a>
 
+
         </div>
+
 
       </div>
 
 
-      <!-- WATER SYSTEM -->
 
-      <div class="hero-visual">
+      <!-- ===================================================
+           ZENTRALER WASSERTROPFEN
+           =================================================== -->
 
-        <div class="water-orbit orbit-1"></div>
-
-        <div class="water-orbit orbit-2"></div>
-
-        <div class="water-orbit orbit-3"></div>
-
-
-        <div class="water-particle particle-1"></div>
-
-        <div class="water-particle particle-2"></div>
-
-        <div class="water-particle particle-3"></div>
+      <div
+        class="hero-visualisierung"
+        id="wasserSystem"
+      >
 
 
-        <div class="water-drop">
+        <div
+          class="wasserbahn wasserbahn-1"
+        ></div>
 
-          <div class="drop-highlight"></div>
 
-          <div class="drop-inner">
+        <div
+          class="wasserbahn wasserbahn-2"
+        ></div>
+
+
+        <div
+          class="wasserbahn wasserbahn-3"
+        ></div>
+
+
+        <div
+          class="wasserpartikel partikel-1"
+        ></div>
+
+
+        <div
+          class="wasserpartikel partikel-2"
+        ></div>
+
+
+        <div
+          class="wasserpartikel partikel-3"
+        ></div>
+
+
+        <div class="wassertropfen">
+
+
+          <div class="tropfen-reflex"></div>
+
+
+          <div class="tropfen-inhalt">
 
             <span>
               BLUE
@@ -2088,12 +2825,13 @@
 
           </div>
 
+
         </div>
 
 
-        <div class="hero-label">
+        <div class="hero-beschriftung">
 
-          URBAN WATER OS
+          URBANES WASSER-OS
 
           <strong>
             01 — BLUEPRINTS
@@ -2101,7 +2839,9 @@
 
         </div>
 
+
       </div>
+
 
     </div>
 
@@ -2110,22 +2850,36 @@
 
 
   <!-- =======================================================
-       INTRO
+       AUSGANGSLAGE
        ======================================================= -->
 
-  <section class="section intro">
+  <section
+    class="abschnitt ausgangslage"
+    id="ausgangslage"
+  >
 
-    <div class="container intro-layout">
 
-      <div class="intro-number reveal">
+    <div class="container ausgangslage-layout">
+
+
+      <div
+        class="ausgangslage-nummer einblenden"
+      >
+
         01
+
       </div>
 
-      <div class="intro-text reveal">
 
-        <div class="eyebrow">
-          The problem
+      <div class="ausgangslage-text einblenden">
+
+
+        <div class="ueberzeile">
+
+          Die Ausgangslage
+
         </div>
+
 
         <h2>
 
@@ -2137,26 +2891,32 @@
 
         </h2>
 
-        <p class="body-copy">
+
+        <p class="fliesstext">
 
           Urbane Räume werden zu blau-grünen Schwammstädten.
-          Gleichzeitig steigt der Wasserbedarf für Bewässerung,
-          Kühlung und weitere urbane Anwendungen.
+          Gleichzeitig steigt der Wasserbedarf für
+          Bewässerung, Kühlung und weitere urbane
+          Anwendungen.
 
         </p>
+
 
         <br>
 
-        <p class="body-copy">
 
-          Doch die darunterliegenden Wasserinfrastrukturen bleiben
-          weitgehend unverändert. Systemerhaltung und inkrementelle
-          Optimierung reichen nicht aus, um Städte auf die Zukunft
-          vorzubereiten.
+        <p class="fliesstext">
+
+          Doch die darunterliegenden Wasserinfrastrukturen
+          bleiben weitgehend unverändert. Systemerhaltung
+          und inkrementelle Optimierung reichen nicht aus,
+          um Städte auf die Zukunft vorzubereiten.
 
         </p>
 
+
       </div>
+
 
     </div>
 
@@ -2165,24 +2925,37 @@
 
 
   <!-- =======================================================
-       SYSTEM
+       SYSTEMARCHITEKTUR
        ======================================================= -->
 
-  <section class="section system" id="system">
+  <section
+    class="abschnitt system"
+    id="system"
+  >
 
-    <div class="grid-bg"></div>
+
+    <div class="raster-hintergrund"></div>
+
 
     <div class="container">
 
-      <div class="system-header">
+
+      <div class="system-kopf">
+
 
         <div>
 
-          <div class="eyebrow reveal">
-            02 · System Architecture
+
+          <div class="ueberzeile einblenden">
+
+            02 · Systemarchitektur
+
           </div>
 
-          <h2 class="section-title reveal">
+
+          <h2
+            class="abschnitt-titel einblenden"
+          >
 
             Oben
             <span>Schwammstadt.</span>
@@ -2190,13 +2963,15 @@
             <br>
 
             Unten
-            <span>Wasser OS.</span>
+            <span>Wasser-Betriebssystem.</span>
 
           </h2>
 
+
         </div>
 
-        <p class="body-copy reveal">
+
+        <p class="fliesstext einblenden">
 
           BLUEPRINTS denkt urbane Wasserinfrastruktur als
           vernetztes, modulares System. Wasser wird abhängig
@@ -2204,76 +2979,122 @@
 
         </p>
 
+
       </div>
 
 
-      <div class="system-diagram reveal">
 
-        <div class="diagram-label label-top">
-          Surface · Sponge City
-        </div>
-
-        <div class="diagram-label label-bottom">
-          Underground · Circular Infrastructure
-        </div>
+      <div
+        class="system-diagramm einblenden"
+      >
 
 
-        <!-- CITY -->
+        <div
+          class="diagramm-beschriftung beschriftung-oben"
+        >
 
-        <div class="city-layer">
-
-          <div class="city-block">
-            <div class="green-roof"></div>
-          </div>
-
-          <div class="city-block">
-            <div class="green-roof"></div>
-          </div>
-
-          <div class="city-block">
-            <div class="green-roof"></div>
-          </div>
-
-          <div class="city-block">
-            <div class="green-roof"></div>
-          </div>
-
-          <div class="city-block">
-            <div class="green-roof"></div>
-          </div>
+          Oberfläche · Schwammstadt
 
         </div>
 
 
-        <div class="ground"></div>
+        <div
+          class="diagramm-beschriftung beschriftung-unten"
+        >
+
+          Untergrund · Zirkuläre Infrastruktur
+
+        </div>
 
 
-        <!-- UNDERGROUND -->
 
-        <div class="underground">
+        <!-- STADT -->
 
-          <div class="pipe pipe-1"></div>
-
-          <div class="pipe pipe-2"></div>
-
-          <div class="pipe pipe-3"></div>
+        <div class="stadt-ebene">
 
 
-          <div class="module module-1">
+          <div class="stadtblock">
+
+            <div class="gruendach"></div>
+
+          </div>
+
+
+          <div class="stadtblock">
+
+            <div class="gruendach"></div>
+
+          </div>
+
+
+          <div class="stadtblock">
+
+            <div class="gruendach"></div>
+
+          </div>
+
+
+          <div class="stadtblock">
+
+            <div class="gruendach"></div>
+
+          </div>
+
+
+          <div class="stadtblock">
+
+            <div class="gruendach"></div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="boden"></div>
+
+
+
+        <!-- UNTERGRUND -->
+
+        <div class="untergrund">
+
+
+          <div
+            class="wasserleitung wasserleitung-1"
+          ></div>
+
+
+          <div
+            class="wasserleitung wasserleitung-2"
+          ></div>
+
+
+          <div
+            class="wasserleitung wasserleitung-3"
+          ></div>
+
+
+
+          <div
+            class="systemmodul systemmodul-1"
+          >
 
             <small>
               01
             </small>
 
             <strong>
-              Wasser-<br>
-              sammlung
+              Wassersammlung
             </strong>
 
           </div>
 
 
-          <div class="module module-2">
+
+          <div
+            class="systemmodul systemmodul-2"
+          >
 
             <small>
               02
@@ -2286,7 +3107,10 @@
           </div>
 
 
-          <div class="module module-3">
+
+          <div
+            class="systemmodul systemmodul-3"
+          >
 
             <small>
               03
@@ -2300,7 +3124,10 @@
           </div>
 
 
-          <div class="module module-4">
+
+          <div
+            class="systemmodul systemmodul-4"
+          >
 
             <small>
               04
@@ -2312,9 +3139,12 @@
 
           </div>
 
+
         </div>
 
+
       </div>
+
 
     </div>
 
@@ -2323,18 +3153,27 @@
 
 
   <!-- =======================================================
-       PRINCIPLES
+       GRUNDSÄTZE
        ======================================================= -->
 
-  <section class="section principles">
+  <section
+    class="abschnitt grundsaetze"
+  >
+
 
     <div class="container">
 
-      <div class="eyebrow reveal">
-        03 · Design Principles
+
+      <div class="ueberzeile einblenden">
+
+        03 · Gestaltungsprinzipien
+
       </div>
 
-      <h2 class="section-title reveal">
+
+      <h2
+        class="abschnitt-titel einblenden"
+      >
 
         Nicht größer.
 
@@ -2347,104 +3186,130 @@
       </h2>
 
 
-      <div class="principles-grid">
+
+      <div class="grundsaetze-raster">
 
 
-        <article class="principle reveal">
+        <article
+          class="grundsatz einblenden"
+        >
 
-          <span class="principle-number">
+          <span class="grundsatz-nummer">
             01
           </span>
 
-          <div class="principle-icon"></div>
+          <div class="grundsatz-symbol"></div>
 
           <h3>
             Resilient
           </h3>
 
           <p>
-            Infrastruktur, die auf Extremwetter und veränderte
-            Wasserverfügbarkeiten reagieren kann.
+
+            Infrastruktur, die auf Extremwetter und
+            veränderte Wasserverfügbarkeiten reagieren kann.
+
           </p>
 
         </article>
 
 
-        <article class="principle reveal">
 
-          <span class="principle-number">
+        <article
+          class="grundsatz einblenden"
+        >
+
+          <span class="grundsatz-nummer">
             02
           </span>
 
-          <div class="principle-icon"></div>
+          <div class="grundsatz-symbol"></div>
 
           <h3>
             Flexibel
           </h3>
 
           <p>
-            Modulare Systeme, die schrittweise wachsen und an
-            bestehende Netze angeschlossen werden können.
+
+            Modulare Systeme, die schrittweise wachsen
+            und an bestehende Netze angeschlossen werden können.
+
           </p>
 
         </article>
 
 
-        <article class="principle reveal">
 
-          <span class="principle-number">
+        <article
+          class="grundsatz einblenden"
+        >
+
+          <span class="grundsatz-nummer">
             03
           </span>
 
-          <div class="principle-icon"></div>
+          <div class="grundsatz-symbol"></div>
 
           <h3>
             Multifunktional
           </h3>
 
           <p>
-            Wasserinfrastruktur übernimmt gleichzeitig Speicherung,
-            Kühlung, Aufbereitung und Wärmegewinnung.
+
+            Wasserinfrastruktur übernimmt gleichzeitig
+            Speicherung, Kühlung, Aufbereitung und
+            Wärmegewinnung.
+
           </p>
 
         </article>
 
 
-        <article class="principle reveal">
 
-          <span class="principle-number">
+        <article
+          class="grundsatz einblenden"
+        >
+
+          <span class="grundsatz-nummer">
             04
           </span>
 
-          <div class="principle-icon"></div>
+          <div class="grundsatz-symbol"></div>
 
           <h3>
-            Smart
+            Intelligent
           </h3>
 
           <p>
-            Wasser wird qualitäts- und bedarfsgerecht gesteuert,
-            verteilt und eingesetzt.
+
+            Wasser wird qualitäts- und bedarfsgerecht
+            gesteuert, verteilt und eingesetzt.
+
           </p>
 
         </article>
 
 
-        <article class="principle reveal">
 
-          <span class="principle-number">
+        <article
+          class="grundsatz einblenden"
+        >
+
+          <span class="grundsatz-nummer">
             05
           </span>
 
-          <div class="principle-icon"></div>
+          <div class="grundsatz-symbol"></div>
 
           <h3>
             Zirkulär
           </h3>
 
           <p>
-            Wasser bleibt möglichst lange im urbanen System
-            und wird mehrfach nutzbar.
+
+            Wasser bleibt möglichst lange im urbanen
+            System und wird mehrfach nutzbar.
+
           </p>
 
         </article>
@@ -2459,22 +3324,34 @@
 
 
   <!-- =======================================================
-       MODULE
+       INFRASTRUKTURMODULE
        ======================================================= -->
 
-  <section class="section" id="modules">
+  <section
+    class="abschnitt"
+    id="module"
+  >
+
 
     <div class="container">
 
-      <div class="modules-intro">
+
+      <div class="module-einleitung">
+
 
         <div>
 
-          <div class="eyebrow reveal">
-            04 · Infrastructure Modules
+
+          <div class="ueberzeile einblenden">
+
+            04 · Infrastrukturmodule
+
           </div>
 
-          <h2 class="section-title reveal">
+
+          <h2
+            class="abschnitt-titel einblenden"
+          >
 
             Eine neue
 
@@ -2486,27 +3363,34 @@
 
           </h2>
 
+
         </div>
 
-        <p class="body-copy reveal">
+
+        <p class="fliesstext einblenden">
 
           Standardisierte, vorgefertigte und skalierbare
-          Infrastrukturbausteine bilden die Grundlage für eine
-          schrittweise Transformation – von neuen Straßenquerschnitten
-          bis hin zu technischen Systemmodulen.
+          Infrastrukturbausteine bilden die Grundlage für
+          eine schrittweise Transformation – von neuen
+          Straßenquerschnitten bis hin zu technischen
+          Systemmodulen.
 
         </p>
+
 
       </div>
 
 
-      <div class="module-cards">
+
+      <div class="module-karten">
 
 
-        <article class="module-card reveal">
+        <article
+          class="modul-karte einblenden"
+        >
 
-          <span class="card-index">
-            BLUEPRINT / 01
+          <span class="karten-index">
+            BLAUPAUSE / 01
           </span>
 
           <h3>
@@ -2514,20 +3398,25 @@
           </h3>
 
           <p>
+
             Regen- und Grauwasser werden dort erfasst,
             wo sie entstehen – dezentral, intelligent
             und resilient.
+
           </p>
 
-          <div class="card-line"></div>
+          <div class="karten-linie"></div>
 
         </article>
 
 
-        <article class="module-card reveal">
 
-          <span class="card-index">
-            BLUEPRINT / 02
+        <article
+          class="modul-karte einblenden"
+        >
+
+          <span class="karten-index">
+            BLAUPAUSE / 02
           </span>
 
           <h3>
@@ -2535,19 +3424,25 @@
           </h3>
 
           <p>
+
             Temporäre Speicher machen Wasser verfügbar,
-            wenn es gebraucht wird – nicht nur wenn es regnet.
+            wenn es gebraucht wird – nicht nur,
+            wenn es regnet.
+
           </p>
 
-          <div class="card-line"></div>
+          <div class="karten-linie"></div>
 
         </article>
 
 
-        <article class="module-card reveal">
 
-          <span class="card-index">
-            BLUEPRINT / 03
+        <article
+          class="modul-karte einblenden"
+        >
+
+          <span class="karten-index">
+            BLAUPAUSE / 03
           </span>
 
           <h3>
@@ -2555,19 +3450,24 @@
           </h3>
 
           <p>
+
             Dezentrale Aufbereitung erzeugt Wasserqualitäten,
             die exakt zur jeweiligen Anwendung passen.
+
           </p>
 
-          <div class="card-line"></div>
+          <div class="karten-linie"></div>
 
         </article>
 
 
-        <article class="module-card reveal">
 
-          <span class="card-index">
-            BLUEPRINT / 04
+        <article
+          class="modul-karte einblenden"
+        >
+
+          <span class="karten-index">
+            BLAUPAUSE / 04
           </span>
 
           <h3>
@@ -2575,19 +3475,24 @@
           </h3>
 
           <p>
+
             Wasser wird innerhalb der Stadt mehrfach genutzt
             und intelligent zwischen Anwendungen verteilt.
+
           </p>
 
-          <div class="card-line"></div>
+          <div class="karten-linie"></div>
 
         </article>
 
 
-        <article class="module-card reveal">
 
-          <span class="card-index">
-            BLUEPRINT / 05
+        <article
+          class="modul-karte einblenden"
+        >
+
+          <span class="karten-index">
+            BLAUPAUSE / 05
           </span>
 
           <h3>
@@ -2595,19 +3500,24 @@
           </h3>
 
           <p>
+
             Wasser wird zum Bestandteil einer urbanen
             Klimainfrastruktur und reduziert Hitzeinseln.
+
           </p>
 
-          <div class="card-line"></div>
+          <div class="karten-linie"></div>
 
         </article>
 
 
-        <article class="module-card reveal">
 
-          <span class="card-index">
-            BLUEPRINT / 06
+        <article
+          class="modul-karte einblenden"
+        >
+
+          <span class="karten-index">
+            BLAUPAUSE / 06
           </span>
 
           <h3>
@@ -2615,11 +3525,13 @@
           </h3>
 
           <p>
-            Urbane Wasserströme werden als thermische Ressource
-            für die Stadt nutzbar gemacht.
+
+            Urbane Wasserströme werden als thermische
+            Ressource für die Stadt nutzbar gemacht.
+
           </p>
 
-          <div class="card-line"></div>
+          <div class="karten-linie"></div>
 
         </article>
 
@@ -2633,52 +3545,73 @@
 
 
   <!-- =======================================================
-       CIRCULAR WATER
+       ZIRKULÄRE WASSERWIRTSCHAFT
        ======================================================= -->
 
-  <section class="section cycle">
+  <section
+    class="abschnitt kreislauf"
+  >
 
-    <div class="container cycle-content">
+
+    <div class="container kreislauf-inhalt">
 
 
-      <div class="cycle-visual reveal">
+      <div
+        class="kreislauf-visualisierung einblenden"
+      >
 
-        <div class="cycle-center">
-          Circular<br>
-          Water
+
+        <div class="kreislauf-mitte">
+
+          Wasser<br>
+          im<br>
+          Kreislauf
+
         </div>
 
 
-        <div class="cycle-point">
+        <div class="kreislauf-punkt">
           Regen
         </div>
 
-        <div class="cycle-point">
+
+        <div class="kreislauf-punkt">
           Speicherung
         </div>
 
-        <div class="cycle-point">
+
+        <div class="kreislauf-punkt">
           Kühlung
         </div>
 
-        <div class="cycle-point">
+
+        <div class="kreislauf-punkt">
           Bewässerung
         </div>
 
-        <div class="cycle-point">
+
+        <div class="kreislauf-punkt">
           Aufbereitung
         </div>
+
 
       </div>
 
 
+
       <div>
 
-        <div class="eyebrow reveal">
-          05 · Circular Water
+
+        <div class="ueberzeile einblenden">
+
+          05 · Zirkuläre Wasserwirtschaft
+
         </div>
 
-        <h2 class="section-title reveal">
+
+        <h2
+          class="abschnitt-titel einblenden"
+        >
 
           Wasser wird
 
@@ -2692,7 +3625,7 @@
 
 
         <p
-          class="body-copy reveal"
+          class="fliesstext einblenden"
           style="margin-top:35px;"
         >
 
@@ -2704,10 +3637,13 @@
         </p>
 
 
-        <div class="cycle-list">
+
+        <div class="kreislauf-liste">
 
 
-          <div class="cycle-list-item reveal">
+          <div
+            class="kreislauf-listenelement einblenden"
+          >
 
             <span>
               01
@@ -2720,7 +3656,9 @@
           </div>
 
 
-          <div class="cycle-list-item reveal">
+          <div
+            class="kreislauf-listenelement einblenden"
+          >
 
             <span>
               02
@@ -2733,7 +3671,9 @@
           </div>
 
 
-          <div class="cycle-list-item reveal">
+          <div
+            class="kreislauf-listenelement einblenden"
+          >
 
             <span>
               03
@@ -2746,7 +3686,9 @@
           </div>
 
 
-          <div class="cycle-list-item reveal">
+          <div
+            class="kreislauf-listenelement einblenden"
+          >
 
             <span>
               04
@@ -2770,18 +3712,28 @@
 
 
   <!-- =======================================================
-       IMPACT
+       WIRKUNG
        ======================================================= -->
 
-  <section class="section impact" id="impact">
+  <section
+    class="abschnitt wirkung"
+    id="wirkung"
+  >
+
 
     <div class="container">
 
-      <div class="eyebrow reveal">
-        06 · Impact
+
+      <div class="ueberzeile einblenden">
+
+        06 · Wirkung
+
       </div>
 
-      <h2 class="section-title reveal">
+
+      <h2
+        class="abschnitt-titel einblenden"
+      >
 
         Infrastruktur für
 
@@ -2794,14 +3746,18 @@
       </h2>
 
 
-      <div class="impact-grid">
+
+      <div class="wirkungs-raster">
 
 
-        <article class="impact-card reveal">
+        <article
+          class="wirkungskarte einblenden"
+        >
 
-          <div class="sdg-number">
+          <div class="sdg-nummer">
             09
           </div>
+
 
           <h3>
 
@@ -2810,6 +3766,7 @@
             & Infrastruktur
 
           </h3>
+
 
           <p>
 
@@ -2822,11 +3779,15 @@
         </article>
 
 
-        <article class="impact-card reveal">
 
-          <div class="sdg-number">
+        <article
+          class="wirkungskarte einblenden"
+        >
+
+          <div class="sdg-nummer">
             11
           </div>
+
 
           <h3>
 
@@ -2835,6 +3796,7 @@
             Städte
 
           </h3>
+
 
           <p>
 
@@ -2856,19 +3818,26 @@
 
 
   <!-- =======================================================
-       CTA
+       ABSCHLUSS
        ======================================================= -->
 
-  <section class="cta" id="contact">
+  <section
+    class="abschluss"
+    id="kontakt"
+  >
+
 
     <div class="container">
 
-      <div class="eyebrow reveal">
-        The next urban infrastructure
+
+      <div class="ueberzeile einblenden">
+
+        Die nächste urbane Infrastruktur
+
       </div>
 
 
-      <h2 class="reveal">
+      <h2 class="einblenden">
 
         Wir bauen nicht die nächste
         Wasserleitung.
@@ -2880,7 +3849,7 @@
       </h2>
 
 
-      <p class="reveal">
+      <p class="einblenden">
 
         BLUEPRINTS entwickelt die Blaupausen für eine
         zirkuläre, resiliente und multifunktionale
@@ -2891,10 +3860,13 @@
 
       <a
         href="#vision"
-        class="button button-primary reveal"
+        class="knopf knopf-primaer einblenden"
       >
+
         BLUEPRINTS entdecken →
+
       </a>
+
 
     </div>
 
@@ -2903,28 +3875,37 @@
 
 
   <!-- =======================================================
-       FOOTER
+       FUSSZEILE
        ======================================================= -->
 
   <footer>
 
-    <div class="container footer-inner">
 
-      <div class="footer-logo">
+    <div class="container fusszeile-innen">
 
-        BLUE<span class="logo-mark">
+
+      <div class="fusszeile-logo">
+
+        BLUE<span class="logo-markierung">
           PRINTS
         </span>
 
       </div>
 
-      <div>
-        Urban Water Infrastructure · SDG 9 · SDG 11
-      </div>
 
       <div>
-        © 2026 BLUEPRINTS
+
+        Urbane Wasserinfrastruktur · SDG 9 · SDG 11
+
       </div>
+
+
+      <div>
+
+        © 2026 BLUEPRINTS
+
+      </div>
+
 
     </div>
 
@@ -2940,11 +3921,13 @@
 
 
     /* =======================================================
-       NAVIGATION BACKGROUND
+       NAVIGATION BEIM SCROLLEN
        ======================================================= */
 
-    const nav =
-      document.getElementById("nav");
+    const navigation =
+      document.getElementById(
+        "navigation"
+      );
 
 
     window.addEventListener(
@@ -2953,11 +3936,15 @@
 
         if (window.scrollY > 30) {
 
-          nav.classList.add("scrolled");
+          navigation.classList.add(
+            "scrolled"
+          );
 
         } else {
 
-          nav.classList.remove("scrolled");
+          navigation.classList.remove(
+            "scrolled"
+          );
 
         }
 
@@ -2965,27 +3952,28 @@
     );
 
 
+
     /* =======================================================
-       SCROLL REVEAL
+       ELEMENTE EINBLENDEN
        ======================================================= */
 
-    const observer =
+    const beobachter =
       new IntersectionObserver(
-        (entries) => {
+        (eintraege) => {
 
-          entries.forEach(
-            (entry) => {
+          eintraege.forEach(
+            (eintrag) => {
 
               if (
-                entry.isIntersecting
+                eintrag.isIntersecting
               ) {
 
-                entry.target
+                eintrag.target
                   .classList
-                  .add("visible");
+                  .add("sichtbar");
 
-                observer.unobserve(
-                  entry.target
+                beobachter.unobserve(
+                  eintrag.target
                 );
 
               }
@@ -2994,47 +3982,61 @@
           );
 
         },
+
         {
           threshold: .12
         }
+
       );
 
 
     document
-      .querySelectorAll(".reveal")
+      .querySelectorAll(
+        ".einblenden"
+      )
       .forEach(
-        (element) =>
-          observer.observe(element)
+        (element) => {
+
+          beobachter.observe(
+            element
+          );
+
+        }
       );
 
 
+
     /* =======================================================
-       MOUSE INTERACTION
+       INTERAKTION MIT DEM WASSERTROPFEN
        ======================================================= */
 
-    const heroVisual =
-      document.querySelector(
-        ".hero-visual"
+    const wasserSystem =
+      document.getElementById(
+        "wasserSystem"
       );
 
 
     document.addEventListener(
       "mousemove",
-      (event) => {
+      (ereignis) => {
 
-        if (!heroVisual) return;
+        if (!wasserSystem) return;
+
 
         const x =
-          event.clientX /
-            window.innerWidth
+          ereignis.clientX /
+          window.innerWidth
           - .5;
+
 
         const y =
-          event.clientY /
-            window.innerHeight
+          ereignis.clientY /
+          window.innerHeight
           - .5;
 
-        heroVisual.style.transform =
+
+        wasserSystem.style.transform =
+
           `translateY(-50%)
            translate(${x * 12}px, ${y * 12}px)`;
 
@@ -3042,17 +4044,19 @@
     );
 
 
+
     /* =======================================================
-       RESET HERO PARALLAX WHEN MOUSE LEAVES
+       INTERAKTION ZURÜCKSETZEN
        ======================================================= */
 
     document.addEventListener(
       "mouseleave",
       () => {
 
-        if (!heroVisual) return;
+        if (!wasserSystem) return;
 
-        heroVisual.style.transform =
+
+        wasserSystem.style.transform =
           "translateY(-50%)";
 
       }
@@ -3061,6 +4065,8 @@
 
   </script>
 
+
 </body>
+
 </html>
 ```
