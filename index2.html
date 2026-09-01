@@ -7,28 +7,41 @@
 
 <title>BLUEPRINTS — Das Betriebssystem der Schwammstadt</title>
 
+<meta name="description"
+content="BLUEPRINTS entwickelt modulare, zirkuläre und resiliente Wasserinfrastrukturen für die Stadt der Zukunft.">
+
 <style>
 
 /* =========================================================
-   GRUNDLAGEN
+   BLUEPRINTS
+   Globales Design
    ========================================================= */
 
 :root {
-    --nacht: #03101d;
-    --tiefblau: #06284a;
-    --blau: #0879d9;
-    --hellblau: #53b9ff;
-    --wasser: #8bd6ff;
-    --weiss: #f2f9ff;
-    --gedaempft: #8ca6bb;
+    --bg: #03101d;
+    --bg-2: #061b30;
+    --blue-dark: #06345f;
+    --blue: #0879d9;
+    --blue-light: #4db8ff;
+    --blue-pale: #bce8ff;
 
-    --linie: rgba(130, 198, 245, .16);
+    --white: #f3f9fd;
+    --text: #b1c5d5;
+    --muted: #718ba0;
+
+    --line: rgba(120,190,235,.16);
+
+    --light-bg: #eef7fc;
+    --light-text: #092033;
+    --light-muted: #637c90;
+
+    --radius: 22px;
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -36,12 +49,14 @@ html {
 }
 
 body {
-    background: var(--nacht);
-    color: var(--weiss);
+    background: var(--bg);
+    color: var(--white);
     font-family:
         Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         Arial,
-        Helvetica,
         sans-serif;
     overflow-x: hidden;
 }
@@ -51,53 +66,80 @@ a {
     text-decoration: none;
 }
 
+button {
+    font: inherit;
+}
+
 
 /* =========================================================
    NAVIGATION
    ========================================================= */
 
-nav {
+.nav {
     position: fixed;
-    inset: 0 0 auto 0;
-    z-index: 100;
-    padding: 24px 4vw;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 82px;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5vw;
+
+    z-index: 1000;
 
     transition: .4s ease;
 }
 
-nav.scrolled {
-    background: rgba(3, 16, 29, .78);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--linie);
+.nav.scrolled {
+    background: rgba(3,16,29,.82);
+    backdrop-filter: blur(22px);
+
+    border-bottom:
+        1px solid var(--line);
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 800;
-    letter-spacing: -.05em;
+
+    letter-spacing: -.06em;
 }
 
 .logo span {
-    color: var(--hellblau);
+    color: var(--blue-light);
 }
 
 .nav-links {
     display: flex;
-    gap: 34px;
-    color: var(--gedaempft);
-    font-size: .85rem;
+    align-items: center;
+    gap: 30px;
+
+    color: #91a9bb;
+
+    font-size: .78rem;
 }
 
 .nav-links a {
-    transition: .25s;
+    transition: .25s ease;
 }
 
 .nav-links a:hover {
     color: white;
+}
+
+.nav-button {
+    border:
+        1px solid rgba(100,190,245,.25);
+
+    padding: 10px 17px;
+
+    border-radius: 100px;
+
+    color: var(--blue-pale);
 }
 
 
@@ -107,132 +149,242 @@ nav.scrolled {
 
 .hero {
     min-height: 100vh;
+
     position: relative;
-    overflow: hidden;
 
     display: flex;
     align-items: center;
-}
 
-.hero::before {
-    content: "";
-
-    position: absolute;
-    width: 900px;
-    height: 900px;
-
-    right: -250px;
-    top: 50%;
-
-    transform: translateY(-50%);
+    overflow: hidden;
 
     background:
         radial-gradient(
-            circle,
-            rgba(8, 121, 217, .22),
-            transparent 65%
+            circle at 75% 50%,
+            rgba(10,115,210,.16),
+            transparent 34%
+        );
+}
+
+.hero-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(100,180,230,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(100,180,230,.035) 1px,
+            transparent 1px
         );
 
-    filter: blur(20px);
+    background-size: 80px 80px;
+
+    mask-image:
+        linear-gradient(
+            to right,
+            transparent,
+            black 35%,
+            black 80%,
+            transparent
+        );
 }
 
 .hero-content {
     width: 55%;
+
     margin-left: 7vw;
+
     position: relative;
     z-index: 5;
 }
 
-.kicker {
-    color: var(--wasser);
-    font-size: .72rem;
-    font-weight: 700;
+.eyebrow {
+    color: var(--blue-light);
+
     text-transform: uppercase;
+
     letter-spacing: .22em;
+
+    font-size: .68rem;
+    font-weight: 700;
 }
 
 .hero h1 {
-    font-size: clamp(4.5rem, 10vw, 10rem);
+    margin-top: 27px;
+
+    font-size:
+        clamp(
+            4.5rem,
+            9.5vw,
+            10rem
+        );
+
     line-height: .82;
+
     letter-spacing: -.09em;
+
     font-weight: 600;
-
-    margin: 28px 0 38px;
 }
 
-.hero h1 em {
-    font-style: normal;
-    color: var(--hellblau);
+.hero h1 .blue {
+    color: var(--blue-light);
 }
 
-.hero-text {
-    max-width: 650px;
+.hero-copy {
+    max-width: 620px;
 
-    color: #b5c9d9;
-
-    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-    line-height: 1.65;
-}
-
-.buttons {
-    display: flex;
-    gap: 14px;
     margin-top: 38px;
+
+    color: var(--text);
+
+    font-size:
+        clamp(
+            1rem,
+            1.5vw,
+            1.25rem
+        );
+
+    line-height: 1.7;
 }
 
-.button {
-    padding: 15px 23px;
+.hero-actions {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 36px;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 22px;
+
     border-radius: 100px;
-    border: 1px solid var(--linie);
 
-    font-size: .85rem;
+    border:
+        1px solid var(--line);
 
-    transition: .3s;
+    font-size: .82rem;
+
+    transition: .3s ease;
 }
 
-.button.primary {
-    background: var(--hellblau);
-    color: #03101d;
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+    background: var(--blue-light);
+
+    color: #021321;
+
     font-weight: 700;
 }
 
-.button:hover {
-    transform: translateY(-3px);
+.btn-secondary {
+    color: #bdd2e1;
 }
 
 
 /* =========================================================
-   WASSER-SYSTEM
+   HERO WASSER-SYSTEM
    ========================================================= */
 
-.water-system {
+.water-visual {
     position: absolute;
-
-    width: min(58vw, 800px);
-    height: min(70vh, 780px);
 
     right: -3%;
     top: 50%;
 
-    transform: translateY(-50%);
+    width: min(58vw, 820px);
+    height: 760px;
+
+    transform:
+        translateY(-50%);
+
+    z-index: 2;
+
+    transition:
+        transform .3s ease;
 }
 
 
-/* =========================================================
-   WASSERTROPFEN
-   ========================================================= */
+/* Wasser-Kreisläufe */
+
+.orbit {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    border:
+        1px solid
+        rgba(80,180,250,.20);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        orbit 22s linear infinite;
+}
+
+.orbit.one {
+    width: 500px;
+    height: 190px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-20deg);
+}
+
+.orbit.two {
+    width: 650px;
+    height: 260px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(32deg);
+
+    opacity: .65;
+
+    animation-duration: 30s;
+}
+
+.orbit.three {
+    width: 800px;
+    height: 330px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-48deg);
+
+    opacity: .35;
+
+    animation-duration: 38s;
+}
+
+
+/* Der Tropfen */
 
 .drop {
     position: absolute;
 
+    left: 50%;
+    top: 50%;
+
     width: 300px;
     height: 390px;
 
-    left: 50%;
-    top: 46%;
-
     transform:
-        translate(-50%, -50%)
+        translate(-50%,-50%)
         rotate(45deg);
 
     border-radius:
@@ -241,37 +393,31 @@ nav.scrolled {
 
     background:
         radial-gradient(
-            circle at 32% 24%,
+            circle at 30% 20%,
             #ffffff 0%,
-            #c8edff 4%,
-            #73c8ff 13%,
-            #1688dc 35%,
-            #07559a 65%,
-            #032d55 100%
+            #bdeaff 5%,
+            #58baff 16%,
+            #087ed6 43%,
+            #064d8e 72%,
+            #032b4e 100%
         );
 
     box-shadow:
-
-        inset -35px -50px 70px
-        rgba(0, 23, 55, .75),
+        inset -35px -45px 70px
+        rgba(0,20,50,.75),
 
         inset 25px 20px 35px
-        rgba(255,255,255,.25),
+        rgba(255,255,255,.23),
 
         0 0 100px
-        rgba(35, 157, 239, .25),
+        rgba(40,165,245,.22),
 
         0 0 220px
-        rgba(10, 105, 200, .14);
+        rgba(15,110,205,.12);
 
     animation:
-        schweben 7s ease-in-out infinite;
+        float 7s ease-in-out infinite;
 }
-
-
-/* =========================================================
-   REFLEXION AUF DEM WASSER
-   ========================================================= */
 
 .drop::before {
     content: "";
@@ -281,101 +427,81 @@ nav.scrolled {
     width: 100px;
     height: 180px;
 
-    left: 45px;
-    top: 35px;
+    top: 30px;
+    left: 40px;
 
     border-radius: 50%;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.8),
-            rgba(255,255,255,0)
+            rgba(255,255,255,.72),
+            transparent
         );
 
-    filter: blur(3px);
-
     transform: rotate(-45deg);
+
+    filter: blur(4px);
 }
 
 
-/* =========================================================
-   STADT IM TROPFEN
-   ========================================================= */
+/* Stadt im Tropfen */
 
 .city {
     position: absolute;
 
-    width: 170px;
-    height: 100px;
-
     left: 50%;
     top: 53%;
 
+    width: 180px;
+    height: 105px;
+
     transform:
-        translate(-50%, -50%)
+        translate(-50%,-50%)
         rotate(-45deg);
 
     display: flex;
 
-    align-items: end;
     justify-content: center;
+    align-items: flex-end;
 
     gap: 5px;
 
-    opacity: .9;
+    opacity: .85;
 }
 
 .building {
-    width: 20px;
+    width: 21px;
 
     background:
         linear-gradient(
             to bottom,
-            rgba(255,255,255,.65),
+            rgba(255,255,255,.72),
             rgba(255,255,255,.12)
         );
 
-    border-radius: 2px 2px 0 0;
+    border-radius:
+        2px 2px 0 0;
 }
 
-.building:nth-child(1) {
-    height: 45px;
-}
-
-.building:nth-child(2) {
-    height: 75px;
-}
-
-.building:nth-child(3) {
-    height: 55px;
-}
-
-.building:nth-child(4) {
-    height: 90px;
-}
-
-.building:nth-child(5) {
-    height: 65px;
-}
-
-.building:nth-child(6) {
-    height: 42px;
-}
+.building:nth-child(1) { height: 45px; }
+.building:nth-child(2) { height: 72px; }
+.building:nth-child(3) { height: 55px; }
+.building:nth-child(4) { height: 91px; }
+.building:nth-child(5) { height: 65px; }
+.building:nth-child(6) { height: 40px; }
 
 
-/* =========================================================
-   WASSERADERN IM TROPFEN
-   ========================================================= */
+/* Wasseradern */
 
 .vein {
     position: absolute;
 
-    width: 220px;
-    height: 2px;
-
     left: 50%;
-    top: 50%;
+    top: 51%;
+
+    width: 230px;
+    height: 2px;
 
     background:
         linear-gradient(
@@ -385,155 +511,99 @@ nav.scrolled {
             transparent
         );
 
-    transform-origin: left center;
+    transform-origin: left;
 
-    filter: blur(.3px);
-
-    opacity: .55;
+    opacity: .5;
 }
 
-.vein.v1 {
+.vein.a {
     transform:
-        translate(-10%, -50%)
         rotate(-20deg);
 }
 
-.vein.v2 {
+.vein.b {
     transform:
-        translate(-10%, -50%)
-        rotate(25deg);
+        rotate(28deg);
 }
 
-.vein.v3 {
+.vein.c {
     transform:
-        translate(-10%, -50%)
         rotate(70deg);
 }
 
 
 /* =========================================================
-   KREISLÄUFE UM DEN TROPFEN
+   WASSER-NODES
    ========================================================= */
 
-.water-ring {
+.node {
     position: absolute;
 
-    left: 50%;
-    top: 50%;
+    width: 9px;
+    height: 9px;
 
     border-radius: 50%;
 
-    border: 1px solid
-        rgba(83, 185, 255, .23);
-
-    transform:
-        translate(-50%, -50%)
-        rotate(-20deg);
-
-    animation:
-        kreislauf 18s linear infinite;
-}
-
-.ring-1 {
-    width: 540px;
-    height: 230px;
-}
-
-.ring-2 {
-    width: 680px;
-    height: 300px;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(35deg);
-
-    opacity: .6;
-
-    animation-duration: 25s;
-}
-
-.ring-3 {
-    width: 790px;
-    height: 370px;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(-50deg);
-
-    opacity: .35;
-
-    animation-duration: 34s;
-}
-
-
-/* =========================================================
-   WASSER-PUNKTE
-   ========================================================= */
-
-.water-node {
-    position: absolute;
-
-    width: 10px;
-    height: 10px;
-
-    border-radius: 50%;
-
-    background: var(--wasser);
+    background: var(--blue-pale);
 
     box-shadow:
-        0 0 15px var(--hellblau),
-        0 0 35px rgba(83,185,255,.5);
+        0 0 16px var(--blue-light),
+        0 0 35px rgba(80,180,255,.5);
 
     animation:
-        pulsieren 3s ease-in-out infinite;
+        pulse 3s ease-in-out infinite;
 }
 
-.node-1 {
-    left: 12%;
-    top: 42%;
+.node.n1 {
+    left: 10%;
+    top: 43%;
 }
 
-.node-2 {
-    right: 12%;
-    top: 31%;
-    animation-delay: 1s;
+.node.n2 {
+    right: 11%;
+    top: 29%;
+
+    animation-delay: .8s;
 }
 
-.node-3 {
-    right: 20%;
+.node.n3 {
+    right: 17%;
     bottom: 20%;
-    animation-delay: 1.8s;
+
+    animation-delay: 1.5s;
 }
 
-.node-4 {
-    left: 18%;
-    bottom: 26%;
-    animation-delay: .5s;
+.node.n4 {
+    left: 17%;
+    bottom: 25%;
+
+    animation-delay: 2s;
 }
 
 
 /* =========================================================
-   SYSTEM-BESCHRIFTUNGEN
+   SYSTEM-LABEL
    ========================================================= */
 
 .system-label {
     position: absolute;
 
-    padding: 11px 15px;
+    padding: 11px 14px;
 
     background:
-        rgba(3, 18, 32, .75);
+        rgba(3,20,35,.72);
 
     border:
-        1px solid var(--linie);
+        1px solid var(--line);
 
-    backdrop-filter: blur(15px);
+    backdrop-filter:
+        blur(14px);
 
     border-radius: 12px;
 
-    font-size: .65rem;
+    font-size: .61rem;
 
-    color: #a9bfd1;
+    color: #91aabd;
 
     line-height: 1.4;
 }
@@ -541,109 +611,81 @@ nav.scrolled {
 .system-label strong {
     display: block;
 
-    color: var(--wasser);
+    color: var(--blue-pale);
 
-    font-size: .78rem;
-
-    margin-top: 3px;
+    font-size: .74rem;
 }
 
-.label-regen {
-    top: 12%;
-    left: 12%;
-}
-
-.label-speicher {
-    top: 19%;
-    right: 7%;
-}
-
-.label-aufbereitung {
-    bottom: 17%;
+.label-one {
     left: 7%;
+    top: 13%;
 }
 
-.label-nutzung {
+.label-two {
+    right: 4%;
+    top: 19%;
+}
+
+.label-three {
+    left: 5%;
+    bottom: 18%;
+}
+
+.label-four {
+    right: 7%;
     bottom: 10%;
-    right: 12%;
 }
 
 
 /* =========================================================
-   WASSERTROPFEN BESCHRIFTUNG
+   SECTIONS — ALLGEMEIN
    ========================================================= */
 
-.drop-title {
-    position: absolute;
-
-    left: 50%;
-    top: 80%;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(-45deg);
-
-    text-align: center;
-
-    white-space: nowrap;
-}
-
-.drop-title small {
-    display: block;
-
-    font-size: .58rem;
-
-    letter-spacing: .25em;
-
-    opacity: .7;
-}
-
-.drop-title strong {
-    font-size: 1.2rem;
-
-    letter-spacing: -.04em;
-}
-
-
-/* =========================================================
-   UNTERE ERKLÄRUNG
-   ========================================================= */
-
-.intro {
+section {
     position: relative;
+}
 
+.section-dark {
+    background: var(--bg);
     padding: 150px 7vw;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #03101d,
-            #061b30
-        );
 }
 
-.intro-grid {
-    display: grid;
-
-    grid-template-columns: .6fr 1.4fr;
-
-    gap: 100px;
+.section-light {
+    background: var(--light-bg);
+    color: var(--light-text);
+    padding: 150px 7vw;
 }
 
-.number {
-    font-size: 9rem;
+.section-number {
+    color: rgba(75,180,255,.12);
+
+    font-size: 8rem;
 
     line-height: .8;
 
-    color:
-        rgba(83,185,255,.08);
-
-    font-weight: 700;
+    font-weight: 800;
 
     letter-spacing: -.1em;
 }
 
-.intro h2 {
+.section-kicker {
+    color: var(--blue-light);
+
+    text-transform: uppercase;
+
+    letter-spacing: .2em;
+
+    font-size: .65rem;
+    font-weight: 700;
+}
+
+.section-light .section-kicker {
+    color: var(--blue);
+}
+
+.section-title {
+    margin-top: 25px;
+
     font-size:
         clamp(
             3rem,
@@ -651,144 +693,790 @@ nav.scrolled {
             7rem
         );
 
-    line-height: .92;
-
-    letter-spacing: -.07em;
-
-    max-width: 900px;
-}
-
-.intro h2 span {
-    color: var(--hellblau);
-}
-
-.intro p {
-    margin-top: 35px;
-
-    max-width: 720px;
-
-    color: var(--gedaempft);
-
-    font-size: 1.1rem;
-
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   WASSERKREISLAUF
-   ========================================================= */
-
-.cycle {
-    padding: 150px 7vw;
-
-    background: #eef7fd;
-
-    color: #061522;
-}
-
-.cycle-head {
-    max-width: 850px;
-}
-
-.cycle-head .kicker {
-    color: #0879d9;
-}
-
-.cycle h2 {
-    margin-top: 25px;
-
-    font-size:
-        clamp(
-            3rem,
-            6vw,
-            6.5rem
-        );
-
     line-height: .9;
 
-    letter-spacing: -.07em;
+    letter-spacing: -.075em;
 }
 
-.cycle h2 span {
-    color: #6e899e;
+.section-title span {
+    color: var(--blue-light);
 }
 
-.cycle-text {
-    margin-top: 30px;
+.section-light .section-title span {
+    color: var(--blue);
+}
 
-    max-width: 650px;
+.section-text {
+    max-width: 720px;
 
-    color: #637d91;
+    margin-top: 32px;
+
+    color: var(--text);
 
     line-height: 1.8;
+
+    font-size: 1.05rem;
+}
+
+.section-light .section-text {
+    color: var(--light-muted);
 }
 
 
 /* =========================================================
-   KREISLAUF-KARTEN
+   01 — VISION
    ========================================================= */
 
-.cycle-grid {
-    margin-top: 80px;
-
+.vision-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        .5fr 1.5fr;
 
-    border-top: 1px solid #c8d8e4;
-    border-left: 1px solid #c8d8e4;
+    gap: 100px;
 }
 
-.cycle-card {
-    min-height: 280px;
-
-    padding: 28px;
-
-    border-right: 1px solid #c8d8e4;
-    border-bottom: 1px solid #c8d8e4;
-
-    transition: .35s;
+.vision-quote {
+    max-width: 1000px;
 }
 
-.cycle-card:hover {
-    background: white;
 
-    transform: translateY(-5px);
+/* =========================================================
+   02 — DAS PROBLEM
+   ========================================================= */
+
+.problem {
+    background:
+        linear-gradient(
+            135deg,
+            #04172a,
+            #03101d
+        );
 }
 
-.cycle-card span {
-    color: #6d8da5;
+.problem-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    margin-top: 90px;
+
+    background: var(--line);
+
+    border:
+        1px solid var(--line);
+}
+
+.problem-card {
+    min-height: 320px;
+
+    padding: 32px;
+
+    background: rgba(4,22,38,.75);
+}
+
+.problem-card .num {
+    color: var(--blue-light);
 
     font-size: .7rem;
 }
 
-.cycle-card h3 {
-    margin-top: 90px;
+.problem-card h3 {
+    margin-top: 110px;
 
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 
     letter-spacing: -.04em;
 }
 
-.cycle-card p {
-    margin-top: 12px;
+.problem-card p {
+    margin-top: 14px;
 
-    color: #71889a;
+    color: var(--muted);
 
-    font-size: .88rem;
+    line-height: 1.6;
+
+    font-size: .9rem;
 }
 
 
 /* =========================================================
-   CTA
+   03 — SYSTEM
    ========================================================= */
 
-.cta {
-    min-height: 75vh;
+.system-intro {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 100px;
+
+    align-items: center;
+}
+
+.system-diagram {
+    min-height: 540px;
+
+    border:
+        1px solid #cbdce7;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(70,180,245,.15),
+            transparent 55%
+        );
+}
+
+.diagram-city {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 48%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 45px,
+            rgba(8,121,217,.07) 45px 47px
+        );
+
+    display: flex;
+
+    align-items: end;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.diagram-building {
+    width: 45px;
+
+    background:
+        linear-gradient(
+            to top,
+            #8eb3c8,
+            #d8edf8
+        );
+}
+
+.diagram-building:nth-child(1) { height: 90px; }
+.diagram-building:nth-child(2) { height: 150px; }
+.diagram-building:nth-child(3) { height: 115px; }
+.diagram-building:nth-child(4) { height: 180px; }
+.diagram-building:nth-child(5) { height: 125px; }
+
+
+/* Unterirdische Infrastruktur */
+
+.underground {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 52%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d8e7ef,
+            #b6cfdd
+        );
+
+    border-top:
+        1px dashed #6e9bb4;
+}
+
+.pipe {
+    position: absolute;
+
+    height: 12px;
+
+    background: #168bd9;
+
+    border-radius: 100px;
+}
+
+.pipe.p1 {
+    width: 75%;
+    left: 12%;
+    top: 35%;
+}
+
+.pipe.p2 {
+    width: 55%;
+    left: 25%;
+    top: 55%;
+
+    transform: rotate(90deg);
+}
+
+.module {
+    position: absolute;
+
+    width: 90px;
+    height: 70px;
+
+    border:
+        2px solid #0879d9;
+
+    background:
+        rgba(238,247,252,.85);
 
     display: grid;
+
+    place-items: center;
+
+    color: #0879d9;
+
+    font-size: .65rem;
+
+    text-align: center;
+}
+
+.module.m1 {
+    left: 13%;
+    top: 20%;
+}
+
+.module.m2 {
+    right: 14%;
+    top: 52%;
+}
+
+.module.m3 {
+    left: 42%;
+    bottom: 8%;
+}
+
+
+/* =========================================================
+   04 — BLUEPRINTS / SYSTEMKOMPONENTEN
+   ========================================================= */
+
+.blueprints {
+    padding: 150px 7vw;
+
+    background:
+        #061b30;
+}
+
+.blueprints-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 40px;
+}
+
+.blueprints-header p {
+    max-width: 450px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+
+/* Blueprint Grid */
+
+.blueprint-grid {
+    margin-top: 75px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+}
+
+
+/* Blueprint Karte */
+
+.blueprint-card {
+    min-height: 430px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9,48,79,.72),
+            rgba(3,20,35,.9)
+        );
+
+    border-radius: var(--radius);
+
+    padding: 26px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease;
+}
+
+.blueprint-card:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(90,190,255,.5);
+}
+
+
+/* Nummer */
+
+.blueprint-number {
+    font-size: .65rem;
+
+    color: var(--blue-light);
+
+    letter-spacing: .15em;
+}
+
+
+/* Platzhalter Visual */
+
+.blueprint-visual {
+    height: 190px;
+
+    margin:
+        22px -5px 25px;
+
+    border-radius: 15px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(65,180,255,.17),
+            transparent 60%
+        );
+
+    border:
+        1px solid
+        rgba(100,190,240,.10);
+}
+
+
+/* Blueprint-Linien */
+
+.blueprint-visual::before,
+.blueprint-visual::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 20px;
+
+    border:
+        1px dashed
+        rgba(90,190,255,.18);
+
+    transform:
+        rotate(8deg);
+}
+
+.blueprint-visual::after {
+    transform:
+        rotate(-8deg);
+}
+
+
+/* Platzhalter-Symbol */
+
+.placeholder-symbol {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 75px;
+    height: 75px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(110,200,255,.55);
+
+    border-radius: 18px;
+
+    display: grid;
+
+    place-items: center;
+
+    color: var(--blue-light);
+
+    font-size: 1.5rem;
+}
+
+.blueprint-card h3 {
+    font-size: 1.45rem;
+
+    letter-spacing: -.045em;
+}
+
+.blueprint-card p {
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    line-height: 1.6;
+
+    font-size: .86rem;
+}
+
+.blueprint-link {
+    position: absolute;
+
+    bottom: 25px;
+    right: 25px;
+
+    color: var(--blue-pale);
+
+    font-size: .75rem;
+}
+
+
+/* =========================================================
+   BLUEPRINT CTA / NEUE KOMPONENTE
+   ========================================================= */
+
+.new-component {
+    margin-top: 18px;
+
+    min-height: 220px;
+
+    border:
+        1px dashed
+        rgba(100,190,240,.3);
+
+    border-radius: var(--radius);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: var(--muted);
+
+    background:
+        rgba(5,29,49,.35);
+}
+
+.new-component strong {
+    display: block;
+
+    color: var(--blue-pale);
+
+    font-size: 1.1rem;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   05 — WASSERKREISLAUF
+   ========================================================= */
+
+.cycle-header {
+    max-width: 950px;
+}
+
+.cycle-flow {
+    margin-top: 90px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap: 0;
+}
+
+.cycle-step {
+    min-height: 250px;
+
+    padding: 25px;
+
+    border-top:
+        1px solid #c5d8e5;
+
+    border-right:
+        1px solid #c5d8e5;
+
+    position: relative;
+}
+
+.cycle-step:first-child {
+    border-left:
+        1px solid #c5d8e5;
+}
+
+.cycle-step-number {
+    color: #7d9aae;
+
+    font-size: .7rem;
+}
+
+.cycle-step h3 {
+    margin-top: 95px;
+
+    font-size: 1.35rem;
+
+    letter-spacing: -.04em;
+}
+
+.cycle-step p {
+    margin-top: 10px;
+
+    color: var(--light-muted);
+
+    font-size: .8rem;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   06 — TECHNOLOGIE
+   ========================================================= */
+
+.technology {
+    padding: 150px 7vw;
+
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(8,121,217,.16),
+            transparent 35%
+        ),
+        var(--bg);
+}
+
+.tech-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 15px;
+
+    margin-top: 80px;
+}
+
+.tech-card {
+    padding: 28px;
+
+    min-height: 250px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 18px;
+}
+
+.tech-icon {
+    font-size: 1.7rem;
+
+    color: var(--blue-light);
+}
+
+.tech-card h3 {
+    margin-top: 70px;
+
+    font-size: 1.2rem;
+}
+
+.tech-card p {
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    line-height: 1.55;
+
+    font-size: .82rem;
+}
+
+
+/* =========================================================
+   07 — PILOTIERUNG
+   ========================================================= */
+
+.pilot {
+    padding: 150px 7vw;
+
+    background:
+        #eef7fc;
+
+    color: #092033;
+}
+
+.pilot-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 100px;
+
+    margin-top: 80px;
+}
+
+.timeline {
+    border-left:
+        1px solid #bad0dd;
+}
+
+.timeline-item {
+    position: relative;
+
+    padding:
+        0 0 60px 35px;
+}
+
+.timeline-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: -5px;
+    top: 5px;
+
+    width: 9px;
+    height: 9px;
+
+    background: var(--blue);
+
+    border-radius: 50%;
+}
+
+.timeline-item span {
+    color: var(--blue);
+
+    font-size: .68rem;
+
+    font-weight: 700;
+}
+
+.timeline-item h3 {
+    margin-top: 10px;
+
+    font-size: 1.35rem;
+}
+
+.timeline-item p {
+    margin-top: 8px;
+
+    color: var(--light-muted);
+
+    line-height: 1.6;
+
+    font-size: .85rem;
+}
+
+
+/* =========================================================
+   08 — SDGS
+   ========================================================= */
+
+.sdgs {
+    padding: 150px 7vw;
+
+    background: var(--bg);
+}
+
+.sdg-grid {
+    margin-top: 80px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+.sdg {
+    min-height: 320px;
+
+    padding: 35px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: var(--radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,121,217,.12),
+            rgba(3,16,29,.7)
+        );
+}
+
+.sdg-number {
+    font-size: 4rem;
+
+    font-weight: 800;
+
+    color: var(--blue-light);
+
+    letter-spacing: -.08em;
+}
+
+.sdg h3 {
+    margin-top: 45px;
+
+    font-size: 1.6rem;
+}
+
+.sdg p {
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   09 — KONTAKT
+   ========================================================= */
+
+.contact {
+    min-height: 80vh;
+
+    display: grid;
+
     place-items: center;
 
     text-align: center;
@@ -797,14 +1485,14 @@ nav.scrolled {
 
     background:
         radial-gradient(
-            circle at 50% 40%,
-            rgba(8,121,217,.2),
+            circle at 50% 50%,
+            rgba(8,121,217,.22),
             transparent 40%
         ),
-        #03101d;
+        var(--bg);
 }
 
-.cta h2 {
+.contact h2 {
     max-width: 1100px;
 
     font-size:
@@ -816,63 +1504,106 @@ nav.scrolled {
 
     line-height: .88;
 
-    letter-spacing: -.075em;
+    letter-spacing: -.08em;
 }
 
-.cta h2 span {
-    color: var(--hellblau);
+.contact h2 span {
+    color: var(--blue-light);
 }
 
-.cta p {
+.contact p {
     max-width: 650px;
 
     margin: 35px auto 0;
 
-    color: var(--gedaempft);
+    color: var(--muted);
 
     line-height: 1.7;
 }
 
 
 /* =========================================================
-   ANIMATIONEN
+   FOOTER
    ========================================================= */
 
-@keyframes schweben {
+footer {
+    padding: 30px 7vw;
 
-    0%, 100% {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #557084;
+
+    font-size: .7rem;
+
+    border-top:
+        1px solid var(--line);
+}
+
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes float {
+
+    0%,100% {
         transform:
-            translate(-50%, -50%)
+            translate(-50%,-50%)
             rotate(45deg)
             translateY(0);
     }
 
     50% {
         transform:
-            translate(-50%, -50%)
+            translate(-50%,-50%)
             rotate(45deg)
             translateY(-18px);
     }
 }
 
-@keyframes kreislauf {
+@keyframes orbit {
 
     from {
-        transform:
-            translate(-50%, -50%)
-            rotate(0deg);
+        opacity: .2;
+    }
+
+    50% {
+        opacity: .65;
     }
 
     to {
-        transform:
-            translate(-50%, -50%)
-            rotate(360deg);
+        opacity: .2;
     }
 }
 
-@keyframes pulsieren {
+@keyframes pulse {
 
-    0%, 100% {
+    0%,100% {
         transform: scale(.7);
         opacity: .35;
     }
@@ -885,31 +1616,10 @@ nav.scrolled {
 
 
 /* =========================================================
-   EINBLENDEN
-   ========================================================= */
-
-.reveal {
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition:
-        opacity .9s ease,
-        transform .9s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-
-/* =========================================================
    RESPONSIVE
    ========================================================= */
 
-@media (max-width: 1000px) {
+@media(max-width:1050px) {
 
     .nav-links {
         display: none;
@@ -917,30 +1627,48 @@ nav.scrolled {
 
     .hero-content {
         width: 90%;
-        margin-left: 6vw;
     }
 
-    .water-system {
+    .water-visual {
         opacity: .35;
 
-        width: 700px;
         right: -300px;
     }
 
-    .intro-grid {
+    .vision-grid,
+    .system-intro,
+    .pilot-grid {
         grid-template-columns: 1fr;
 
-        gap: 40px;
+        gap: 60px;
     }
 
-    .cycle-grid {
+    .problem-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blueprint-grid {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
+    }
+
+    .tech-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .cycle-flow {
+        grid-template-columns:
+            repeat(2,1fr);
     }
 }
 
 
-@media (max-width: 650px) {
+@media(max-width:650px) {
+
+    .nav {
+        height: 70px;
+    }
 
     .hero {
         min-height: 900px;
@@ -950,39 +1678,62 @@ nav.scrolled {
         font-size: 4.2rem;
     }
 
-    .water-system {
+    .hero-copy {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .water-visual {
         width: 600px;
+
         right: -330px;
-        top: 67%;
-    }
 
-    .drop {
-        width: 230px;
-        height: 300px;
-    }
-
-    .water-ring.ring-1 {
-        width: 400px;
-    }
-
-    .water-ring.ring-2 {
-        width: 500px;
-    }
-
-    .water-ring.ring-3 {
-        width: 600px;
+        top: 68%;
     }
 
     .system-label {
         display: none;
     }
 
-    .cycle-grid {
+    .section-dark,
+    .section-light,
+    .blueprints,
+    .technology,
+    .pilot,
+    .sdgs {
+        padding:
+            100px 6vw;
+    }
+
+    .section-number {
+        font-size: 5rem;
+    }
+
+    .blueprint-grid,
+    .tech-grid,
+    .sdg-grid {
         grid-template-columns: 1fr;
     }
 
-    .number {
-        font-size: 6rem;
+    .cycle-flow {
+        grid-template-columns: 1fr;
+    }
+
+    .cycle-step {
+        border-left: 1px solid #c5d8e5;
+
+        border-bottom: 1px solid #c5d8e5;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 10px;
     }
 }
 
@@ -997,122 +1748,119 @@ nav.scrolled {
      NAVIGATION
      ========================================================= -->
 
-<nav id="nav">
+<header class="nav" id="nav">
 
-    <a href="#" class="logo">
+    <a href="#top" class="logo">
         BLUE<span>PRINTS</span>
     </a>
 
-    <div class="nav-links">
+    <nav class="nav-links">
 
-        <a href="#vision">
-            Vision
+        <a href="#vision">Vision</a>
+
+        <a href="#problem">Das Problem</a>
+
+        <a href="#system">System</a>
+
+        <a href="#blueprints">Blueprints</a>
+
+        <a href="#kreislauf">Kreislauf</a>
+
+        <a href="#technologie">Technologie</a>
+
+        <a href="#kontakt" class="nav-button">
+            Kontakt
         </a>
 
-        <a href="#system">
-            System
-        </a>
+    </nav>
 
-        <a href="#kreislauf">
-            Wasserkreislauf
-        </a>
-
-        <a href="#wirkung">
-            Wirkung
-        </a>
-
-    </div>
-
-</nav>
+</header>
 
 
 <!-- =========================================================
      HERO
      ========================================================= -->
 
-<section class="hero" id="vision">
+<main id="top">
+
+<section class="hero">
+
+    <div class="hero-grid"></div>
 
 
     <div class="hero-content">
 
-
-        <div class="kicker reveal">
-            Urbane Wasserinfrastruktur · 2030+
+        <div class="eyebrow reveal">
+            Urbane Wasserinfrastruktur der Zukunft
         </div>
 
 
         <h1 class="reveal">
 
-            Das<br>
+            Das
 
-            <em>Wasser-</em><br>
+            <span class="blue">
+                Wasser-
+            </span>
+
+            <br>
 
             Betriebssystem.
 
         </h1>
 
 
-        <p class="hero-text reveal">
+        <p class="hero-copy reveal">
 
             Die Stadt von morgen wird zur Schwammstadt.
             BLUEPRINTS entwickelt die Infrastruktur darunter:
-            intelligent, zirkulär, modular und resilient.
+            resilient, flexibel, multifunktional, smart und
+            zirkulär.
 
         </p>
 
 
-        <div class="buttons reveal">
+        <div class="hero-actions reveal">
 
             <a
-                href="#system"
-                class="button primary"
+                href="#blueprints"
+                class="btn btn-primary"
             >
-                System verstehen ↓
+                Blueprints entdecken ↓
             </a>
 
             <a
-                href="#kreislauf"
-                class="button"
+                href="#system"
+                class="btn btn-secondary"
             >
-                Wasserkreislauf
+                System verstehen
             </a>
 
         </div>
 
-
     </div>
 
 
-    <!-- =====================================================
-         WASSER-SYSTEM
-         ===================================================== -->
+    <!-- WASSER-VISUAL -->
 
-    <div class="water-system">
-
-
-        <!-- Kreisläufe -->
-
-        <div class="water-ring ring-1"></div>
-
-        <div class="water-ring ring-2"></div>
-
-        <div class="water-ring ring-3"></div>
+    <div class="water-visual"
+         id="waterVisual">
 
 
-        <!-- Wasserpunkte -->
+        <div class="orbit one"></div>
 
-        <div class="water-node node-1"></div>
+        <div class="orbit two"></div>
 
-        <div class="water-node node-2"></div>
-
-        <div class="water-node node-3"></div>
-
-        <div class="water-node node-4"></div>
+        <div class="orbit three"></div>
 
 
-        <!-- System-Beschriftungen -->
+        <div class="node n1"></div>
+        <div class="node n2"></div>
+        <div class="node n3"></div>
+        <div class="node n4"></div>
 
-        <div class="system-label label-regen">
+
+        <div class="system-label label-one">
 
             REGENWASSER
 
@@ -1123,7 +1871,7 @@ nav.scrolled {
         </div>
 
 
-        <div class="system-label label-speicher">
+        <div class="system-label label-two">
 
             SPEICHER
 
@@ -1134,7 +1882,7 @@ nav.scrolled {
         </div>
 
 
-        <div class="system-label label-aufbereitung">
+        <div class="system-label label-three">
 
             WASSERQUALITÄT
 
@@ -1145,67 +1893,36 @@ nav.scrolled {
         </div>
 
 
-        <div class="system-label label-nutzung">
+        <div class="system-label label-four">
 
             URBANE NUTZUNG
 
             <strong>
-                Bewässern · Kühlen
+                Kühlen · Bewässern
             </strong>
 
         </div>
 
 
-        <!-- Der zentrale Wassertropfen -->
-
         <div class="drop">
 
+            <div class="vein a"></div>
+            <div class="vein b"></div>
+            <div class="vein c"></div>
 
-            <!-- Wasseradern -->
-
-            <div class="vein v1"></div>
-
-            <div class="vein v2"></div>
-
-            <div class="vein v3"></div>
-
-
-            <!-- Stadt -->
 
             <div class="city">
 
                 <div class="building"></div>
-
                 <div class="building"></div>
-
                 <div class="building"></div>
-
                 <div class="building"></div>
-
                 <div class="building"></div>
-
                 <div class="building"></div>
 
             </div>
-
-
-            <!-- Beschriftung -->
-
-            <div class="drop-title">
-
-                <small>
-                    URBANES WASSER
-                </small>
-
-                <strong>
-                    BLUEPRINTS
-                </strong>
-
-            </div>
-
 
         </div>
-
 
     </div>
 
@@ -1213,34 +1930,31 @@ nav.scrolled {
 
 
 <!-- =========================================================
-     VISION
+     01 — VISION
      ========================================================= -->
 
 <section
-    class="intro"
-    id="system"
+    class="section-dark"
+    id="vision"
 >
 
+    <div class="vision-grid">
 
-    <div class="intro-grid">
-
-
-        <div class="number reveal">
+        <div class="section-number reveal">
             01
         </div>
 
 
         <div>
 
-
-            <div class="kicker reveal">
-                Die Ausgangslage
+            <div class="section-kicker reveal">
+                Vision
             </div>
 
 
-            <h2 class="reveal">
+            <h2 class="section-title reveal">
 
-                Oben entsteht die
+                Oben
 
                 <span>
                     Schwammstadt.
@@ -1248,34 +1962,33 @@ nav.scrolled {
 
                 <br><br>
 
-                Darunter braucht sie
+                Unten
 
                 <span>
-                    ein neues System.
+                    BLUEPRINTS.
                 </span>
 
             </h2>
 
 
-            <p class="reveal">
+            <p class="section-text reveal">
 
-                Urbane Räume verändern sich. Dächer werden
-                grün, Straßen wassersensibel, Plätze speichern
-                Regen und Vegetation wird Teil der städtischen
-                Klimaanpassung.
-
-                <br><br>
-
-                Die technische Infrastruktur darunter bleibt
-                jedoch häufig auf lineare Wasserströme
-                ausgelegt.
+                Die urbane Zukunft braucht mehr als grüne
+                Dächer, wassersensible Straßen und neue
+                Freiräume.
 
                 <br><br>
 
-                BLUEPRINTS setzt genau dort an.
+                Sie braucht eine neue technische
+                Wasserinfrastruktur, die diese Stadt
+                überhaupt erst ermöglicht.
+
+                <br><br>
+
+                BLUEPRINTS entwickelt das Betriebssystem
+                unter der Schwammstadt.
 
             </p>
-
 
         </div>
 
@@ -1285,121 +1998,723 @@ nav.scrolled {
 
 
 <!-- =========================================================
-     WASSERKREISLAUF
+     02 — PROBLEM
      ========================================================= -->
 
 <section
-    class="cycle"
-    id="kreislauf"
+    class="section-dark problem"
+    id="problem"
 >
 
+    <div class="section-kicker reveal">
+        02 · Das Problem
+    </div>
 
-    <div class="cycle-head">
+
+    <h2 class="section-title reveal">
+
+        Die Stadt verändert sich.
+
+        <br>
+
+        Die Infrastruktur
+
+        <span>
+            nicht.
+        </span>
+
+    </h2>
 
 
-        <div class="kicker reveal">
-            02 · Der neue Wasserkreislauf
+    <div class="problem-grid">
+
+
+        <article class="problem-card reveal">
+
+            <div class="num">
+                01
+            </div>
+
+            <h3>
+                Lineare Systeme
+            </h3>
+
+            <p>
+                Wasser wird gesammelt, transportiert,
+                behandelt und abgeführt – statt im urbanen
+                Raum zirkulär genutzt zu werden.
+            </p>
+
+        </article>
+
+
+        <article class="problem-card reveal">
+
+            <div class="num">
+                02
+            </div>
+
+            <h3>
+                Klimawandel
+            </h3>
+
+            <p>
+                Starkregen, Hitze und Trockenperioden
+                erhöhen den Druck auf bestehende
+                Infrastrukturen.
+            </p>
+
+        </article>
+
+
+        <article class="problem-card reveal">
+
+            <div class="num">
+                03
+            </div>
+
+            <h3>
+                Wachsende Nachfrage
+            </h3>
+
+            <p>
+                Bewässerung, Kühlung und neue urbane
+                Anwendungen benötigen Wasser in
+                unterschiedlichen Qualitäten.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     03 — SYSTEM
+     ========================================================= -->
+
+<section
+    class="section-light"
+    id="system"
+>
+
+    <div class="system-intro">
+
+
+        <div>
+
+            <div class="section-kicker reveal">
+                03 · Das System
+            </div>
+
+
+            <h2 class="section-title reveal">
+
+                Ein
+
+                <span>
+                    intelligentes
+                </span>
+
+                System für Wasser.
+
+            </h2>
+
+
+            <p class="section-text reveal">
+
+                BLUEPRINTS verbindet Sammlung, Speicherung,
+                dezentrale Aufbereitung, Nutzung und
+                Rückführung.
+
+                <br><br>
+
+                Die Infrastruktur wird modular aufgebaut und
+                kann an bestehende Netze angeschlossen und
+                über Jahrzehnte schrittweise erweitert werden.
+
+            </p>
+
         </div>
 
 
-        <h2 class="reveal">
-
-            Wasser nicht
-
-            <span>
-                ableiten.
-            </span>
-
-            <br>
-
-            Wasser
-
-            <span>
-                bewirtschaften.
-            </span>
-
-        </h2>
+        <div class="system-diagram reveal">
 
 
-        <p class="cycle-text reveal">
+            <!-- STADT -->
 
-            Wasser wird abhängig von Qualität und Nutzung
-            intelligent erfasst, gespeichert, behandelt,
-            verteilt und wiederverwendet.
+            <div class="diagram-city">
+
+                <div class="diagram-building"></div>
+                <div class="diagram-building"></div>
+                <div class="diagram-building"></div>
+                <div class="diagram-building"></div>
+                <div class="diagram-building"></div>
+
+            </div>
+
+
+            <!-- UNTERGRUND -->
+
+            <div class="underground">
+
+                <div class="pipe p1"></div>
+
+                <div class="pipe p2"></div>
+
+
+                <div class="module m1">
+                    SPEICHER
+                </div>
+
+                <div class="module m2">
+                    AUFBEREITUNG
+                </div>
+
+                <div class="module m3">
+                    VERTEILUNG
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     04 — BLUEPRINTS
+     ========================================================= -->
+
+<section
+    class="blueprints"
+    id="blueprints"
+>
+
+    <div class="blueprints-header">
+
+
+        <div>
+
+            <div class="section-kicker reveal">
+                04 · Systemkomponenten
+            </div>
+
+
+            <h2 class="section-title reveal">
+
+                Die
+
+                <span>
+                    Blueprints.
+                </span>
+
+            </h2>
+
+        </div>
+
+
+        <p class="reveal">
+
+            Hier entstehen die Bausteine des neuen
+            Wasser-Betriebssystems.
+
+            Standardisiert, modular, anschlussfähig
+            und skalierbar.
 
         </p>
 
     </div>
 
 
-    <div class="cycle-grid">
+    <div class="blueprint-grid">
 
 
-        <article class="cycle-card reveal">
+        <!-- =================================================
+             BLUEPRINT 01
+             ================================================= -->
+
+        <article class="blueprint-card reveal">
+
+            <div class="blueprint-number">
+                BLUEPRINT · 01
+            </div>
+
+
+            <div class="blueprint-visual">
+
+                <div class="placeholder-symbol">
+                    +
+                </div>
+
+            </div>
+
+
+            <h3>
+                Urbaner Wasserspeicher
+            </h3>
+
+
+            <p>
+                Platzhalter für eine zukünftige
+                Systemkomponente:
+                Speicherung und Pufferung von Wasser
+                im urbanen Raum.
+            </p>
+
+
+            <div class="blueprint-link">
+                Details →
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BLUEPRINT 02
+             ================================================= -->
+
+        <article class="blueprint-card reveal">
+
+            <div class="blueprint-number">
+                BLUEPRINT · 02
+            </div>
+
+
+            <div class="blueprint-visual">
+
+                <div class="placeholder-symbol">
+                    +
+                </div>
+
+            </div>
+
+
+            <h3>
+                Dezentrale Aufbereitung
+            </h3>
+
+
+            <p>
+                Platzhalter für eine zukünftige
+                Aufbereitungseinheit zur
+                qualitätsabhängigen Wassernutzung.
+            </p>
+
+
+            <div class="blueprint-link">
+                Details →
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BLUEPRINT 03
+             ================================================= -->
+
+        <article class="blueprint-card reveal">
+
+            <div class="blueprint-number">
+                BLUEPRINT · 03
+            </div>
+
+
+            <div class="blueprint-visual">
+
+                <div class="placeholder-symbol">
+                    +
+                </div>
+
+            </div>
+
+
+            <h3>
+                Urbane Kühlung
+            </h3>
+
+
+            <p>
+                Platzhalter für ein Systemmodul zur
+                Nutzung von Wasser für die Kühlung
+                urbaner Räume.
+            </p>
+
+
+            <div class="blueprint-link">
+                Details →
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BLUEPRINT 04
+             ================================================= -->
+
+        <article class="blueprint-card reveal">
+
+            <div class="blueprint-number">
+                BLUEPRINT · 04
+            </div>
+
+
+            <div class="blueprint-visual">
+
+                <div class="placeholder-symbol">
+                    +
+                </div>
+
+            </div>
+
+
+            <h3>
+                Wärmegewinnung
+            </h3>
+
+
+            <p>
+                Platzhalter für eine zukünftige
+                multifunktionale Komponente zur
+                Wärmegewinnung.
+            </p>
+
+
+            <div class="blueprint-link">
+                Details →
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BLUEPRINT 05
+             ================================================= -->
+
+        <article class="blueprint-card reveal">
+
+            <div class="blueprint-number">
+                BLUEPRINT · 05
+            </div>
+
+
+            <div class="blueprint-visual">
+
+                <div class="placeholder-symbol">
+                    +
+                </div>
+
+            </div>
+
+
+            <h3>
+                Intelligente Verteilung
+            </h3>
+
+
+            <p>
+                Platzhalter für ein smartes
+                Verteilungs- und Steuerungsmodul.
+            </p>
+
+
+            <div class="blueprint-link">
+                Details →
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BLUEPRINT 06
+             ================================================= -->
+
+        <article class="blueprint-card reveal">
+
+            <div class="blueprint-number">
+                BLUEPRINT · 06
+            </div>
+
+
+            <div class="blueprint-visual">
+
+                <div class="placeholder-symbol">
+                    +
+                </div>
+
+            </div>
+
+
+            <h3>
+                Neue Komponente
+            </h3>
+
+
+            <p>
+                Platzhalter für die nächste
+                BLUEPRINTS-Systemkomponente.
+            </p>
+
+
+            <div class="blueprint-link">
+                Details →
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- NEUE KOMPONENTE -->
+
+    <div class="new-component reveal">
+
+        <div>
+
+            <strong>
+                + Neue Systemkomponente
+            </strong>
+
+            Hier können zukünftig weitere
+            BLUEPRINTS ergänzt werden.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     05 — WASSERKREISLAUF
+     ========================================================= -->
+
+<section
+    class="section-light"
+    id="kreislauf"
+>
+
+    <div class="cycle-header">
+
+        <div class="section-kicker reveal">
+            05 · Wasserkreislauf
+        </div>
+
+
+        <h2 class="section-title reveal">
+
+            Wasser wird
 
             <span>
-                01
+                zirkulär.
             </span>
+
+        </h2>
+
+
+        <p class="section-text reveal">
+
+            Nicht jede Anwendung benötigt Trinkwasserqualität.
+            BLUEPRINTS ermöglicht eine differenzierte
+            Bewirtschaftung nach Wasserqualität und Nutzung.
+
+        </p>
+
+    </div>
+
+
+    <div class="cycle-flow">
+
+
+        <div class="cycle-step reveal">
+
+            <div class="cycle-step-number">
+                01
+            </div>
 
             <h3>
                 Sammeln
             </h3>
 
             <p>
-                Regenwasser dort erfassen, wo es entsteht.
+                Regen- und weitere Wasserströme erfassen.
             </p>
 
-        </article>
+        </div>
 
 
-        <article class="cycle-card reveal">
+        <div class="cycle-step reveal">
 
-            <span>
+            <div class="cycle-step-number">
                 02
-            </span>
+            </div>
 
             <h3>
                 Speichern
             </h3>
 
             <p>
-                Wasser für Zeiten verfügbar machen,
-                in denen es gebraucht wird.
+                Wasser zeitlich und räumlich verfügbar machen.
             </p>
 
-        </article>
+        </div>
 
 
-        <article class="cycle-card reveal">
+        <div class="cycle-step reveal">
 
-            <span>
+            <div class="cycle-step-number">
                 03
-            </span>
+            </div>
 
             <h3>
                 Aufbereiten
             </h3>
 
             <p>
-                Wasserqualität gezielt an die Nutzung anpassen.
+                Qualität bedarfsgerecht herstellen.
+            </p>
+
+        </div>
+
+
+        <div class="cycle-step reveal">
+
+            <div class="cycle-step-number">
+                04
+            </div>
+
+            <h3>
+                Nutzen
+            </h3>
+
+            <p>
+                Bewässern, kühlen und weitere Anwendungen.
+            </p>
+
+        </div>
+
+
+        <div class="cycle-step reveal">
+
+            <div class="cycle-step-number">
+                05
+            </div>
+
+            <h3>
+                Rückführen
+            </h3>
+
+            <p>
+                Wasser erneut dem Kreislauf zuführen.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     06 — TECHNOLOGIE
+     ========================================================= -->
+
+<section
+    class="technology"
+    id="technologie"
+>
+
+    <div class="section-kicker reveal">
+        06 · Technologie & Innovation
+    </div>
+
+
+    <h2 class="section-title reveal">
+
+        Infrastruktur
+
+        <span>
+            neu denken.
+        </span>
+
+    </h2>
+
+
+    <div class="tech-grid">
+
+
+        <article class="tech-card reveal">
+
+            <div class="tech-icon">
+                ◇
+            </div>
+
+            <h3>
+                Modular
+            </h3>
+
+            <p>
+                Standardisierte Bausteine ermöglichen
+                flexible Systeme.
             </p>
 
         </article>
 
 
-        <article class="cycle-card reveal">
+        <article class="tech-card reveal">
 
-            <span>
-                04
-            </span>
+            <div class="tech-icon">
+                ◎
+            </div>
 
             <h3>
-                Wiederverwenden
+                Smart
             </h3>
 
             <p>
-                Wasser mehrfach für Bewässerung,
-                Kühlung und urbane Anwendungen nutzen.
+                Daten und Sensorik ermöglichen eine
+                intelligente Steuerung.
+            </p>
+
+        </article>
+
+
+        <article class="tech-card reveal">
+
+            <div class="tech-icon">
+                ↻
+            </div>
+
+            <h3>
+                Zirkulär
+            </h3>
+
+            <p>
+                Wasser wird nicht als Abfallstrom,
+                sondern als Ressource betrachtet.
+            </p>
+
+        </article>
+
+
+        <article class="tech-card reveal">
+
+            <div class="tech-icon">
+                +
+            </div>
+
+            <h3>
+                Multifunktional
+            </h3>
+
+            <p>
+                Ein System verbindet Wasser, Kühlung,
+                Speicherung und Wärme.
             </p>
 
         </article>
@@ -1411,53 +2726,179 @@ nav.scrolled {
 
 
 <!-- =========================================================
-     ABSCHLUSS
+     07 — PILOTIERUNG
      ========================================================= -->
 
-<section class="cta" id="wirkung">
+<section
+    class="pilot"
+    id="pilot"
+>
+
+    <div class="section-kicker reveal">
+        07 · Umsetzung
+    </div>
 
 
-    <div>
+    <h2 class="section-title reveal">
+
+        Vom
+
+        <span>
+            Blueprint
+        </span>
+
+        zur Stadt.
+
+    </h2>
 
 
-        <div class="kicker reveal">
-            BLUEPRINTS
-        </div>
+    <div class="pilot-grid">
 
 
-        <h2 class="reveal">
+        <div class="section-text reveal">
 
-            Die Infrastruktur
+            Die neuen Systeme sollen nicht auf einen
+            vollständigen Neubau der Stadt warten.
 
-            <span>
-                unter
-            </span>
+            <br><br>
 
-            der Schwammstadt.
-
-        </h2>
-
-
-        <p class="reveal">
-
-            Standardisierte, modulare und vorgefertigte
-            Bausteine für eine resiliente, multifunktionale
-            und zirkuläre Wasserinfrastruktur.
-
-        </p>
-
-
-        <div class="buttons reveal"
-             style="justify-content:center;">
-
-            <a
-                href="#vision"
-                class="button primary"
-            >
-                BLUEPRINTS entdecken →
-            </a>
+            Sie werden so entwickelt, dass sie an bestehende
+            Netze anschließen und Schritt für Schritt
+            implementiert werden können.
 
         </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item reveal">
+
+                <span>
+                    PHASE 01
+                </span>
+
+                <h3>
+                    Entwickeln
+                </h3>
+
+                <p>
+                    Technische Lösungen und
+                    Systemkomponenten entwickeln.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <span>
+                    PHASE 02
+                </span>
+
+                <h3>
+                    Erproben
+                </h3>
+
+                <p>
+                    Komponenten unter realen Bedingungen
+                    testen und optimieren.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <span>
+                    PHASE 03
+                </span>
+
+                <h3>
+                    Skalieren
+                </h3>
+
+                <p>
+                    Erfolgreiche Module standardisieren
+                    und in weitere Quartiere übertragen.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     08 — SDGS
+     ========================================================= -->
+
+<section
+    class="sdgs"
+    id="wirkung"
+>
+
+    <div class="section-kicker reveal">
+        08 · Wirkung
+    </div>
+
+
+    <h2 class="section-title reveal">
+
+        Infrastruktur für
+
+        <span>
+            lebenswerte Städte.
+        </span>
+
+    </h2>
+
+
+    <div class="sdg-grid">
+
+
+        <article class="sdg reveal">
+
+            <div class="sdg-number">
+                09
+            </div>
+
+            <h3>
+                Industrie, Innovation
+                und Infrastruktur
+            </h3>
+
+            <p>
+                BLUEPRINTS entwickelt neue technische
+                Infrastrukturen und übertragbare
+                Systemlösungen für urbane Räume.
+            </p>
+
+        </article>
+
+
+        <article class="sdg reveal">
+
+            <div class="sdg-number">
+                11
+            </div>
+
+            <h3>
+                Nachhaltige Städte
+                und Gemeinden
+            </h3>
+
+            <p>
+                Resiliente Wassersysteme schaffen die
+                Grundlage für klimaangepasste und
+                lebenswerte Städte.
+            </p>
+
+        </article>
 
 
     </div>
@@ -1465,53 +2906,141 @@ nav.scrolled {
 </section>
 
 
+<!-- =========================================================
+     09 — KONTAKT
+     ========================================================= -->
+
+<section
+    class="contact"
+    id="kontakt"
+>
+
+    <div>
+
+        <div class="section-kicker reveal">
+            09 · Kontakt
+        </div>
+
+
+        <h2 class="reveal">
+
+            Bereit für das
+
+            <span>
+                nächste
+            </span>
+
+            Wassersystem?
+
+        </h2>
+
+
+        <p class="reveal">
+
+            BLUEPRINTS verbindet Forschung, Technologie,
+            Planung und Umsetzung für die Wasserinfrastruktur
+            der Stadt von morgen.
+
+        </p>
+
+
+        <div
+            class="hero-actions reveal"
+            style="justify-content:center;"
+        >
+
+            <a
+                href="mailto:kontakt@blueprints.de"
+                class="btn btn-primary"
+            >
+                Kontakt aufnehmen →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer>
+
+    <div>
+        © BLUEPRINTS
+    </div>
+
+    <div>
+        Urbane Wasserinfrastruktur der Zukunft
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
 <script>
 
-/* =========================================================
-   NAVIGATION BEIM SCROLLEN
-   ========================================================= */
+/* ---------------------------------------------------------
+   Navigation beim Scrollen
+   --------------------------------------------------------- */
 
 const nav =
     document.getElementById("nav");
 
-window.addEventListener("scroll", () => {
+window.addEventListener(
+    "scroll",
+    () => {
 
-    if (window.scrollY > 40) {
+        if (window.scrollY > 50) {
 
-        nav.classList.add("scrolled");
+            nav.classList.add("scrolled");
 
-    } else {
+        } else {
 
-        nav.classList.remove("scrolled");
+            nav.classList.remove("scrolled");
+
+        }
 
     }
+);
 
-});
 
-
-/* =========================================================
-   SCROLL-ANIMATIONEN
-   ========================================================= */
+/* ---------------------------------------------------------
+   Scroll Reveal
+   --------------------------------------------------------- */
 
 const observer =
     new IntersectionObserver(
         entries => {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                entry => {
 
-                if (entry.isIntersecting) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                    observer.unobserve(
                         entry.target
-                    );
+                            .classList
+                            .add("visible");
+
+                        observer
+                            .unobserve(
+                                entry.target
+                            );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
         {
@@ -1522,57 +3051,119 @@ const observer =
 
 document
     .querySelectorAll(".reveal")
-    .forEach(element => {
+    .forEach(
+        element => {
 
-        observer.observe(element);
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+
+/* ---------------------------------------------------------
+   Leichte Mausbewegung des Wassersystems
+   --------------------------------------------------------- */
+
+const waterVisual =
+    document.getElementById(
+        "waterVisual"
+    );
+
+
+window.addEventListener(
+    "mousemove",
+    event => {
+
+        if (
+            window.innerWidth < 850
+        ) {
+            return;
+        }
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            .5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            .5;
+
+        waterVisual.style.transform =
+            `
+            translateY(-50%)
+            translate(
+                ${x * 14}px,
+                ${y * 14}px
+            )
+            `;
+
+    }
+);
+
+
+/* ---------------------------------------------------------
+   Blueprint-Karten:
+   Klickbares Verhalten vorbereiten
+   --------------------------------------------------------- */
+
+document
+    .querySelectorAll(".blueprint-card")
+    .forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                card.classList.toggle(
+                    "active"
+                );
+
+            }
+        );
 
     });
 
 
-/* =========================================================
-   LEICHTE MOUSE-INTERAKTION
-   ========================================================= */
+/* ---------------------------------------------------------
+   Smooth Anchor Fallback
+   --------------------------------------------------------- */
 
-const system =
-    document.querySelector(".water-system");
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
 
-window.addEventListener("mousemove", event => {
+        link.addEventListener(
+            "click",
+            event => {
 
-    if (window.innerWidth < 800) return;
+                const target =
+                    document.querySelector(
+                        link.getAttribute(
+                            "href"
+                        )
+                    );
 
-    const x =
-        (event.clientX / window.innerWidth - .5);
+                if (target) {
 
-    const y =
-        (event.clientY / window.innerHeight - .5);
+                    event.preventDefault();
 
-    system.style.transform =
-        `
-        translateY(-50%)
-        translate(
-            ${x * 12}px,
-            ${y * 12}px
-        )
-        `;
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
 
-});
+                }
 
+            }
+        );
 
-/* =========================================================
-   BEI TOUCH-GERÄTEN NICHT BEWEGEN
-   ========================================================= */
-
-window.addEventListener("touchstart", () => {
-
-    system.style.transform =
-        "translateY(-50%)";
-
-});
-
+    });
 
 </script>
 
 </body>
 </html>
 ```
-
