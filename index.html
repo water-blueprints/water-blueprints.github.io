@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071d38">
-
   <title>BLUEPRINTS | Projektdokumentation</title>
 
   <style>
@@ -36,74 +35,73 @@
       line-height: 1.65;
     }
 
-    /* =========================
-       HEADER / LOGOBEREICH
-    ========================= */
+    /* HEADER */
 
     .site-header {
       position: relative;
       z-index: 5;
       background: #fff;
-      padding: 22px 6%;
+      padding: 28px 6%;
       border-bottom: 1px solid rgba(10, 46, 85, 0.08);
     }
 
     .header-inner {
-      max-width: 1440px;
+      max-width: 1500px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 45px;
+      gap: 55px;
     }
 
     .project-brand {
       display: flex;
       align-items: center;
+      flex: 1;
       min-width: 0;
     }
 
     .project-brand img {
       display: block;
-      max-width: 230px;
-      max-height: 76px;
       width: auto;
       height: auto;
+      max-width: 310px;
+      max-height: 105px;
       object-fit: contain;
     }
 
     .partner-brand {
       display: flex;
       align-items: center;
-      gap: 24px;
-      padding: 12px 24px;
+      justify-content: center;
+      gap: 25px;
+      padding: 18px 28px;
+      min-width: 390px;
       background: #f7f9fc;
       border: 1px solid #e8eef4;
-      border-radius: 14px;
+      border-radius: 16px;
     }
 
     .partner-label {
       color: #71869a;
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 750;
       letter-spacing: 1.8px;
-      line-height: 1.4;
+      line-height: 1.5;
       text-transform: uppercase;
-      max-width: 105px;
+      max-width: 110px;
     }
 
     .partner-brand img {
       display: block;
-      width: 290px;
+      width: 340px;
       max-width: 100%;
       height: auto;
-      max-height: 100px;
+      max-height: 115px;
       object-fit: contain;
     }
 
-    /* =========================
-       HERO
-    ========================= */
+    /* HERO */
 
     .hero {
       position: relative;
@@ -179,10 +177,6 @@
       background: #64c2ec;
     }
 
-    /* =========================
-       WASSERLINIE
-    ========================= */
-
     .waterline {
       height: 5px;
       background: linear-gradient(
@@ -195,9 +189,7 @@
       );
     }
 
-    /* =========================
-       PROJEKTBESCHREIBUNG
-    ========================= */
+    /* PROJEKTBESCHREIBUNG */
 
     .intro {
       max-width: 1180px;
@@ -231,9 +223,7 @@
       line-height: 1.85;
     }
 
-    /* =========================
-       DOKUMENTATION
-    ========================= */
+    /* DOKUMENTATION */
 
     .documentation {
       position: relative;
@@ -280,9 +270,7 @@
       font-size: 18px;
     }
 
-    /* =========================
-       VERTIKALE TIMELINE
-    ========================= */
+    /* TIMELINE */
 
     .timeline {
       position: relative;
@@ -308,7 +296,7 @@
       position: relative;
       margin-bottom: 48px;
       padding: 32px 36px 36px;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.96);
       border: 1px solid rgba(12, 68, 111, 0.08);
       border-radius: 18px;
       box-shadow: 0 12px 38px rgba(7, 38, 70, 0.065);
@@ -351,47 +339,80 @@
     }
 
     .month-description {
+      min-height: 48px;
       margin: 0 0 24px;
       color: #70869a;
       font-size: 15px;
+      white-space: pre-line;
     }
+
+    /* FOTOPLATZHALTER */
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .gallery img {
+    .photo-slot {
+      position: relative;
+      min-height: 245px;
+      overflow: hidden;
+      border-radius: 13px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(15, 85, 140, 0.09),
+          rgba(22, 131, 189, 0.16)
+        );
+      border: 1px solid rgba(22, 131, 189, 0.15);
+    }
+
+    .photo-slot img {
       display: block;
       width: 100%;
       height: 245px;
       object-fit: cover;
       border-radius: 12px;
-      background: #eaf1f6;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .gallery img:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(7, 38, 70, 0.16);
+    .photo-placeholder {
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #6b91aa;
+      text-align: center;
+      padding: 20px;
     }
 
-    .empty-message {
-      padding: 30px;
-      background: white;
-      border-radius: 14px;
-      color: #617c92;
+    .photo-placeholder svg {
+      width: 35px;
+      height: 35px;
+      stroke: #73a9c9;
+      fill: none;
+      stroke-width: 1.5;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    .photo-placeholder strong {
+      color: #3e7194;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .photo-placeholder span {
+      font-size: 12px;
+      color: #819bad;
+    }
+
+    /* FOOTER OHNE LOGOS */
 
     footer {
       position: relative;
       overflow: hidden;
-      padding: 65px 7%;
+      padding: 55px 7%;
       color: white;
       text-align: center;
       background:
@@ -409,43 +430,41 @@
     }
 
     footer p {
-      margin: 0 0 30px;
+      margin: 0;
       color: #c7dceb;
       font-size: 15px;
     }
 
-    .footer-logos {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 35px;
-      flex-wrap: wrap;
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .header-inner {
+        gap: 25px;
+      }
+
+      .project-brand img {
+        max-width: 235px;
+      }
+
+      .partner-brand {
+        min-width: 0;
+        gap: 15px;
+        padding: 14px 18px;
+      }
+
+      .partner-brand img {
+        width: 260px;
+      }
     }
 
-    .footer-logos img {
-      display: block;
-      max-width: 190px;
-      max-height: 58px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      background: white;
-      padding: 8px;
-      border-radius: 6px;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 760px) {
+    @media (max-width: 650px) {
       .site-header {
-        padding: 20px 6%;
+        padding: 22px 6%;
       }
 
       .header-inner {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         gap: 20px;
       }
 
@@ -454,14 +473,14 @@
       }
 
       .project-brand img {
-        max-height: 58px;
-        max-width: 200px;
+        max-height: 75px;
+        max-width: 260px;
       }
 
       .partner-brand {
+        width: 100%;
         justify-content: center;
         gap: 14px;
-        padding: 12px;
       }
 
       .partner-label {
@@ -471,7 +490,7 @@
 
       .partner-brand img {
         width: 230px;
-        max-height: 85px;
+        max-height: 90px;
       }
 
       .hero {
@@ -526,8 +545,11 @@
         grid-template-columns: 1fr;
       }
 
-      .gallery img {
-        height: 230px;
+      .photo-slot,
+      .photo-placeholder,
+      .photo-slot img {
+        min-height: 210px;
+        height: 210px;
       }
     }
   </style>
@@ -535,7 +557,8 @@
 
 <body>
 
-  <!-- HEADER: PROJEKTLOGO UND GROSSES BMFTR-LOGO -->
+  <!-- HEADER MIT GROSSEN LOGOS -->
+
   <header class="site-header">
     <div class="header-inner">
 
@@ -563,6 +586,7 @@
   <div class="waterline"></div>
 
   <!-- HERO -->
+
   <section class="hero">
     <div class="hero-content">
 
@@ -583,6 +607,7 @@
   </section>
 
   <!-- PROJEKTBESCHREIBUNG -->
+
   <section class="intro">
 
     <div class="section-kicker">
@@ -610,7 +635,8 @@
 
   <div class="waterline"></div>
 
-  <!-- PROJEKTDOKUMENTATION MIT TIMELINE -->
+  <!-- PROJEKTDOKUMENTATION -->
+
   <section class="documentation">
 
     <div class="documentation-inner">
@@ -636,138 +662,176 @@
 
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER OHNE LOGOS -->
+
   <footer>
     <div class="footer-inner">
-
       <p>
         BLUEPRINTS – Neue Generation urbaner Wasserinfrastrukturen
       </p>
-
-      <div class="footer-logos">
-
-        <img
-          src="images/blueprints.png"
-          alt="BLUEPRINTS Projektlogo"
-        >
-
-        <img
-          src="images/bmftr.jpg"
-          alt="Fördermittelgeber"
-        >
-
-      </div>
-
     </div>
   </footer>
 
+
   <script>
 
-    /* =====================================
-       MONATLICHE DOKUMENTATION
-       Hier Fotos und Texte ergänzen.
-    ===================================== */
+    /* =========================================
+       MONATLICHE INHALTE
+
+       Für jeden Monat gibt es:
+       - einen Beschreibungstext
+       - zwei Bildplätze
+
+       Bilder: Dateinamen eintragen.
+       Text: Beschreibung ergänzen.
+    ========================================= */
 
     const months = [
+
       {
         year: 2026,
         month: 9,
         name: "Oktober 2026",
-        description: "Projektstart und erste Einblicke.",
+        description: "Hier den Beschreibungstext für Oktober eintragen.",
         images: [
           "images/oktober-01.jpg",
-          "images/oktober-02.jpg",
-          "images/oktober-03.jpg"
+          "images/oktober-02.jpg"
         ]
       },
+
       {
         year: 2026,
         month: 10,
         name: "November 2026",
-        description: "Aktuelle Einblicke in das Projekt.",
+        description: "Hier den Beschreibungstext für November eintragen.",
         images: [
           "images/november-01.jpg",
           "images/november-02.jpg"
         ]
       },
+
       {
         year: 2026,
         month: 11,
         name: "Dezember 2026",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für Dezember eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 0,
         name: "Januar 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für Januar eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 1,
         name: "Februar 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für Februar eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 2,
         name: "März 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für März eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 3,
         name: "April 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für April eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 4,
         name: "Mai 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für Mai eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 5,
         name: "Juni 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für Juni eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 6,
         name: "Juli 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für Juli eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 7,
         name: "August 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für August eintragen.",
+        images: [
+          "",
+          ""
+        ]
       },
+
       {
         year: 2027,
         month: 8,
         name: "September 2027",
-        description: "",
-        images: []
+        description: "Hier den Beschreibungstext für September eintragen.",
+        images: [
+          "",
+          ""
+        ]
       }
+
     ];
 
 
-    /* =====================================
+    /* =========================================
        ZEITGESTEUERTE SICHTBARKEIT
-       Jeder Monat wird am 1. des Monats
-       freigeschaltet.
-    ===================================== */
+
+       Ein Monat erscheint am ersten Tag
+       des jeweiligen Monats.
+
+       Nach dem 30.09.2027 bleibt die
+       gesamte Timeline sichtbar.
+    ========================================= */
 
     const projectStart = new Date(2026, 9, 1);
     const projectEnd = new Date(2027, 8, 30);
@@ -783,9 +847,66 @@
     const timeline = document.getElementById("timeline");
 
 
-    /* =====================================
+    /* =========================================
+       FOTOPLATZHALTER ERZEUGEN
+    ========================================= */
+
+    function createPhotoSlot(imagePath, photoNumber) {
+
+      const slot = document.createElement("div");
+      slot.className = "photo-slot";
+
+      if (imagePath && imagePath.trim() !== "") {
+
+        const img = document.createElement("img");
+
+        img.src = imagePath;
+        img.alt = "BLUEPRINTS – Projekteinblick";
+        img.loading = "lazy";
+
+        const placeholder = document.createElement("div");
+        placeholder.className = "photo-placeholder";
+
+        placeholder.innerHTML = `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <path d="M21 15l-5-5L5 21"></path>
+          </svg>
+          <strong>Foto ${photoNumber}</strong>
+          <span>Bilddatei wird geladen</span>
+        `;
+
+        slot.appendChild(img);
+
+        img.onerror = function() {
+          img.remove();
+          slot.appendChild(placeholder);
+        };
+
+      } else {
+
+        slot.innerHTML = `
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <path d="M21 15l-5-5L5 21"></path>
+            </svg>
+            <strong>Foto ${photoNumber}</strong>
+            <span>Bildplatzhalter – Foto hier ergänzen</span>
+          </div>
+        `;
+
+      }
+
+      return slot;
+    }
+
+
+    /* =========================================
        TIMELINE DARSTELLEN
-    ===================================== */
+    ========================================= */
 
     function renderDocumentation() {
 
@@ -835,7 +956,7 @@
         section.className = "month";
 
 
-        /* Monatskopf */
+        // Monatskopf
 
         const header = document.createElement("div");
         header.className = "month-header";
@@ -854,45 +975,33 @@
         section.appendChild(header);
 
 
-        /* Beschreibung */
+        // Beschreibungstext
 
-        if (item.description) {
+        const description = document.createElement("p");
+        description.className = "month-description";
+        description.textContent = item.description || "Beschreibung ergänzen ...";
 
-          const description = document.createElement("p");
-          description.className = "month-description";
-          description.textContent = item.description;
-
-          section.appendChild(description);
-
-        }
+        section.appendChild(description);
 
 
-        /* Fotogalerie */
+        // Immer genau zwei Fotoplatzhalter
 
-        if (item.images && item.images.length > 0) {
+        const gallery = document.createElement("div");
+        gallery.className = "gallery";
 
-          const gallery = document.createElement("div");
-          gallery.className = "gallery";
+        const images = item.images || [];
 
-          item.images.forEach(imagePath => {
+        for (let i = 0; i < 2; i++) {
 
-            const img = document.createElement("img");
+          const imagePath = images[i] || "";
 
-            img.src = imagePath;
-            img.alt = "Einblick in das Projekt BLUEPRINTS";
-            img.loading = "lazy";
-
-            img.onerror = function() {
-              this.style.display = "none";
-            };
-
-            gallery.appendChild(img);
-
-          });
-
-          section.appendChild(gallery);
+          gallery.appendChild(
+            createPhotoSlot(imagePath, i + 1)
+          );
 
         }
+
+        section.appendChild(gallery);
 
         timeline.appendChild(section);
 
