@@ -4,1441 +4,827 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BLUEPRINTS | Bauplan Urbane Wasserwirtschaft Zukunft</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>BLUEPRINTS | Projektdokumentation</title>
 
 <style>
-
-/* ==================================================
-   DESIGN SYSTEM
-================================================== */
-
 :root {
-    --navy: #06182c;
-    --navy2: #0a2542;
-    --blue: #087bd2;
-    --blue2: #1599ed;
-    --sky: #78caff;
-    --ice: #eaf5fc;
-    --white: #ffffff;
-    --text: #263d50;
-    --muted: #7c91a2;
-    --line: #dce8f0;
-    --green: #269a78;
-    --orange: #e6a34a;
-    --bg: #f4f8fb;
-
-    --radius: 18px;
-    --shadow: 0 12px 40px rgba(10,42,70,.06);
+  --navy: #071d35;
+  --blue: #0b3764;
+  --bright: #2879c7;
+  --light: #eaf3fb;
+  --pale: #f5f9fd;
+  --white: #ffffff;
+  --text: #18324b;
+  --muted: #6b8095;
+  --line: #d6e4f0;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--pale);
+  color: var(--text);
+  line-height: 1.6;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+/* HEADER */
+
+header {
+  background: var(--navy);
+  color: white;
+  padding: 24px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
-button {
-    font-family: inherit;
-    cursor: pointer;
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 4px;
 }
 
-/* ==================================================
-   NAVIGATION
-================================================== */
-
-.nav {
-    height: 76px;
-    padding: 0 6vw;
-    background: rgba(255,255,255,.94);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+.logo span {
+  color: #6eb7f2;
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+header nav {
+  display: flex;
+  gap: 30px;
 }
 
-.brand-symbol {
-    width: 37px;
-    height: 37px;
-    border-radius: 50% 50% 50% 10%;
-    transform: rotate(-45deg);
-    background: linear-gradient(135deg,#91d9ff,#087bd2 65%,#06477f);
-    box-shadow: 0 4px 14px #087bd233;
+header nav a {
+  color: #d6e8f8;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.brand-name {
-    font-family: 'Manrope',sans-serif;
-    font-weight: 800;
-    font-size: 1.15rem;
-    letter-spacing: -.06em;
-    color: var(--navy);
+header nav a:hover {
+  color: white;
 }
 
-.brand-name span {
-    color: var(--blue);
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.nav-right a {
-    font-size: .78rem;
-    color: var(--muted);
-    transition: .2s;
-}
-
-.nav-right a:hover {
-    color: var(--blue);
-}
-
-.nav-status {
-    padding: 9px 15px;
-    background: #e8f6f0;
-    color: #258363;
-    border-radius: 30px;
-    font-size: .7rem;
-    font-weight: 700;
-}
-
-/* ==================================================
-   HERO
-================================================== */
+/* HERO */
 
 .hero {
-    background:
-        radial-gradient(circle at 82% 30%,#12558c 0%,transparent 34%),
-        linear-gradient(120deg,#06182c,#0b3153 65%,#075c9b);
-    color: white;
-    padding: 75px 7vw 85px;
-    position: relative;
-    overflow: hidden;
+  background:
+    linear-gradient(110deg, rgba(5,25,48,.96), rgba(9,54,94,.82)),
+    url("images/hero-wasser.jpg") center/cover;
+  color: white;
+  padding: 105px 8% 115px;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(#ffffff08 1px,transparent 1px),
-        linear-gradient(90deg,#ffffff08 1px,transparent 1px);
-    background-size: 48px 48px;
-    mask-image: linear-gradient(to right,transparent,black);
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 50%;
+  right: -100px;
+  top: -170px;
+  box-shadow: 0 0 0 50px rgba(255,255,255,.025),
+              0 0 0 100px rgba(255,255,255,.02);
 }
 
 .hero-content {
-    max-width: 1450px;
-    margin: auto;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-topline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 25px;
+  max-width: 850px;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
-    font-size: .68rem;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    color: var(--sky);
-    font-weight: 700;
-}
-
-.funding-logo {
-    min-width: 190px;
-    min-height: 55px;
-    padding: 12px 18px;
-    border: 1px solid #ffffff45;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffffb5;
-    font-size: .7rem;
-    letter-spacing: .05em;
-    text-align: center;
+  color: #83c5ff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin-bottom: 22px;
 }
 
 .hero h1 {
-    font-family: 'Manrope',sans-serif;
-    font-size: clamp(3.5rem,8vw,7.5rem);
-    line-height: .95;
-    letter-spacing: -.09em;
-    font-weight: 700;
-    margin-top: 65px;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 25px;
 }
 
 .hero h1 span {
-    color: var(--sky);
+  color: #79bdf3;
 }
 
-.hero-description {
-    max-width: 670px;
-    color: #c2d8e9;
-    line-height: 1.8;
-    font-size: 1.05rem;
-    margin-top: 30px;
+.hero p {
+  max-width: 650px;
+  font-size: 18px;
+  color: #d5e6f5;
+  line-height: 1.8;
 }
 
-.hero-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin-top: 60px;
-    padding-top: 25px;
-    border-top: 1px solid #ffffff30;
+.hero-date {
+  margin-top: 38px;
+  display: inline-block;
+  padding: 11px 18px;
+  border: 1px solid rgba(255,255,255,.35);
+  color: #dceeff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-.hero-meta {
-    display: flex;
-    gap: 50px;
-    flex-wrap: wrap;
-}
+/* INTRO */
 
-.meta-label {
-    font-size: .62rem;
-    text-transform: uppercase;
-    letter-spacing: .13em;
-    color: #91b9d7;
-}
-
-.meta-value {
-    margin-top: 7px;
-    font-weight: 600;
-    font-size: .85rem;
-}
-
-.hero-button {
-    background: var(--sky);
-    color: var(--navy);
-    padding: 14px 22px;
-    border-radius: 6px;
-    font-size: .78rem;
-    font-weight: 700;
-    transition: .3s;
-}
-
-.hero-button:hover {
-    background: white;
-    transform: translateY(-3px);
-}
-
-/* ==================================================
-   COMMON
-================================================== */
-
-.container {
-    max-width: 1450px;
-    margin: auto;
-    padding: 90px 7vw;
-}
-
-.section-head {
-    margin-bottom: 42px;
+.intro {
+  max-width: 1100px;
+  margin: auto;
+  padding: 85px 30px 65px;
 }
 
 .section-label {
-    color: var(--blue);
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .17em;
-    text-transform: uppercase;
+  color: var(--bright);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+  margin-bottom: 14px;
 }
 
-.section-title {
-    font-family: 'Manrope',sans-serif;
-    font-size: clamp(2.2rem,4vw,3.8rem);
-    letter-spacing: -.07em;
-    line-height: 1.08;
-    color: var(--navy);
-    margin-top: 15px;
+.intro h2 {
+  font-size: 34px;
+  color: var(--navy);
+  margin-bottom: 20px;
+  line-height: 1.25;
 }
 
-.section-intro {
-    max-width: 680px;
-    margin-top: 18px;
-    color: var(--muted);
-    line-height: 1.8;
-    font-size: .95rem;
+.intro p {
+  max-width: 800px;
+  color: var(--muted);
+  font-size: 16px;
 }
 
-.white-section {
-    background: white;
-}
-
-/* ==================================================
-   PROJECT INTRO
-================================================== */
-
-.intro-grid {
-    display: grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: 60px;
-    align-items: start;
-}
-
-.intro-text {
-    font-size: 1.05rem;
-    line-height: 1.95;
-    color: #526b7d;
-}
-
-.intro-text strong {
-    color: var(--navy);
-}
-
-.intro-visual {
-    min-height: 310px;
-    border-radius: var(--radius);
-    background:
-        linear-gradient(160deg,#0a2947cc,#06182cdd),
-        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200') center/cover;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: white;
-    overflow: hidden;
-    position: relative;
-}
-
-.intro-visual::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(transparent,#06182cdd);
-}
-
-.intro-visual > * {
-    position: relative;
-}
-
-.intro-visual h3 {
-    font-family: 'Manrope',sans-serif;
-    font-size: 1.6rem;
-}
-
-.intro-visual p {
-    margin-top: 10px;
-    color: #c1d7e8;
-    font-size: .82rem;
-    line-height: 1.6;
-}
-
-/* ==================================================
-   KEY FIGURES
-================================================== */
-
-.metrics {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 15px;
-    margin-top: 65px;
-}
-
-.metric {
-    padding: 27px;
-    border: 1px solid var(--line);
-    background: white;
-    border-radius: 12px;
-}
-
-.metric-number {
-    font-family: 'Manrope',sans-serif;
-    font-size: 2.7rem;
-    letter-spacing: -.07em;
-    color: var(--blue);
-    font-weight: 700;
-}
-
-.metric-label {
-    font-size: .78rem;
-    color: var(--muted);
-    margin-top: 7px;
-}
-
-/* ==================================================
-   OVERALL PROGRESS
-================================================== */
-
-.progress-overview {
-    background: var(--navy);
-    color: white;
-}
-
-.progress-overview .section-title {
-    color: white;
-}
-
-.progress-overview .section-intro {
-    color: #a6bed0;
-}
-
-.progress-layout {
-    display: grid;
-    grid-template-columns: .75fr 1.25fr;
-    gap: 65px;
-    margin-top: 55px;
-    align-items: center;
-}
-
-.progress-circle {
-    width: 245px;
-    height: 245px;
-    border-radius: 50%;
-    margin: auto;
-    display: grid;
-    place-items: center;
-    background:
-        conic-gradient(
-            var(--sky) 0% 0%,
-            #ffffff20 0% 100%
-        );
-    position: relative;
-}
-
-.progress-circle::before {
-    content: "";
-    position: absolute;
-    inset: 14px;
-    background: var(--navy);
-    border-radius: 50%;
-}
-
-.circle-content {
-    position: relative;
-    text-align: center;
-}
-
-.circle-number {
-    font-family: 'Manrope',sans-serif;
-    font-size: 3.8rem;
-    font-weight: 700;
-    letter-spacing: -.08em;
-}
-
-.circle-caption {
-    color: #9ebbd2;
-    font-size: .72rem;
-}
-
-.progress-items {
-    display: grid;
-    gap: 27px;
-}
-
-.progress-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-}
-
-.progress-name {
-    font-size: .85rem;
-    font-weight: 600;
-}
-
-.progress-value {
-    font-size: .8rem;
-    color: var(--sky);
-}
-
-.progress-track {
-    height: 6px;
-    background: #ffffff20;
-    border-radius: 20px;
-    grid-column: 1/-1;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg,#087bd2,#78caff);
-    border-radius: 20px;
-    width: 0;
-    transition: width 1.5s ease;
-}
-
-/* ==================================================
-   WORK PACKAGES
-================================================== */
-
-.work-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 18px;
-    margin-top: 45px;
-}
-
-.work-card {
-    padding: 28px;
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    transition: .3s;
-}
-
-.work-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-}
-
-.work-number {
-    color: var(--blue);
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-}
-
-.work-card h3 {
-    margin-top: 25px;
-    font-family: 'Manrope',sans-serif;
-    font-size: 1.2rem;
-    color: var(--navy);
-}
-
-.work-card p {
-    color: var(--muted);
-    font-size: .82rem;
-    line-height: 1.7;
-    margin-top: 12px;
-    min-height: 72px;
-}
-
-.status {
-    display: inline-block;
-    padding: 7px 10px;
-    border-radius: 4px;
-    font-size: .65rem;
-    font-weight: 700;
-    margin-top: 23px;
-}
-
-.status.done {
-    background: #e4f5ed;
-    color: #24845f;
-}
-
-.status.active {
-    background: #e5f2fc;
-    color: #0874bd;
-}
-
-.status.planned {
-    background: #fff2df;
-    color: #a8742e;
-}
-
-/* ==================================================
-   SYSTEM COMPONENTS
-================================================== */
-
-.components-section {
-    background: #eaf3f9;
-}
-
-.component-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 22px;
-    margin-top: 45px;
-}
-
-.component-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid #dbe8f0;
-    transition: .3s;
-}
-
-.component-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-}
-
-.component-image {
-    height: 260px;
-    position: relative;
-    overflow: hidden;
-    background: #c9ddea;
-}
-
-.component-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .6s;
-}
-
-.component-card:hover img {
-    transform: scale(1.04);
-}
-
-.image-placeholder {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    background:
-        linear-gradient(135deg,#dceef9,#a9cce2);
-    color: #397da9;
-    font-size: .75rem;
-    text-transform: uppercase;
-    letter-spacing: .12em;
-}
-
-.component-number {
-    position: absolute;
-    left: 18px;
-    top: 18px;
-    background: var(--navy);
-    color: white;
-    font-size: .65rem;
-    padding: 9px 12px;
-    border-radius: 4px;
-}
-
-.component-info {
-    padding: 26px;
-}
-
-.component-info h3 {
-    font-family: 'Manrope',sans-serif;
-    font-size: 1.3rem;
-    color: var(--navy);
-}
+/* TIMELINE */
 
-.component-info p {
-    margin-top: 10px;
-    font-size: .84rem;
-    color: var(--muted);
-    line-height: 1.7;
+.timeline-section {
+  padding: 55px 7% 100px;
+  background: white;
 }
 
-.component-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 22px;
-    padding-top: 17px;
-    border-top: 1px solid var(--line);
-    font-size: .7rem;
-    color: var(--muted);
+.timeline-heading {
+  max-width: 1100px;
+  margin: 0 auto 55px;
 }
 
-/* ==================================================
-   TECHNICAL SYSTEM DIAGRAM
-================================================== */
-
-.diagram-section {
-    background: white;
-}
-
-.diagram {
-    margin-top: 45px;
-    padding: 35px;
-    border: 1px solid var(--line);
-    border-radius: 15px;
-    background:
-        linear-gradient(#e9f2f8 1px,transparent 1px),
-        linear-gradient(90deg,#e9f2f8 1px,transparent 1px);
-    background-size: 25px 25px;
-    overflow-x: auto;
-}
-
-.diagram-inner {
-    min-width: 650px;
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    align-items: center;
-    gap: 12px;
-    text-align: center;
-}
-
-.diagram-node {
-    background: white;
-    border: 1px solid #b9d5e7;
-    padding: 25px 12px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px #0b477010;
-}
-
-.diagram-node .icon {
-    font-size: 1.7rem;
-    color: var(--blue);
-}
-
-.diagram-node h4 {
-    font-size: .8rem;
-    margin-top: 12px;
-    color: var(--navy);
-}
-
-.diagram-node p {
-    font-size: .65rem;
-    color: var(--muted);
-    margin-top: 6px;
-}
-
-.diagram-arrow {
-    color: var(--blue);
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-/* ==================================================
-   GALLERY
-================================================== */
-
-.gallery-section {
-    background: var(--navy);
-    color: white;
-}
-
-.gallery-section .section-title {
-    color: white;
-}
-
-.gallery-section .section-intro {
-    color: #a6bed0;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: 1.35fr 1fr 1fr;
-    grid-template-rows: 220px 220px;
-    gap: 13px;
-    margin-top: 45px;
-}
-
-.gallery-item {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #173b59;
+.timeline-heading h2 {
+  color: var(--navy);
+  font-size: 38px;
+  margin-bottom: 12px;
 }
-
-.gallery-item:first-child {
-    grid-row: span 2;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: .5s;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.gallery-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 35px 18px 17px;
-    background: linear-gradient(transparent,#06182ce8);
-    font-size: .78rem;
-    color: white;
-}
-
-/* ==================================================
-   MILESTONES
-================================================== */
 
-.milestones {
-    background: white;
+.timeline-heading p {
+  color: var(--muted);
+  max-width: 650px;
 }
 
 .timeline {
-    margin-top: 55px;
-    position: relative;
+  max-width: 1100px;
+  margin: auto;
+  position: relative;
 }
 
 .timeline::before {
-    content: "";
-    position: absolute;
-    left: 14px;
-    top: 10px;
-    bottom: 15px;
-    width: 1px;
-    background: #cbdde8;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 145px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    #8bbce4,
+    #dce9f4
+  );
 }
 
-.timeline-item {
-    position: relative;
-    padding: 0 0 40px 55px;
+.month {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  gap: 45px;
+  position: relative;
+  padding-bottom: 65px;
 }
 
-.timeline-dot {
-    position: absolute;
-    left: 7px;
-    top: 4px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: var(--blue);
-    border: 3px solid #dceefa;
+.month:last-child {
+  padding-bottom: 0;
 }
 
-.timeline-item h3 {
-    font-size: 1.05rem;
-    color: var(--navy);
+.month-date {
+  text-align: right;
+  padding-top: 7px;
+  padding-right: 25px;
 }
 
-.timeline-item p {
-    color: var(--muted);
-    font-size: .82rem;
-    margin-top: 8px;
-    line-height: 1.6;
+.month-date strong {
+  display: block;
+  font-size: 18px;
+  color: var(--navy);
 }
 
-.timeline-date {
-    color: var(--blue);
-    font-size: .68rem;
-    font-weight: 700;
-    margin-bottom: 8px;
+.month-date span {
+  color: #8aa0b5;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-/* ==================================================
-   NEXT STEPS
-================================================== */
-
-.next-section {
-    background: #eaf3f9;
+.month-dot {
+  position: absolute;
+  left: 137px;
+  top: 12px;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border: 4px solid var(--bright);
+  border-radius: 50%;
+  z-index: 2;
 }
 
-.next-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 45px;
+.month-content {
+  background: var(--pale);
+  border: 1px solid #e4edf5;
+  border-radius: 9px;
+  padding: 28px;
+  transition: .25s;
 }
 
-.next-card {
-    background: white;
-    padding: 28px;
-    border-radius: 12px;
-    border: 1px solid var(--line);
+.month-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(8,43,77,.08);
 }
 
-.next-card h3 {
-    font-family: 'Manrope',sans-serif;
-    color: var(--navy);
-    font-size: 1.1rem;
+.month-content h3 {
+  color: var(--navy);
+  font-size: 21px;
+  margin-bottom: 12px;
 }
 
-.next-card ul {
-    list-style: none;
-    margin-top: 20px;
+.month-content p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 17px;
 }
 
-.next-card li {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-    color: var(--muted);
-    font-size: .82rem;
-    line-height: 1.5;
+.entry-label {
+  color: var(--bright);
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 18px 0 6px;
 }
 
-.next-card li::before {
-    content: "→";
-    color: var(--blue);
-    margin-right: 10px;
-    font-weight: 700;
+.month-content ul {
+  padding-left: 18px;
+  color: var(--text);
+  font-size: 14px;
 }
 
-/* ==================================================
-   FUNDING / PARTNERS
-================================================== */
-
-.funding-section {
-    background: white;
-    text-align: center;
+.month-content li {
+  margin-bottom: 5px;
 }
 
-.logo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 22px;
-    margin-top: 45px;
+/* FOTO GALERIE */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 22px;
 }
 
-.logo-placeholder {
-    min-width: 180px;
-    min-height: 85px;
-    padding: 18px;
-    border: 1px dashed #bdcfdb;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    color: #8498a8;
-    font-size: .7rem;
-    line-height: 1.5;
+.gallery img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 5px;
+  background: #dce8f2;
 }
 
-/* ==================================================
-   FOOTER
-================================================== */
+.gallery img:hover {
+  opacity: .88;
+}
+
+/* ERGEBNIS */
+
+.result {
+  margin-top: 20px;
+  padding: 15px 18px;
+  background: #e8f2fb;
+  border-left: 3px solid var(--bright);
+  color: #315675;
+  font-size: 13px;
+}
+
+/* FOOTER */
 
 footer {
-    background: #041322;
-    color: #91aabd;
-    padding: 45px 7vw;
+  background: var(--navy);
+  color: white;
+  padding: 55px 8% 35px;
 }
 
 .footer-inner {
-    max-width: 1450px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+}
+
+.footer-logo {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.footer-logo span {
+  color: #79bdf3;
+}
+
+.footer-text {
+  color: #a9c0d5;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.funding {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.funding img {
+  max-width: 145px;
+  max-height: 65px;
+  object-fit: contain;
+  background: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.copyright {
+  max-width: 1100px;
+  margin: 35px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  color: #829bb2;
+  font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  header nav {
+    gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 75px 7%;
+  }
+
+  .intro {
+    padding: 60px 7%;
+  }
+
+  .timeline-section {
+    padding: 55px 6%;
+  }
+
+  .timeline::before {
+    left: 8px;
+  }
+
+  .month {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-left: 30px;
+    padding-bottom: 45px;
+  }
+
+  .month-date {
+    text-align: left;
+    padding: 0;
+  }
+
+  .month-dot {
+    left: 0;
+    top: 5px;
+  }
+
+  .month-content {
+    padding: 20px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery img {
+    height: 120px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .funding {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
-
-.footer-brand {
-    font-family: 'Manrope',sans-serif;
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: white;
-}
-
-.footer-brand span {
-    color: var(--sky);
-}
-
-.footer-copy {
-    font-size: .7rem;
-    line-height: 1.8;
-}
-
-/* ==================================================
-   ANIMATION
-================================================== */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity .7s ease,transform .7s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ==================================================
-   RESPONSIVE
-================================================== */
-
-@media(max-width:950px) {
-
-    .intro-grid,
-    .progress-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .work-grid {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .metrics {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .nav-right a:not(:last-child) {
-        display: none;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 230px 180px 180px;
-    }
-
-    .gallery-item:first-child {
-        grid-column: span 2;
-        grid-row: span 1;
-    }
-}
-
-@media(max-width:600px) {
-
-    .hero {
-        padding: 55px 6vw;
-    }
-
-    .hero h1 {
-        font-size: 3.8rem;
-    }
-
-    .hero-bottom {
-        align-items: flex-start;
-    }
-
-    .hero-meta {
-        gap: 22px;
-    }
-
-    .container {
-        padding: 70px 6vw;
-    }
-
-    .work-grid,
-    .component-grid,
-    .next-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .metrics {
-        gap: 8px;
-    }
-
-    .metric {
-        padding: 17px;
-    }
-
-    .metric-number {
-        font-size: 2rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 190px 140px 140px;
-    }
-
-    .gallery-item:first-child {
-        grid-column: span 2;
-    }
-
-    .section-title {
-        font-size: 2.5rem;
-    }
-
-    .funding-logo {
-        min-width: 150px;
-    }
-}
-
-@media(prefers-reduced-motion: reduce) {
-    *,*::before,*::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-        animation: none !important;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- ==================================================
-     NAVIGATION
-================================================== -->
-
-<nav class="nav">
-
-    <a href="#" class="brand">
-        <div class="brand-symbol"></div>
-        <div class="brand-name">
-            BLUE<span>PRINTS</span>
-        </div>
-    </a>
-
-    <div class="nav-right">
-        <a href="#projekt">Projekt</a>
-        <a href="#fortschritt">Fortschritt</a>
-        <a href="#komponenten">Systemkomponenten</a>
-        <a href="#meilensteine">Meilensteine</a>
-        <div class="nav-status">Projektstatus · Aktualisieren</div>
-    </div>
-
-</nav>
-
-
-<!-- ==================================================
-     HERO
-================================================== -->
-
-<header class="hero">
-
-    <div class="hero-content">
-
-        <div class="hero-topline">
-
-            <div class="eyebrow">
-                Technischer Projektfortschritt · BluePrints
-            </div>
-
-            <div class="funding-logo">
-                LOGO FÖRDERMITTELGEBER
-            </div>
-
-        </div>
-
-        <h1>
-            BLUEPRINTS.<br>
-            <span>Wasser neu denken.</span>
-        </h1>
-
-        <p class="hero-description">
-            Die Wasserinfrastruktur der Zukunft entsteht.
-            Einblicke in technische Entwicklungen,
-            Systemkomponenten, Forschungsergebnisse und
-            den Fortschritt auf dem Weg zur urbanen
-            Wasserkreislaufwirtschaft.
-        </p>
-
-        <div class="hero-bottom">
-
-            <div class="hero-meta">
-
-                <div>
-                    <div class="meta-label">Projektlaufzeit</div>
-                    <div class="meta-value">[MM/JJJJ – MM/JJJJ]</div>
-                </div>
-
-                <div>
-                    <div class="meta-label">Berichtsstand</div>
-                    <div class="meta-value">[Datum eintragen]</div>
-                </div>
-
-                <div>
-                    <div class="meta-label">Projektphase</div>
-                    <div class="meta-value">[Aktuelle Phase]</div>
-                </div>
-
-            </div>
-
-            <a href="#fortschritt" class="hero-button">
-                Fortschritt entdecken ↓
-            </a>
-
-        </div>
-
-    </div>
-
+<header>
+  <div class="logo">BLUE<span>PRINTS</span></div>
+  <nav>
+    <a href="#projekt">Projekt</a>
+    <a href="#zeitreihe">Zeitreihe</a>
+    <a href="#kontakt">Projektpartner</a>
+  </nav>
 </header>
 
-
-<!-- ==================================================
-     01 PROJEKT
-================================================== -->
-
-<section class="container white-section" id="projekt">
-
-    <div class="section-head">
-        <div class="section-label">01 · Projektüberblick</div>
-        <h2 class="section-title">
-            Die Infrastruktur<br>unter der Schwammstadt.
-        </h2>
-    </div>
-
-    <div class="intro-grid">
-
-        <div class="intro-text">
-
-            Die Stadt von morgen wird neu gedacht.
-            Die dazu passende Wasserinfrastruktur bisher jedoch 
-            häufig nicht.
-
-            <br><br>
-
-            BLUEPRINTS entwickelt Blaupausen für eine neue
-            Generation urbaner Wasserinfrastrukturen:
-            <strong>resilient, flexibel, multifunktional,
-            smart und zirkulär.</strong>
-
-            <br><br>
-
-            Im Mittelpunkt steht die Entwicklung
-            technischer Lösungen, mit denen Wasser abhängig
-            von Qualität und Nutzung intelligent gesammelt,
-            gespeichert, aufbereitet und bereitgestellt wird.
-
-            <br><br>
-
-            Standardisierte und vorgefertigte Module sollen
-            sich flexibel in bestehende Netze integrieren
-            lassen und eine schrittweise Transformation
-            urbaner Wasserinfrastrukturen ermöglichen.
-
-        </div>
-
-        <div class="intro-visual">
-            <h3>Das Betriebssystem der Schwammstadt.</h3>
-            <p>
-                Oben klimaresiliente Stadträume.
-                Unten eine neue Generation intelligenter
-                Wasserinfrastruktur.
-            </p>
-        </div>
-
-    </div>
-
-    <div class="metrics">
-
-        <div class="metric">
-            <div class="metric-number">[XX]</div>
-            <div class="metric-label">Entwickelte Systemkomponenten</div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-number">[XX]</div>
-            <div class="metric-label">Technische Konzepte</div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-number">[XX]</div>
-            <div class="metric-label">Erprobte Lösungsansätze</div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-number">[XX]</div>
-            <div class="metric-label">Projektpartner / Beteiligte</div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     02 FORTSCHRITT
-================================================== -->
-
-<section class="container progress-overview" id="fortschritt">
-
-    <div class="section-label">02 · Technischer Fortschritt</div>
-
-    <h2 class="section-title">
-        Vom Konzept<br>zur Umsetzung.
-    </h2>
-
-    <p class="section-intro">
-        Der aktuelle Entwicklungsstand im Überblick.
-        Die Fortschrittswerte können für jedes Arbeitspaket
-        individuell aktualisiert werden.
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Forschung · Entwicklung · Wasserinfrastruktur</div>
+    <h1>BLUEPRINTS<br><span>Projektchronik</span></h1>
+    <p>
+      Eine visuelle Dokumentation der Entwicklung einer neuen Generation
+      urbaner Wasserinfrastrukturen für resiliente Schwammstädte.
     </p>
-
-    <div class="progress-layout">
-
-        <div>
-
-            <div class="progress-circle" id="progressCircle">
-
-                <div class="circle-content">
-                    <div class="circle-number" id="progressNumber">0%</div>
-                    <div class="circle-caption">Gesamtfortschritt</div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="progress-items">
-
-            <div class="progress-row">
-                <div class="progress-name">Systemkonzeption</div>
-                <div class="progress-value">80 %</div>
-                <div class="progress-track">
-                    <div class="progress-fill" data-progress="80"></div>
-                </div>
-            </div>
-
-            <div class="progress-row">
-                <div class="progress-name">Technische Entwicklung</div>
-                <div class="progress-value">55 %</div>
-                <div class="progress-track">
-                    <div class="progress-fill" data-progress="55"></div>
-                </div>
-            </div>
-
-            <div class="progress-row">
-                <div class="progress-name">Systemkomponenten</div>
-                <div class="progress-value">40 %</div>
-                <div class="progress-track">
-                    <div class="progress-fill" data-progress="40"></div>
-                </div>
-            </div>
-
-            <div class="progress-row">
-                <div class="progress-name">Erprobung und Validierung</div>
-                <div class="progress-value">25 %</div>
-                <div class="progress-track">
-                    <div class="progress-fill" data-progress="25"></div>
-                </div>
-            </div>
-
-            <div class="progress-row">
-                <div class="progress-name">Transfer und Skalierung</div>
-                <div class="progress-value">10 %</div>
-                <div class="progress-track">
-                    <div class="progress-fill" data-progress="10"></div>
-                </div>
-            </div>
-
-        </div>
-
+    <div class="hero-date">
+      Oktober 2026 — September 2027
     </div>
-
+  </div>
 </section>
 
-
-<!-- ==================================================
-     03 ARBEITSPAKETE
-================================================== -->
-
-<section class="container" id="arbeitspakete">
-
-    <div class="section-head">
-        <div class="section-label">03 · Arbeitspakete</div>
-        <h2 class="section-title">
-            Was im Projekt entsteht.
-        </h2>
-        <p class="section-intro">
-            Die technischen und konzeptionellen
-            Entwicklungsschritte im Überblick.
-        </p>
-    </div>
-
-    <div class="work-grid">
-
-        <article class="work-card">
-            <div class="work-number">AP 01</div>
-            <h3>Systemanalyse und Grundlagen</h3>
-            <p>
-                Analyse bestehender Infrastrukturen,
-                Anforderungen, Wasserströme und
-                Nutzungspotenziale.
-            </p>
-            <span class="status done">Abgeschlossen / Platzhalter</span>
-        </article>
-
-        <article class="work-card">
-            <div class="work-number">AP 02</div>
-            <h3>Systemarchitektur</h3>
-            <p>
-                Entwicklung der übergeordneten
-                Systemlogik und Definition modularer
-                Infrastrukturbausteine.
-            </p>
-            <span class="status active">In Bearbeitung</span>
-        </article>
-
-        <article class="work-card">
-            <div class="work-number">AP 03</div>
-            <h3>Technische Komponenten</h3>
-            <p>
-                Entwicklung und konstruktive Ausarbeitung
-                technischer Lösungen und Module.
-            </p>
-            <span class="status active">In Bearbeitung</span>
-        </article>
-
-        <article class="work-card">
-            <div class="work-number">AP 04</div>
-            <h3>Wasserqualität und Aufbereitung</h3>
-            <p>
-                Untersuchung von Wasserqualitäten,
-                Aufbereitungsverfahren und
-                Nutzungsmöglichkeiten.
-            </p>
-            <span class="status planned">Geplant</span>
-        </article>
-
-        <article class="work-card">
-            <div class="work-number">AP 05</div>
-            <h3>Integration und Erprobung</h3>
-            <p>
-                Technische Integration, Schnittstellen
-                und Validierung der Systemlösungen.
-            </p>
-            <span class="status planned">Geplant</span>
-        </article>
-
-        <article class="work-card">
-            <div class="work-number">AP 06</div>
-            <h3>Transfer und Skalierung</h3>
-            <p>
-                Standardisierung, Übertragbarkeit und
-                Perspektiven für die industrielle
-                Fertigung.
-            </p>
-            <span class="status planned">Geplant</span>
-        </article>
-
-    </div>
-
+<section class="intro" id="projekt">
+  <div class="section-label">Das Projekt</div>
+  <h2>Wasser neu denken. Städte resilient gestalten.</h2>
+  <p>
+    BLUEPRINTS entwickelt modulare, intelligente und multifunktionale
+    Infrastrukturlösungen für einen zukunftsfähigen Umgang mit urbanem Wasser.
+    Die Projektchronik dokumentiert fortlaufend wichtige Ereignisse,
+    Entwicklungsprozesse, Erkenntnisse und Ergebnisse – ergänzt durch
+    Fotografien, Visualisierungen und Einblicke in die Projektarbeit.
+  </p>
 </section>
 
+<section class="timeline-section" id="zeitreihe">
 
-<!-- ==================================================
-     04 SYSTEMKOMPONENTEN
-================================================== -->
+  <div class="timeline-heading">
+    <div class="section-label">Oktober 2026 – September 2027</div>
+    <h2>Die Entwicklung im Zeitverlauf</h2>
+    <p>
+      Monat für Monat: Ereignisse, Entwicklungen und Ergebnisse aus dem
+      BLUEPRINTS-Projekt.
+    </p>
+  </div>
 
-<section class="container components-section" id="komponenten">
+  <div class="timeline">
 
-    <div class="section-head">
-        <div class="section-label">04 · Technische Entwicklungen</div>
-        <h2 class="section-title">
-            Neue Komponenten.<br>
-            Neue Möglichkeiten.
-        </h2>
-        <p class="section-intro">
-            Hier werden die konkreten technischen
-            Entwicklungen dokumentiert – mit Fotos,
-            Konstruktionszeichnungen, 3D-Visualisierungen
-            und Ergebnissen.
-        </p>
+    <!-- OKTOBER 2026 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>Oktober 2026</strong>
+        <span>Projektstart</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Auftakt und Ausgangslage</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul>
+          <li>Hier das erste wichtige Ereignis eintragen</li>
+          <li>Hier Entwicklungen und Aktivitäten ergänzen</li>
+        </ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/oktober-01.jpg" alt="Projektfoto Oktober 2026">
+          <img src="images/oktober-02.jpg" alt="Projektfoto Oktober 2026">
+          <img src="images/oktober-03.jpg" alt="Projektfoto Oktober 2026">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier ein erstes Ergebnis oder eine wichtige Erkenntnis eintragen.
+        </div>
+      </div>
+    </article>
+
+    <!-- NOVEMBER 2026 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>November 2026</strong>
+        <span>Entwicklung</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Entwicklungsphase</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul>
+          <li>Eintrag ergänzen</li>
+          <li>Eintrag ergänzen</li>
+        </ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/november-01.jpg" alt="Projektfoto November 2026">
+          <img src="images/november-02.jpg" alt="Projektfoto November 2026">
+          <img src="images/november-03.jpg" alt="Projektfoto November 2026">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse und Erkenntnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- DEZEMBER 2026 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>Dezember 2026</strong>
+        <span>Dokumentation</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Erkenntnisse und Zwischenstände</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul>
+          <li>Eintrag ergänzen</li>
+        </ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/dezember-01.jpg" alt="Projektfoto Dezember 2026">
+          <img src="images/dezember-02.jpg" alt="Projektfoto Dezember 2026">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- JANUAR 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>Januar 2027</strong>
+        <span>Entwicklung</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Neue Impulse und Weiterentwicklung</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/januar-01.jpg" alt="Projektfoto Januar 2027">
+          <img src="images/januar-02.jpg" alt="Projektfoto Januar 2027">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- FEBRUAR 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>Februar 2027</strong>
+        <span>Entwicklung</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Konzeption und Konkretisierung</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/februar-01.jpg" alt="Projektfoto Februar 2027">
+          <img src="images/februar-02.jpg" alt="Projektfoto Februar 2027">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- MÄRZ 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>März 2027</strong>
+        <span>Zwischenstand</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Zwischenstand und neue Erkenntnisse</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/maerz-01.jpg" alt="Projektfoto März 2027">
+          <img src="images/maerz-02.jpg" alt="Projektfoto März 2027">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- APRIL 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>April 2027</strong>
+        <span>Weiterentwicklung</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Weiterentwicklung der Lösungen</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/april-01.jpg" alt="Projektfoto April 2027">
+          <img src="images/april-02.jpg" alt="Projektfoto April 2027">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- MAI 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>Mai 2027</strong>
+        <span>Erprobung</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Erprobung und praktische Einblicke</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/mai-01.jpg" alt="Projektfoto Mai 2027">
+          <img src="images/mai-02.jpg" alt="Projektfoto Mai 2027">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- JUNI 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>Juni 2027</strong>
+        <span>Ergebnisse</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Ergebnisse und Erkenntnisse</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/juni-01.jpg" alt="Projektfoto Juni 2027">
+          <img src="images/juni-02.jpg" alt="Projektfoto Juni 2027">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- JULI 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>Juli 2027</strong>
+        <span>Vertiefung</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Vertiefung und Ausarbeitung</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/juli-01.jpg" alt="Projektfoto Juli 2027">
+          <img src="images/juli-02.jpg" alt="Projektfoto Juli 2027">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- AUGUST 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>August 2027</strong>
+        <span>Abschlussphase</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Zusammenführung der Ergebnisse</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/august-01.jpg" alt="Projektfoto August 2027">
+          <img src="images/august-02.jpg" alt="Projektfoto August 2027">
+        </div>
+        <div class="result">
+          <strong>Ergebnis / Erkenntnis:</strong>
+          Hier Ergebnisse ergänzen.
+        </div>
+      </div>
+    </article>
+
+    <!-- SEPTEMBER 2027 -->
+    <article class="month">
+      <div class="month-date">
+        <strong>September 2027</strong>
+        <span>Projektabschluss</span>
+      </div>
+      <div class="month-dot"></div>
+      <div class="month-content">
+        <h3>Abschluss und Ausblick</h3>
+        <div class="entry-label">Ereignisse und Entwicklungen</div>
+        <ul><li>Eintrag ergänzen</li></ul>
+        <div class="entry-label">Fotodokumentation</div>
+        <div class="gallery">
+          <img src="images/september-01.jpg" alt="Projektfoto September 2027">
+          <img src="images/september-02.jpg" alt="Projektfoto September 2027">
+          <img src="images/september-03.jpg" alt="Projektfoto September 2027">
+        </div>
+        <div class="result">
+          <strong>Abschließende Ergebnisse:</strong>
+          Hier die wesentlichen Projektergebnisse und den Ausblick eintragen.
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer id="kontakt">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">BLUE<span>PRINTS</span></div>
+      <div class="footer-text">
+        Urbane Wasserinfrastrukturen für resiliente Schwammstädte
+      </div>
     </div>
 
-    <div class="component-grid">
+    <div class="funding">
+      <img src="images/projektlogo.png" alt="BLUEPRINTS Projektlogo">
+      <img src="images/foerderlogo.png" alt="Logo Fördermittelgeber">
+    </div>
+  </div>
 
-        <!-- KOMPONENTE 01 -->
+  <div class="copyright">
+    © BLUEPRINTS · Projektdokumentation 2026–2027
+  </div>
+</footer>
 
-        <article
+</body>
+</html>
+```
