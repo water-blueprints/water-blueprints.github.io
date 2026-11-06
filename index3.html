@@ -2,1180 +2,341 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BLUEPRINTS | Projektdokumentation</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --deep: #04182d;
-  --ocean: #082b4d;
-  --blue: #0c4d83;
-  --water: #2788c9;
-  --light-blue: #72c3f3;
-  --ice: #e9f5fc;
-  --pale: #f4f9fc;
-  --white: #fff;
-  --text: #17344e;
-  --muted: #71889d;
-  --line: #dceaf3;
-  --shadow: 0 20px 55px rgba(5, 39, 69, .09);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--pale);
-  color: var(--text);
-  line-height: 1.7;
-}
-
-a {
-  text-decoration: none;
-}
-
-/* HEADER */
-
-header {
-  min-height: 86px;
-  padding: 12px 7%;
-  background: rgba(4, 24, 45, .97);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  z-index: 10;
-  border-bottom: 1px solid rgba(255,255,255,.1);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.brand img {
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-}
-
-.brand-name {
-  font-family: 'Manrope', sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: white;
-}
-
-.brand-name span {
-  color: #71c4f5;
-}
-
-header nav {
-  display: flex;
-  gap: 34px;
-}
-
-header nav a {
-  color: #c5dcec;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  transition: .25s;
-}
-
-header nav a:hover {
-  color: #78c8fa;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 610px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 100px 9%;
-  color: white;
-  overflow: hidden;
-
-  background:
-    linear-gradient(
-      105deg,
-      rgba(3, 20, 39, .97) 0%,
-      rgba(5, 42, 75, .91) 55%,
-      rgba(8, 70, 112, .55) 100%
-    ),
-    url("images/hero-wasser.jpg") center/cover;
-}
-
-/* Dezente Wasserlinien */
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 850px;
-  height: 850px;
-  right: -230px;
-  top: -280px;
-  border-radius: 50%;
-  border: 1px solid rgba(112, 200, 250, .18);
-  box-shadow:
-    0 0 0 45px rgba(112,200,250,.035),
-    0 0 0 90px rgba(112,200,250,.025),
-    0 0 0 135px rgba(112,200,250,.02);
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 120px;
-  background: linear-gradient(transparent, rgba(2, 20, 39, .3));
-  pointer-events: none;
-}
-
-.hero-content {
-  max-width: 850px;
-  position: relative;
-  z-index: 2;
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: #8dd3ff;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 26px;
-}
-
-.eyebrow::before {
-  content: "";
-  height: 1px;
-  width: 38px;
-  background: #72c5f5;
-}
-
-.hero h1 {
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(48px, 7vw, 88px);
-  line-height: 1.02;
-  letter-spacing: -4px;
-  font-weight: 800;
-  margin-bottom: 30px;
-}
-
-.hero h1 span {
-  color: #75c7f6;
-}
-
-.hero p {
-  max-width: 630px;
-  color: #d3e8f6;
-  font-size: 17px;
-  line-height: 1.9;
-}
-
-.hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-top: 42px;
-  color: #d6eafa;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.hero-meta .line {
-  width: 45px;
-  height: 1px;
-  background: #72c5f5;
-}
-
-/* INTRO */
-
-.intro {
-  max-width: 1180px;
-  margin: auto;
-  padding: 100px 35px 95px;
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 90px;
-  align-items: start;
-}
-
-.section-label {
-  color: var(--water);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-}
-
-.intro h2 {
-  font-family: 'Manrope', sans-serif;
-  color: var(--deep);
-  font-size: 39px;
-  line-height: 1.25;
-  letter-spacing: -1.5px;
-}
-
-.intro-copy {
-  padding-top: 30px;
-}
-
-.intro-copy p {
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 2;
-}
-
-/* DOKUMENTATION */
-
-.documentation-section {
-  position: relative;
-  background:
-    linear-gradient(180deg, #f1f8fc 0%, #ffffff 30%, #f4f9fc 100%);
-  padding: 100px 7% 120px;
-  overflow: hidden;
-}
-
-.documentation-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #0b4778, #55b5ec, #a8e1fa);
-}
-
-.documentation-heading {
-  max-width: 1180px;
-  margin: 0 auto 75px;
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 35px;
-}
-
-.documentation-heading h2 {
-  font-family: 'Manrope', sans-serif;
-  color: var(--deep);
-  font-size: 43px;
-  line-height: 1.2;
-  letter-spacing: -1.5px;
-}
-
-.documentation-heading p {
-  max-width: 420px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.period-label {
-  color: var(--water);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-/* AKTUELLER ZEITRAUM */
-
-.current-period {
-  max-width: 1180px;
-  margin: -25px auto 55px;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  color: #66839c;
-  font-size: 12px;
-}
-
-.current-period .indicator {
-  width: 8px;
-  height: 8px;
-  background: #35a6dc;
-  border-radius: 50%;
-  box-shadow: 0 0 0 5px rgba(53,166,220,.12);
-}
-
-.current-period strong {
-  color: var(--blue);
-  font-weight: 700;
-}
-
-/* ZEITACHSE */
-
-.timeline {
-  max-width: 1180px;
-  margin: auto;
-  position: relative;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 5px;
-  bottom: 0;
-  left: 185px;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    #2089c9,
-    #8ccdf0,
-    #dceaf3
-  );
-}
-
-.month {
-  display: grid;
-  grid-template-columns: 185px 1fr;
-  gap: 55px;
-  position: relative;
-  padding-bottom: 75px;
-  animation: appear .6s ease both;
-}
-
-.month:last-child {
-  padding-bottom: 0;
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.month-date {
-  text-align: right;
-  padding-right: 32px;
-  padding-top: 7px;
-}
-
-.month-date strong {
-  display: block;
-  color: var(--deep);
-  font-family: 'Manrope', sans-serif;
-  font-size: 18px;
-  line-height: 1.4;
-}
-
-.month-date span {
-  display: block;
-  margin-top: 6px;
-  color: #91a8ba;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.month-dot {
-  position: absolute;
-  top: 10px;
-  left: 178px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: white;
-  border: 3px solid #3299d4;
-  box-shadow: 0 0 0 5px #f4f9fc;
-  z-index: 2;
-}
-
-.month-content {
-  background: rgba(255,255,255,.93);
-  border: 1px solid #e1edf5;
-  border-radius: 12px;
-  padding: 34px;
-  box-shadow: 0 10px 35px rgba(5, 43, 73, .035);
-  transition: .3s;
-}
-
-.month-content:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-}
-
-.month-content h3 {
-  font-family: 'Manrope', sans-serif;
-  font-size: 23px;
-  color: var(--deep);
-  margin-bottom: 20px;
-}
-
-.entry-label {
-  color: var(--water);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 23px 0 9px;
-}
-
-.month-content ul {
-  padding-left: 18px;
-  color: #526d83;
-  font-size: 14px;
-}
-
-.month-content li {
-  padding-left: 4px;
-  margin-bottom: 7px;
-}
-
-/* FOTOGALERIE */
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  border-radius: 7px;
-  background: #dceaf3;
-  transition: .35s;
-}
-
-.gallery img:hover {
-  transform: scale(1.02);
-  filter: brightness(.9);
-}
-
-/* ERGEBNIS */
-
-.result {
-  margin-top: 25px;
-  padding: 19px 22px;
-  background: linear-gradient(110deg, #e8f5fc, #f1f8fc);
-  border-left: 3px solid #4ba8df;
-  border-radius: 0 6px 6px 0;
-  color: #42617d;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.result strong {
-  display: block;
-  color: var(--deep);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 5px;
-}
-
-/* LEERER ZEITRAUM */
-
-.empty-message {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 35px;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  text-align: center;
-  color: var(--muted);
-}
-
-.empty-message h3 {
-  font-family: 'Manrope', sans-serif;
-  color: var(--deep);
-  font-size: 21px;
-  margin-bottom: 10px;
-}
-
-/* FOOTER */
-
-footer {
-  background:
-    linear-gradient(120deg, #04182d, #082b4d);
-  color: white;
-  padding: 75px 8% 30px;
-  position: relative;
-  overflow: hidden;
-}
-
-footer::before {
-  content: "";
-  position: absolute;
-  right: -180px;
-  bottom: -400px;
-  width: 600px;
-  height: 600px;
-  border: 1px solid rgba(106,181,241,.15);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 50px rgba(106,181,241,.025),
-    0 0 0 100px rgba(106,181,241,.025);
-}
-
-.footer-inner {
-  max-width: 1180px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 50px;
-  position: relative;
-  z-index: 1;
-}
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.footer-brand img {
-  width: 65px;
-  height: 65px;
-  object-fit: contain;
-}
-
-.footer-logo {
-  font-family: 'Manrope', sans-serif;
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: 3px;
-}
-
-.footer-logo span {
-  color: #69b4f2;
-}
-
-.footer-text {
-  color: #9fb8ce;
-  font-size: 12px;
-  margin-top: 8px;
-}
-
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.logo-box {
-  width: 175px;
-  height: 82px;
-  background: white;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
-}
-
-.logo-box img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-.copyright {
-  max-width: 1180px;
-  margin: 55px auto 0;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255,255,255,.13);
-  color: #718ba4;
-  font-size: 11px;
-  position: relative;
-  z-index: 1;
-}
-
-/* RESPONSIVE */
-
-@media(max-width: 850px) {
-  .intro {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding-top: 75px;
-    padding-bottom: 75px;
-  }
-
-  .intro-copy {
-    padding-top: 0;
-  }
-
-  .documentation-heading {
-    display: block;
-  }
-
-  .documentation-heading p {
-    margin-top: 18px;
-  }
-}
-
-@media(max-width: 650px) {
-  header {
-    height: auto;
-    padding: 20px 6%;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  header nav {
-    gap: 18px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  header nav a {
-    font-size: 10px;
-  }
-
-  .hero {
-    min-height: 500px;
-    padding: 75px 7%;
-  }
-
-  .hero h1 {
-    letter-spacing: -2px;
-  }
-
-  .documentation-section {
-    padding: 70px 6%;
-  }
-
-  .documentation-heading h2 {
-    font-size: 34px;
-  }
-
-  .timeline::before {
-    left: 7px;
-  }
-
-  .month {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding-left: 30px;
-    padding-bottom: 48px;
-  }
-
-  .month-date {
-    text-align: left;
-    padding: 0;
-  }
-
-  .month-date strong {
-    font-size: 16px;
-  }
-
-  .month-dot {
-    left: 0;
-    top: 5px;
-  }
-
-  .month-content {
-    padding: 22px;
-  }
-
-  .month-content h3 {
-    font-size: 20px;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .gallery img {
-    height: 125px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .logo-area {
-    flex-wrap: wrap;
-  }
-
-  .logo-box {
-    width: 145px;
-    height: 70px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLUEPRINTS – Projektdokumentation</title>
+
+  <style>
+    :root {
+      --navy: #061d3b;
+      --blue: #0b3c70;
+      --ocean: #1266a3;
+      --light-blue: #eaf4fb;
+      --text: #18334d;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #f4f8fc;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 3px 18px rgba(5, 35, 65, 0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-logos {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .header-logos img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-height: 65px;
+      max-width: 190px;
+      object-fit: contain;
+    }
+
+    .header-label {
+      color: var(--blue);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 440px;
+      padding: 90px 8%;
+      display: flex;
+      align-items: center;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(4, 27, 57, 0.88), rgba(8, 63, 105, 0.42)),
+        url("images/hero-wasser.jpg") center/cover no-repeat,
+        linear-gradient(135deg, #061d3b, #1266a3);
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      margin: 0 0 22px;
+      letter-spacing: 2px;
+    }
+
+    .hero p {
+      font-size: 21px;
+      max-width: 680px;
+      margin: 0;
+      color: #e4f3ff;
+    }
+
+    .waterline {
+      height: 5px;
+      background: linear-gradient(
+        90deg,
+        #0b3c70,
+        #1685c5,
+        #8ac9ec,
+        #0b3c70
+      );
+    }
+
+    /* PROJEKTBESCHREIBUNG */
+    .intro {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 85px 7%;
+    }
+
+    .intro h2 {
+      color: var(--navy);
+      font-size: 32px;
+      margin: 0 0 22px;
+    }
+
+    .intro p {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    /* DOKUMENTATION */
+    .documentation {
+      padding: 75px 7% 100px;
+      background:
+        linear-gradient(rgba(232, 243, 251, 0.94), rgba(244, 248, 252, 0.98));
+    }
+
+    .section-heading {
+      max-width: 1100px;
+      margin: 0 auto 55px;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: 36px;
+      margin: 0 0 10px;
+    }
+
+    .section-heading p {
+      font-size: 17px;
+      color: #55718a;
+    }
+
+    .month {
+      max-width: 1100px;
+      margin: 0 auto 65px;
+      padding: 32px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(5, 35, 65, 0.07);
+      border-left: 5px solid var(--ocean);
+    }
+
+    .month h3 {
+      color: var(--blue);
+      font-size: 27px;
+      margin: 0 0 8px;
+    }
+
+    .month-description {
+      color: #6b8195;
+      margin-bottom: 25px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.025);
+    }
+
+    .empty-message {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px;
+      background: white;
+      border-radius: 14px;
+      color: #55718a;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 45px 7%;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0 0 25px;
+      color: #d0e4f5;
+    }
+
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logos img {
+      max-height: 55px;
+      max-width: 180px;
+      width: auto;
+      object-fit: contain;
+      background: white;
+      padding: 7px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 650px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-logos {
+        gap: 18px;
+      }
+
+      .header-logos img {
+        max-height: 48px;
+        max-width: 145px;
+      }
+
+      .hero {
+        min-height: 350px;
+        padding: 65px 7%;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .month {
+        padding: 22px;
+      }
+
+      .gallery img {
+        height: 210px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <a class="brand" href="#">
-    <img src="images/blueprints.png" alt="BLUEPRINTS Projektlogo">
-    <div class="brand-name">BLUE<span>PRINTS</span></div>
-  </a>
+  <!-- HEADER MIT BEIDEN LOGOS -->
+  <header>
+    <div class="header-logos">
+      <img src="images/blueprints.png"
+           alt="BLUEPRINTS Projektlogo">
 
-  <nav>
-    <a href="#projekt">Projekt</a>
-    <a href="#dokumentation">Dokumentation</a>
-    <a href="#kontakt">Projektpartner</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <div class="eyebrow">Forschung · Entwicklung · Wasserinfrastruktur</div>
-
-    <h1>BLUEPRINTS<br><span>Dokumentation</span></h1>
-
-    <p>
-      Einblicke in die Entwicklung einer neuen Generation urbaner
-      Wasserinfrastrukturen für resiliente Schwammstädte.
-    </p>
-
-    <div class="hero-meta">
-      <span>Oktober 2026</span>
-      <div class="line"></div>
-      <span>September 2027</span>
+      <img src="images/bmftr.jpg"
+           alt="Bundesministerium für Forschung, Technologie und Raumfahrt">
     </div>
-  </div>
-</section>
 
-<section class="intro" id="projekt">
-  <div>
-    <div class="section-label">Das Projekt</div>
+    <div class="header-label">
+      Projektdokumentation
+    </div>
+  </header>
+
+  <div class="waterline"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>BLUEPRINTS</h1>
+      <p>
+        Neue Generation urbaner Wasserinfrastrukturen
+        für resiliente Schwammstädte.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJEKTBESCHREIBUNG -->
+  <section class="intro">
     <h2>Wasser neu denken. Städte resilient gestalten.</h2>
-  </div>
-
-  <div class="intro-copy">
-    <p>
-      BLUEPRINTS entwickelt modulare, intelligente und multifunktionale
-      Infrastrukturlösungen für einen zukunftsfähigen Umgang mit urbanem Wasser.
-      Die Projektdokumentation macht wichtige Ereignisse, Entwicklungsprozesse,
-      Erkenntnisse und Ergebnisse sichtbar – ergänzt durch Fotografien,
-      Visualisierungen und Einblicke in die Projektarbeit.
-    </p>
-  </div>
-</section>
-
-<section class="documentation-section" id="dokumentation">
-
-  <div class="documentation-heading">
-    <div>
-      <div class="period-label">Oktober 2026 — September 2027</div>
-      <h2>Projektdokumentation<br>im Zeitverlauf</h2>
-    </div>
 
     <p>
-      Monat für Monat. Ereignisse, Entwicklungen und Ergebnisse aus dem
-      BLUEPRINTS-Projekt – dokumentiert in Bildern und kurzen Einblicken.
+      BLUEPRINTS entwickelt innovative, flexible und multifunktionale
+      Wasserinfrastrukturen für die Stadt der Zukunft. Ziel ist eine
+      intelligente und ressourcenschonende Bewirtschaftung von Wasser,
+      angepasst an unterschiedliche Qualitäten und Nutzungsanforderungen.
     </p>
-  </div>
 
-  <div class="current-period">
-    <span class="indicator"></span>
-    <span>Aktueller Dokumentationszeitraum:</span>
-    <strong id="current-month-label">Wird geladen ...</strong>
-  </div>
+    <p>
+      Modulare und vorgefertigte Infrastrukturbausteine ermöglichen die
+      Sammlung, Speicherung, dezentrale Aufbereitung und bedarfsgerechte
+      Bereitstellung von Wasser. Sie können unter anderem für Bewässerung,
+      Kühlung und Wärmegewinnung eingesetzt werden und lassen sich
+      schrittweise in bestehende Infrastrukturen integrieren.
+    </p>
+  </section>
 
-  <div class="timeline" id="timeline"></div>
+  <div class="waterline"></div>
 
-  <div class="empty-message" id="empty-message" hidden>
-    <h3>Die Dokumentation beginnt im Oktober 2026.</h3>
-    <p>Zum Projektstart werden hier die ersten Einblicke und Entwicklungen veröffentlicht.</p>
-  </div>
-
-</section>
-
-<footer id="kontakt">
-  <div class="footer-inner">
-
-    <div>
-      <div class="footer-brand">
-        <img src="images/blueprints.png" alt="BLUEPRINTS Projektlogo">
-        <div>
-          <div class="footer-logo">BLUE<span>PRINTS</span></div>
-          <div class="footer-text">
-            Urbane Wasserinfrastrukturen für resiliente Schwammstädte
-          </div>
-        </div>
-      </div>
+  <!-- PROJEKTDOKUMENTATION -->
+  <section class="documentation">
+    <div class="section-heading">
+      <h2>Projektdokumentation</h2>
+      <p>
+        Einblicke in die Entwicklung und Umsetzung von BLUEPRINTS –
+        von Oktober 2026 bis September 2027.
+      </p>
     </div>
 
-    <div class="logo-area">
-      <div class="logo-box">
-        <img src="images/blueprints.png" alt="BLUEPRINTS Projektlogo">
-      </div>
+    <div id="timeline"></div>
+  </section>
 
-      <div class="logo-box">
-        <img src="images/bmftr.jpg" alt="Logo des Fördermittelgebers">
-      </div>
-    </div>
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      BLUEPRINTS – Neue Generation urbaner Wasserinfrastrukturen
+    </p>
 
-  </div>
+    <div class="footer-logos">
+      <img src="images/blueprints.png"
+           alt="BLUEPRINTS Projektlogo">
 
-  <div class="copyright">
-    © BLUEPRINTS · Projektdokumentation 2026–2027
-  </div>
-</footer>
-
-<script>
-
-/*
-  ZEITGESTEUERTE SICHTBARKEIT
-
-  Die Monate werden anhand des aktuellen Datums
-  des Endgeräts freigeschaltet.
-
-  Beispiel:
-  06.11.2026 = Oktober und November sichtbar
-  01.12.2026 = Oktober bis Dezember sichtbar
-  01.01.2027 = Oktober bis Januar sichtbar
-
-  Nach September 2027 bleibt die gesamte Dokumentation sichtbar.
-*/
-
-const projectStart = new Date(2026, 9, 1);
-const projectEnd = new Date(2027, 8, 30);
-
-const months = [
-  {
-    year: 2026,
-    month: 9,
-    name: "Oktober 2026",
-    subtitle: "Projektstart",
-    title: "Auftakt und Ausgangslage",
-    events: [
-      "Hier das erste wichtige Ereignis eintragen",
-      "Hier Entwicklungen und Aktivitäten ergänzen"
-    ],
-    images: [
-      "images/oktober-01.jpg",
-      "images/oktober-02.jpg",
-      "images/oktober-03.jpg"
-    ],
-    result: "Hier ein erstes Ergebnis oder eine wichtige Erkenntnis eintragen."
-  },
-  {
-    year: 2026,
-    month: 10,
-    name: "November 2026",
-    subtitle: "Entwicklung",
-    title: "Entwicklungsphase",
-    events: [
-      "Eintrag ergänzen",
-      "Eintrag ergänzen"
-    ],
-    images: [
-      "images/november-01.jpg",
-      "images/november-02.jpg",
-      "images/november-03.jpg"
-    ],
-    result: "Hier Ergebnisse und Erkenntnisse ergänzen."
-  },
-  {
-    year: 2026,
-    month: 11,
-    name: "Dezember 2026",
-    subtitle: "Dokumentation",
-    title: "Erkenntnisse und Zwischenstände",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/dezember-01.jpg",
-      "images/dezember-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 0,
-    name: "Januar 2027",
-    subtitle: "Entwicklung",
-    title: "Neue Impulse und Weiterentwicklung",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/januar-01.jpg",
-      "images/januar-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 1,
-    name: "Februar 2027",
-    subtitle: "Entwicklung",
-    title: "Konzeption und Konkretisierung",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/februar-01.jpg",
-      "images/februar-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 2,
-    name: "März 2027",
-    subtitle: "Zwischenstand",
-    title: "Zwischenstand und neue Erkenntnisse",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/maerz-01.jpg",
-      "images/maerz-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 3,
-    name: "April 2027",
-    subtitle: "Weiterentwicklung",
-    title: "Weiterentwicklung der Lösungen",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/april-01.jpg",
-      "images/april-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 4,
-    name: "Mai 2027",
-    subtitle: "Erprobung",
-    title: "Erprobung und praktische Einblicke",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/mai-01.jpg",
-      "images/mai-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 5,
-    name: "Juni 2027",
-    subtitle: "Ergebnisse",
-    title: "Ergebnisse und Erkenntnisse",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/juni-01.jpg",
-      "images/juni-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 6,
-    name: "Juli 2027",
-    subtitle: "Vertiefung",
-    title: "Vertiefung und Ausarbeitung",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/juli-01.jpg",
-      "images/juli-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 7,
-    name: "August 2027",
-    subtitle: "Abschlussphase",
-    title: "Zusammenführung der Ergebnisse",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/august-01.jpg",
-      "images/august-02.jpg"
-    ],
-    result: "Hier Ergebnisse ergänzen."
-  },
-  {
-    year: 2027,
-    month: 8,
-    name: "September 2027",
-    subtitle: "Projektabschluss",
-    title: "Abschluss und Ausblick",
-    events: ["Eintrag ergänzen"],
-    images: [
-      "images/september-01.jpg",
-      "images/september-02.jpg",
-      "images/september-03.jpg"
-    ],
-    result: "Hier die wesentlichen Projektergebnisse und den Ausblick eintragen."
-  }
-];
-
-function getCurrentDate() {
-  return new Date();
-}
-
-function renderDocumentation() {
-
-  const today = getCurrentDate();
-  const timeline = document.getElementById("timeline");
-  const currentLabel = document.getElementById("current-month-label");
-  const emptyMessage = document.getElementById("empty-message");
-
-  timeline.innerHTML = "";
-
-  const startOfCurrentMonth = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    1
-  );
-
-  const visibleMonths = months.filter(item => {
-    const monthDate = new Date(item.year, item.month, 1);
-
-    return monthDate <= startOfCurrentMonth &&
-           monthDate >= projectStart &&
-           monthDate <= projectEnd;
-  });
-
-  // Nach Projektende bleibt die gesamte Dokumentation sichtbar.
-  if (today > projectEnd) {
-    visibleMonths.splice(0, visibleMonths.length, ...months);
-  }
-
-  if (today < projectStart) {
-    currentLabel.textContent = "Projektstart im Oktober 2026";
-    emptyMessage.hidden = false;
-    return;
-  }
-
-  emptyMessage.hidden = true;
-
-  if (today > projectEnd) {
-    currentLabel.textContent = "Gesamter Projektzeitraum";
-  } else {
-    currentLabel.textContent = today.toLocaleDateString("de-DE", {
-      month: "long",
-      year: "numeric"
-    });
-  }
-
-  visibleMonths.forEach(item => {
-
-    const article = document.createElement("article");
-    article.className = "month";
-
-    const date = document.createElement("div");
-    date.className = "month-date";
-    date.innerHTML = `
-      <strong>${item.name}</strong>
-      <span>${item.subtitle}</span>
-    `;
-
-    const dot = document.createElement("div");
-    dot.className = "month-dot";
-
-    const content = document.createElement("div");
-    content.className = "month-content";
-
-    const title = document.createElement("h3");
-    title.textContent = item.title;
-    content.appendChild(title);
-
-    const eventsLabel = document.createElement("div");
-    eventsLabel.className = "entry-label";
-    eventsLabel.textContent = "Ereignisse und Entwicklungen";
-    content.appendChild(eventsLabel);
-
-    const list = document.createElement("ul");
-
-    item.events.forEach(event => {
-      const li = document.createElement("li");
-      li.textContent = event;
-      list.appendChild(li);
-    });
-
-    content.appendChild(list);
-
-    const photoLabel = document.createElement("div");
-    photoLabel.className = "entry-label";
-    photoLabel.textContent = "Fotodokumentation";
-    content.appendChild(photoLabel);
-
-    const gallery = document.createElement("div");
-    gallery.className = "gallery";
-
-    item.images.forEach(src => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = "BLUEPRINTS Projektdokumentation " + item.name;
-
-      img.onerror = function() {
-        this.style.display = "none";
-      };
-
-      gallery.appendChild(img);
-    });
-
-    content.appendChild(gallery);
-
-    const result = document.createElement("div");
-    result.className = "result";
-
-    const resultTitle = document.createElement("strong");
-    resultTitle.textContent = "Ergebnis / Erkenntnis";
-
-    const resultText = document.createElement("span");
-    resultText.textContent = item.result;
-
-    result.appendChild(resultTitle);
-    result.appendChild(resultText);
-
-    content.appendChild(result);
-
-    article.appendChild(date);
-    article.appendChild(dot);
-    article.appendChild(content);
-
-    timeline.appendChild(article);
-  });
-}
-
-// Beim Laden der Website
-renderDocumentation();
-
-// Bei Rückkehr auf den Browser-Tab erneut prüfen
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) {
-    renderDocumentation();
-  }
-});
-
-// Beim erneuten Laden der Seite wird das aktuelle Datum ebenfalls geprüft.
-
-</script>
-
-</body>
-</html>
-```
+      <img src="images/bmftr.jpg"
+           alt="Bundesministerium
