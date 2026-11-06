@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLUEPRINTS | Projektchronik</title>
+
+<title>BLUEPRINTS | Projektdokumentation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,17 +13,18 @@
 
 <style>
 :root {
-  --navy: #071a30;
-  --navy2: #0b2948;
-  --blue: #145b9b;
-  --accent: #4d9de0;
-  --ice: #eaf3fb;
-  --pale: #f5f8fc;
+  --deep: #04182d;
+  --ocean: #082b4d;
+  --blue: #0c4d83;
+  --water: #2788c9;
+  --light-blue: #72c3f3;
+  --ice: #e9f5fc;
+  --pale: #f4f9fc;
   --white: #fff;
-  --text: #18324b;
-  --muted: #71869a;
-  --line: #dce7f1;
-  --shadow: 0 18px 50px rgba(7, 35, 65, .08);
+  --text: #17344e;
+  --muted: #71889d;
+  --line: #dceaf3;
+  --shadow: 0 20px 55px rgba(5, 39, 69, .09);
 }
 
 * {
@@ -37,8 +39,8 @@ html {
 
 body {
   font-family: 'DM Sans', sans-serif;
-  color: var(--text);
   background: var(--pale);
+  color: var(--text);
   line-height: 1.7;
 }
 
@@ -49,12 +51,12 @@ a {
 /* HEADER */
 
 header {
-  height: 88px;
-  padding: 0 7%;
-  background: var(--navy);
+  min-height: 86px;
+  padding: 12px 7%;
+  background: rgba(4, 24, 45, .97);
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   position: relative;
   z-index: 10;
   border-bottom: 1px solid rgba(255,255,255,.1);
@@ -63,86 +65,95 @@ header {
 .brand {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 15px;
 }
 
 .brand img {
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
 }
 
 .brand-name {
   font-family: 'Manrope', sans-serif;
+  font-size: 22px;
   font-weight: 800;
-  font-size: 23px;
   letter-spacing: 3px;
   color: white;
 }
 
 .brand-name span {
-  color: #65b4f4;
+  color: #71c4f5;
 }
 
 header nav {
   display: flex;
-  gap: 35px;
+  gap: 34px;
 }
 
 header nav a {
-  color: #c5d7e8;
-  font-size: 12px;
-  text-transform: uppercase;
+  color: #c5dcec;
+  font-size: 11px;
   letter-spacing: 1.5px;
-  transition: .2s;
+  text-transform: uppercase;
+  transition: .25s;
 }
 
 header nav a:hover {
-  color: white;
+  color: #78c8fa;
 }
 
 /* HERO */
 
 .hero {
-  min-height: 580px;
+  min-height: 610px;
   position: relative;
   display: flex;
   align-items: center;
-  padding: 90px 9%;
-  overflow: hidden;
+  padding: 100px 9%;
   color: white;
+  overflow: hidden;
+
   background:
-    linear-gradient(100deg, rgba(4,20,39,.97) 0%, rgba(7,39,70,.91) 55%, rgba(9,55,96,.65) 100%),
+    linear-gradient(
+      105deg,
+      rgba(3, 20, 39, .97) 0%,
+      rgba(5, 42, 75, .91) 55%,
+      rgba(8, 70, 112, .55) 100%
+    ),
     url("images/hero-wasser.jpg") center/cover;
 }
+
+/* Dezente Wasserlinien */
 
 .hero::before {
   content: "";
   position: absolute;
-  right: -100px;
-  top: -180px;
-  width: 650px;
-  height: 650px;
-  border: 1px solid rgba(117,190,245,.18);
+  width: 850px;
+  height: 850px;
+  right: -230px;
+  top: -280px;
   border-radius: 50%;
+  border: 1px solid rgba(112, 200, 250, .18);
   box-shadow:
-    0 0 0 55px rgba(117,190,245,.035),
-    0 0 0 110px rgba(117,190,245,.025),
-    0 0 0 165px rgba(117,190,245,.02);
+    0 0 0 45px rgba(112,200,250,.035),
+    0 0 0 90px rgba(112,200,250,.025),
+    0 0 0 135px rgba(112,200,250,.02);
 }
 
 .hero::after {
   content: "";
   position: absolute;
-  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #66b4f2, transparent);
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(transparent, rgba(2, 20, 39, .3));
+  pointer-events: none;
 }
 
 .hero-content {
-  max-width: 820px;
+  max-width: 850px;
   position: relative;
   z-index: 2;
 }
@@ -150,37 +161,37 @@ header nav a:hover {
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 13px;
-  color: #8fc9f7;
+  gap: 14px;
+  color: #8dd3ff;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  margin-bottom: 25px;
+  margin-bottom: 26px;
 }
 
 .eyebrow::before {
   content: "";
-  width: 35px;
   height: 1px;
-  background: #69b4f2;
+  width: 38px;
+  background: #72c5f5;
 }
 
 .hero h1 {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(48px, 7vw, 86px);
+  font-size: clamp(48px, 7vw, 88px);
   line-height: 1.02;
   letter-spacing: -4px;
   font-weight: 800;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
 .hero h1 span {
-  color: #69b4f2;
+  color: #75c7f6;
 }
 
 .hero p {
-  max-width: 620px;
-  color: #d1e1ef;
+  max-width: 630px;
+  color: #d3e8f6;
   font-size: 17px;
   line-height: 1.9;
 }
@@ -189,8 +200,8 @@ header nav a:hover {
   display: flex;
   align-items: center;
   gap: 18px;
-  margin-top: 40px;
-  color: #d8e9f8;
+  margin-top: 42px;
+  color: #d6eafa;
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -199,7 +210,7 @@ header nav a:hover {
 .hero-meta .line {
   width: 45px;
   height: 1px;
-  background: #69b4f2;
+  background: #72c5f5;
 }
 
 /* INTRO */
@@ -207,15 +218,15 @@ header nav a:hover {
 .intro {
   max-width: 1180px;
   margin: auto;
-  padding: 105px 35px 95px;
+  padding: 100px 35px 95px;
   display: grid;
-  grid-template-columns: .85fr 1.15fr;
+  grid-template-columns: .9fr 1.1fr;
   gap: 90px;
   align-items: start;
 }
 
 .section-label {
-  color: var(--blue);
+  color: var(--water);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -225,8 +236,8 @@ header nav a:hover {
 
 .intro h2 {
   font-family: 'Manrope', sans-serif;
-  color: var(--navy);
-  font-size: 38px;
+  color: var(--deep);
+  font-size: 39px;
   line-height: 1.25;
   letter-spacing: -1.5px;
 }
@@ -241,14 +252,27 @@ header nav a:hover {
   line-height: 2;
 }
 
-/* TIMELINE */
+/* DOKUMENTATION */
 
-.timeline-section {
-  background: white;
-  padding: 95px 7% 115px;
+.documentation-section {
+  position: relative;
+  background:
+    linear-gradient(180deg, #f1f8fc 0%, #ffffff 30%, #f4f9fc 100%);
+  padding: 100px 7% 120px;
+  overflow: hidden;
 }
 
-.timeline-heading {
+.documentation-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0b4778, #55b5ec, #a8e1fa);
+}
+
+.documentation-heading {
   max-width: 1180px;
   margin: 0 auto 75px;
   display: flex;
@@ -257,28 +281,55 @@ header nav a:hover {
   gap: 35px;
 }
 
-.timeline-heading h2 {
+.documentation-heading h2 {
   font-family: 'Manrope', sans-serif;
-  color: var(--navy);
+  color: var(--deep);
   font-size: 43px;
   line-height: 1.2;
   letter-spacing: -1.5px;
 }
 
-.timeline-heading p {
+.documentation-heading p {
   max-width: 420px;
   color: var(--muted);
   font-size: 14px;
 }
 
-.timeline-period {
-  color: var(--blue);
+.period-label {
+  color: var(--water);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
+
+/* AKTUELLER ZEITRAUM */
+
+.current-period {
+  max-width: 1180px;
+  margin: -25px auto 55px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #66839c;
+  font-size: 12px;
+}
+
+.current-period .indicator {
+  width: 8px;
+  height: 8px;
+  background: #35a6dc;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(53,166,220,.12);
+}
+
+.current-period strong {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* ZEITACHSE */
 
 .timeline {
   max-width: 1180px;
@@ -292,8 +343,13 @@ header nav a:hover {
   top: 5px;
   bottom: 0;
   left: 185px;
-  width: 1px;
-  background: linear-gradient(to bottom, #4b9bdc, #dce8f2);
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    #2089c9,
+    #8ccdf0,
+    #dceaf3
+  );
 }
 
 .month {
@@ -302,10 +358,22 @@ header nav a:hover {
   gap: 55px;
   position: relative;
   padding-bottom: 75px;
+  animation: appear .6s ease both;
 }
 
 .month:last-child {
   padding-bottom: 0;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .month-date {
@@ -316,7 +384,7 @@ header nav a:hover {
 
 .month-date strong {
   display: block;
-  color: var(--navy);
+  color: var(--deep);
   font-family: 'Manrope', sans-serif;
   font-size: 18px;
   line-height: 1.4;
@@ -325,7 +393,7 @@ header nav a:hover {
 .month-date span {
   display: block;
   margin-top: 6px;
-  color: #92a5b8;
+  color: #91a8ba;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -339,16 +407,17 @@ header nav a:hover {
   height: 15px;
   border-radius: 50%;
   background: white;
-  border: 3px solid var(--accent);
-  box-shadow: 0 0 0 5px white;
+  border: 3px solid #3299d4;
+  box-shadow: 0 0 0 5px #f4f9fc;
   z-index: 2;
 }
 
 .month-content {
-  background: var(--pale);
-  border: 1px solid #e5edf5;
-  border-radius: 8px;
+  background: rgba(255,255,255,.93);
+  border: 1px solid #e1edf5;
+  border-radius: 12px;
   padding: 34px;
+  box-shadow: 0 10px 35px rgba(5, 43, 73, .035);
   transition: .3s;
 }
 
@@ -360,12 +429,12 @@ header nav a:hover {
 .month-content h3 {
   font-family: 'Manrope', sans-serif;
   font-size: 23px;
-  color: var(--navy);
+  color: var(--deep);
   margin-bottom: 20px;
 }
 
 .entry-label {
-  color: var(--blue);
+  color: var(--water);
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -375,7 +444,7 @@ header nav a:hover {
 
 .month-content ul {
   padding-left: 18px;
-  color: #526c83;
+  color: #526d83;
   font-size: 14px;
 }
 
@@ -384,7 +453,7 @@ header nav a:hover {
   margin-bottom: 7px;
 }
 
-/* GALLERY */
+/* FOTOGALERIE */
 
 .gallery {
   display: grid;
@@ -397,8 +466,8 @@ header nav a:hover {
   width: 100%;
   height: 190px;
   object-fit: cover;
-  border-radius: 5px;
-  background: #dce8f2;
+  border-radius: 7px;
+  background: #dceaf3;
   transition: .35s;
 }
 
@@ -407,11 +476,14 @@ header nav a:hover {
   filter: brightness(.9);
 }
 
+/* ERGEBNIS */
+
 .result {
   margin-top: 25px;
   padding: 19px 22px;
-  background: #eaf3fb;
-  border-left: 2px solid var(--accent);
+  background: linear-gradient(110deg, #e8f5fc, #f1f8fc);
+  border-left: 3px solid #4ba8df;
+  border-radius: 0 6px 6px 0;
   color: #42617d;
   font-size: 13px;
   line-height: 1.8;
@@ -419,17 +491,38 @@ header nav a:hover {
 
 .result strong {
   display: block;
-  color: var(--navy);
+  color: var(--deep);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 5px;
 }
 
+/* LEERER ZEITRAUM */
+
+.empty-message {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 35px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-message h3 {
+  font-family: 'Manrope', sans-serif;
+  color: var(--deep);
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
 /* FOOTER */
 
 footer {
-  background: var(--navy);
+  background:
+    linear-gradient(120deg, #04182d, #082b4d);
   color: white;
   padding: 75px 8% 30px;
   position: relative;
@@ -445,8 +538,9 @@ footer::before {
   height: 600px;
   border: 1px solid rgba(106,181,241,.15);
   border-radius: 50%;
-  box-shadow: 0 0 0 50px rgba(106,181,241,.025),
-              0 0 0 100px rgba(106,181,241,.025);
+  box-shadow:
+    0 0 0 50px rgba(106,181,241,.025),
+    0 0 0 100px rgba(106,181,241,.025);
 }
 
 .footer-inner {
@@ -499,7 +593,7 @@ footer::before {
   width: 175px;
   height: 82px;
   background: white;
-  border-radius: 5px;
+  border-radius: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -510,13 +604,6 @@ footer::before {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-}
-
-.logo-placeholder {
-  color: #6b7e90;
-  font-size: 10px;
-  text-align: center;
-  line-height: 1.5;
 }
 
 .copyright {
@@ -544,11 +631,11 @@ footer::before {
     padding-top: 0;
   }
 
-  .timeline-heading {
+  .documentation-heading {
     display: block;
   }
 
-  .timeline-heading p {
+  .documentation-heading p {
     margin-top: 18px;
   }
 }
@@ -580,11 +667,11 @@ footer::before {
     letter-spacing: -2px;
   }
 
-  .timeline-section {
+  .documentation-section {
     padding: 70px 6%;
   }
 
-  .timeline-heading h2 {
+  .documentation-heading h2 {
     font-size: 34px;
   }
 
@@ -650,14 +737,13 @@ footer::before {
 
 <header>
   <a class="brand" href="#">
-    <!-- Originales Projektlogo hier einsetzen -->
     <img src="images/projektlogo.png" alt="BLUEPRINTS Projektlogo">
     <div class="brand-name">BLUE<span>PRINTS</span></div>
   </a>
 
   <nav>
     <a href="#projekt">Projekt</a>
-    <a href="#zeitreihe">Zeitreihe</a>
+    <a href="#dokumentation">Dokumentation</a>
     <a href="#kontakt">Projektpartner</a>
   </nav>
 </header>
@@ -666,11 +752,11 @@ footer::before {
   <div class="hero-content">
     <div class="eyebrow">Forschung · Entwicklung · Wasserinfrastruktur</div>
 
-    <h1>BLUEPRINTS<br><span>Projektchronik</span></h1>
+    <h1>BLUEPRINTS<br><span>Dokumentation</span></h1>
 
     <p>
-      Eine visuelle Dokumentation der Entwicklung einer neuen Generation
-      urbaner Wasserinfrastrukturen für resiliente Schwammstädte.
+      Einblicke in die Entwicklung einer neuen Generation urbaner
+      Wasserinfrastrukturen für resiliente Schwammstädte.
     </p>
 
     <div class="hero-meta">
@@ -691,19 +777,19 @@ footer::before {
     <p>
       BLUEPRINTS entwickelt modulare, intelligente und multifunktionale
       Infrastrukturlösungen für einen zukunftsfähigen Umgang mit urbanem Wasser.
-      Die Projektchronik dokumentiert fortlaufend wichtige Ereignisse,
-      Entwicklungsprozesse, Erkenntnisse und Ergebnisse – ergänzt durch
-      Fotografien, Visualisierungen und Einblicke in die Projektarbeit.
+      Die Projektdokumentation macht wichtige Ereignisse, Entwicklungsprozesse,
+      Erkenntnisse und Ergebnisse sichtbar – ergänzt durch Fotografien,
+      Visualisierungen und Einblicke in die Projektarbeit.
     </p>
   </div>
 </section>
 
-<section class="timeline-section" id="zeitreihe">
+<section class="documentation-section" id="dokumentation">
 
-  <div class="timeline-heading">
+  <div class="documentation-heading">
     <div>
-      <div class="timeline-period">Oktober 2026 — September 2027</div>
-      <h2>Die Entwicklung<br>im Zeitverlauf</h2>
+      <div class="period-label">Oktober 2026 — September 2027</div>
+      <h2>Projektdokumentation<br>im Zeitverlauf</h2>
     </div>
 
     <p>
@@ -712,258 +798,19 @@ footer::before {
     </p>
   </div>
 
-  <div class="timeline">
-
-    <!-- OKTOBER 2026 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>Oktober 2026</strong>
-        <span>Projektstart</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Auftakt und Ausgangslage</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul>
-          <li>Hier das erste wichtige Ereignis eintragen</li>
-          <li>Hier Entwicklungen und Aktivitäten ergänzen</li>
-        </ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/oktober-01.jpg" alt="Projektfoto Oktober 2026">
-          <img src="images/oktober-02.jpg" alt="Projektfoto Oktober 2026">
-          <img src="images/oktober-03.jpg" alt="Projektfoto Oktober 2026">
-        </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis</strong>
-          Hier ein erstes Ergebnis oder eine wichtige Erkenntnis eintragen.
-        </div>
-      </div>
-    </article>
-
-    <!-- NOVEMBER 2026 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>November 2026</strong>
-        <span>Entwicklung</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Entwicklungsphase</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/november-01.jpg" alt="Projektfoto November 2026">
-          <img src="images/november-02.jpg" alt="Projektfoto November 2026">
-          <img src="images/november-03.jpg" alt="Projektfoto November 2026">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse und Erkenntnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- DEZEMBER 2026 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>Dezember 2026</strong>
-        <span>Dokumentation</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Erkenntnisse und Zwischenstände</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/dezember-01.jpg" alt="Projektfoto Dezember 2026">
-          <img src="images/dezember-02.jpg" alt="Projektfoto Dezember 2026">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- JANUAR 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>Januar 2027</strong>
-        <span>Entwicklung</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Neue Impulse und Weiterentwicklung</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/januar-01.jpg" alt="Projektfoto Januar 2027">
-          <img src="images/januar-02.jpg" alt="Projektfoto Januar 2027">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- FEBRUAR 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>Februar 2027</strong>
-        <span>Entwicklung</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Konzeption und Konkretisierung</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/februar-01.jpg" alt="Projektfoto Februar 2027">
-          <img src="images/februar-02.jpg" alt="Projektfoto Februar 2027">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- MÄRZ 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>März 2027</strong>
-        <span>Zwischenstand</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Zwischenstand und neue Erkenntnisse</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/maerz-01.jpg" alt="Projektfoto März 2027">
-          <img src="images/maerz-02.jpg" alt="Projektfoto März 2027">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- APRIL 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>April 2027</strong>
-        <span>Weiterentwicklung</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Weiterentwicklung der Lösungen</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/april-01.jpg" alt="Projektfoto April 2027">
-          <img src="images/april-02.jpg" alt="Projektfoto April 2027">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- MAI 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>Mai 2027</strong>
-        <span>Erprobung</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Erprobung und praktische Einblicke</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/mai-01.jpg" alt="Projektfoto Mai 2027">
-          <img src="images/mai-02.jpg" alt="Projektfoto Mai 2027">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- JUNI 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>Juni 2027</strong>
-        <span>Ergebnisse</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Ergebnisse und Erkenntnisse</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/juni-01.jpg" alt="Projektfoto Juni 2027">
-          <img src="images/juni-02.jpg" alt="Projektfoto Juni 2027">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- JULI 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>Juli 2027</strong>
-        <span>Vertiefung</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Vertiefung und Ausarbeitung</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/juli-01.jpg" alt="Projektfoto Juli 2027">
-          <img src="images/juli-02.jpg" alt="Projektfoto Juli 2027">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- AUGUST 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>August 2027</strong>
-        <span>Abschlussphase</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Zusammenführung der Ergebnisse</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/august-01.jpg" alt="Projektfoto August 2027">
-          <img src="images/august-02.jpg" alt="Projektfoto August 2027">
-        </div>
-        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
-      </div>
-    </article>
-
-    <!-- SEPTEMBER 2027 -->
-    <article class="month">
-      <div class="month-date">
-        <strong>September 2027</strong>
-        <span>Projektabschluss</span>
-      </div>
-      <div class="month-dot"></div>
-      <div class="month-content">
-        <h3>Abschluss und Ausblick</h3>
-        <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul><li>Eintrag ergänzen</li></ul>
-        <div class="entry-label">Fotodokumentation</div>
-        <div class="gallery">
-          <img src="images/september-01.jpg" alt="Projektfoto September 2027">
-          <img src="images/september-02.jpg" alt="Projektfoto September 2027">
-          <img src="images/september-03.jpg" alt="Projektfoto September 2027">
-        </div>
-        <div class="result"><strong>Abschließende Ergebnisse</strong>Hier die wesentlichen Projektergebnisse und den Ausblick eintragen.</div>
-      </div>
-    </article>
-
+  <div class="current-period">
+    <span class="indicator"></span>
+    <span>Aktueller Dokumentationszeitraum:</span>
+    <strong id="current-month-label">Wird geladen ...</strong>
   </div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <div class="empty-message" id="empty-message" hidden>
+    <h3>Die Dokumentation beginnt im Oktober 2026.</h3>
+    <p>Zum Projektstart werden hier die ersten Einblicke und Entwicklungen veröffentlicht.</p>
+  </div>
+
 </section>
 
 <footer id="kontakt">
@@ -982,12 +829,10 @@ footer::before {
     </div>
 
     <div class="logo-area">
-      <!-- Originales Projektlogo -->
       <div class="logo-box">
         <img src="images/projektlogo.png" alt="BLUEPRINTS Projektlogo">
       </div>
 
-      <!-- Originales Fördermittelgeber-Logo -->
       <div class="logo-box">
         <img src="images/foerderlogo.png" alt="Logo des Fördermittelgebers">
       </div>
@@ -999,6 +844,337 @@ footer::before {
     © BLUEPRINTS · Projektdokumentation 2026–2027
   </div>
 </footer>
+
+<script>
+
+/*
+  ZEITGESTEUERTE SICHTBARKEIT
+
+  Die Monate werden anhand des aktuellen Datums
+  des Endgeräts freigeschaltet.
+
+  Beispiel:
+  06.11.2026 = Oktober und November sichtbar
+  01.12.2026 = Oktober bis Dezember sichtbar
+  01.01.2027 = Oktober bis Januar sichtbar
+
+  Nach September 2027 bleibt die gesamte Dokumentation sichtbar.
+*/
+
+const projectStart = new Date(2026, 9, 1);
+const projectEnd = new Date(2027, 8, 30);
+
+const months = [
+  {
+    year: 2026,
+    month: 9,
+    name: "Oktober 2026",
+    subtitle: "Projektstart",
+    title: "Auftakt und Ausgangslage",
+    events: [
+      "Hier das erste wichtige Ereignis eintragen",
+      "Hier Entwicklungen und Aktivitäten ergänzen"
+    ],
+    images: [
+      "images/oktober-01.jpg",
+      "images/oktober-02.jpg",
+      "images/oktober-03.jpg"
+    ],
+    result: "Hier ein erstes Ergebnis oder eine wichtige Erkenntnis eintragen."
+  },
+  {
+    year: 2026,
+    month: 10,
+    name: "November 2026",
+    subtitle: "Entwicklung",
+    title: "Entwicklungsphase",
+    events: [
+      "Eintrag ergänzen",
+      "Eintrag ergänzen"
+    ],
+    images: [
+      "images/november-01.jpg",
+      "images/november-02.jpg",
+      "images/november-03.jpg"
+    ],
+    result: "Hier Ergebnisse und Erkenntnisse ergänzen."
+  },
+  {
+    year: 2026,
+    month: 11,
+    name: "Dezember 2026",
+    subtitle: "Dokumentation",
+    title: "Erkenntnisse und Zwischenstände",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/dezember-01.jpg",
+      "images/dezember-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 0,
+    name: "Januar 2027",
+    subtitle: "Entwicklung",
+    title: "Neue Impulse und Weiterentwicklung",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/januar-01.jpg",
+      "images/januar-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 1,
+    name: "Februar 2027",
+    subtitle: "Entwicklung",
+    title: "Konzeption und Konkretisierung",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/februar-01.jpg",
+      "images/februar-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 2,
+    name: "März 2027",
+    subtitle: "Zwischenstand",
+    title: "Zwischenstand und neue Erkenntnisse",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/maerz-01.jpg",
+      "images/maerz-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 3,
+    name: "April 2027",
+    subtitle: "Weiterentwicklung",
+    title: "Weiterentwicklung der Lösungen",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/april-01.jpg",
+      "images/april-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 4,
+    name: "Mai 2027",
+    subtitle: "Erprobung",
+    title: "Erprobung und praktische Einblicke",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/mai-01.jpg",
+      "images/mai-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 5,
+    name: "Juni 2027",
+    subtitle: "Ergebnisse",
+    title: "Ergebnisse und Erkenntnisse",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/juni-01.jpg",
+      "images/juni-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 6,
+    name: "Juli 2027",
+    subtitle: "Vertiefung",
+    title: "Vertiefung und Ausarbeitung",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/juli-01.jpg",
+      "images/juli-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 7,
+    name: "August 2027",
+    subtitle: "Abschlussphase",
+    title: "Zusammenführung der Ergebnisse",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/august-01.jpg",
+      "images/august-02.jpg"
+    ],
+    result: "Hier Ergebnisse ergänzen."
+  },
+  {
+    year: 2027,
+    month: 8,
+    name: "September 2027",
+    subtitle: "Projektabschluss",
+    title: "Abschluss und Ausblick",
+    events: ["Eintrag ergänzen"],
+    images: [
+      "images/september-01.jpg",
+      "images/september-02.jpg",
+      "images/september-03.jpg"
+    ],
+    result: "Hier die wesentlichen Projektergebnisse und den Ausblick eintragen."
+  }
+];
+
+function getCurrentDate() {
+  return new Date();
+}
+
+function renderDocumentation() {
+
+  const today = getCurrentDate();
+  const timeline = document.getElementById("timeline");
+  const currentLabel = document.getElementById("current-month-label");
+  const emptyMessage = document.getElementById("empty-message");
+
+  timeline.innerHTML = "";
+
+  const startOfCurrentMonth = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    1
+  );
+
+  const visibleMonths = months.filter(item => {
+    const monthDate = new Date(item.year, item.month, 1);
+
+    return monthDate <= startOfCurrentMonth &&
+           monthDate >= projectStart &&
+           monthDate <= projectEnd;
+  });
+
+  // Nach Projektende bleibt die gesamte Dokumentation sichtbar.
+  if (today > projectEnd) {
+    visibleMonths.splice(0, visibleMonths.length, ...months);
+  }
+
+  if (today < projectStart) {
+    currentLabel.textContent = "Projektstart im Oktober 2026";
+    emptyMessage.hidden = false;
+    return;
+  }
+
+  emptyMessage.hidden = true;
+
+  if (today > projectEnd) {
+    currentLabel.textContent = "Gesamter Projektzeitraum";
+  } else {
+    currentLabel.textContent = today.toLocaleDateString("de-DE", {
+      month: "long",
+      year: "numeric"
+    });
+  }
+
+  visibleMonths.forEach(item => {
+
+    const article = document.createElement("article");
+    article.className = "month";
+
+    const date = document.createElement("div");
+    date.className = "month-date";
+    date.innerHTML = `
+      <strong>${item.name}</strong>
+      <span>${item.subtitle}</span>
+    `;
+
+    const dot = document.createElement("div");
+    dot.className = "month-dot";
+
+    const content = document.createElement("div");
+    content.className = "month-content";
+
+    const title = document.createElement("h3");
+    title.textContent = item.title;
+    content.appendChild(title);
+
+    const eventsLabel = document.createElement("div");
+    eventsLabel.className = "entry-label";
+    eventsLabel.textContent = "Ereignisse und Entwicklungen";
+    content.appendChild(eventsLabel);
+
+    const list = document.createElement("ul");
+
+    item.events.forEach(event => {
+      const li = document.createElement("li");
+      li.textContent = event;
+      list.appendChild(li);
+    });
+
+    content.appendChild(list);
+
+    const photoLabel = document.createElement("div");
+    photoLabel.className = "entry-label";
+    photoLabel.textContent = "Fotodokumentation";
+    content.appendChild(photoLabel);
+
+    const gallery = document.createElement("div");
+    gallery.className = "gallery";
+
+    item.images.forEach(src => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "BLUEPRINTS Projektdokumentation " + item.name;
+
+      img.onerror = function() {
+        this.style.display = "none";
+      };
+
+      gallery.appendChild(img);
+    });
+
+    content.appendChild(gallery);
+
+    const result = document.createElement("div");
+    result.className = "result";
+
+    const resultTitle = document.createElement("strong");
+    resultTitle.textContent = "Ergebnis / Erkenntnis";
+
+    const resultText = document.createElement("span");
+    resultText.textContent = item.result;
+
+    result.appendChild(resultTitle);
+    result.appendChild(resultText);
+
+    content.appendChild(result);
+
+    article.appendChild(date);
+    article.appendChild(dot);
+    article.appendChild(content);
+
+    timeline.appendChild(article);
+  });
+}
+
+// Beim Laden der Website
+renderDocumentation();
+
+// Bei Rückkehr auf den Browser-Tab erneut prüfen
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    renderDocumentation();
+  }
+});
+
+// Beim erneuten Laden der Seite wird das aktuelle Datum ebenfalls geprüft.
+
+</script>
 
 </body>
 </html>
