@@ -4,19 +4,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLUEPRINTS | Projektdokumentation</title>
+<title>BLUEPRINTS | Projektchronik</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --navy: #071d35;
-  --blue: #0b3764;
-  --bright: #2879c7;
-  --light: #eaf3fb;
-  --pale: #f5f9fd;
-  --white: #ffffff;
+  --navy: #071a30;
+  --navy2: #0b2948;
+  --blue: #145b9b;
+  --accent: #4d9de0;
+  --ice: #eaf3fb;
+  --pale: #f5f8fc;
+  --white: #fff;
   --text: #18324b;
-  --muted: #6b8095;
-  --line: #d6e4f0;
+  --muted: #71869a;
+  --line: #dce7f1;
+  --shadow: 0 18px 50px rgba(7, 35, 65, .08);
 }
 
 * {
@@ -30,45 +36,65 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--pale);
+  font-family: 'DM Sans', sans-serif;
   color: var(--text);
-  line-height: 1.6;
+  background: var(--pale);
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* HEADER */
 
 header {
+  height: 88px;
+  padding: 0 7%;
   background: var(--navy);
-  color: white;
-  padding: 24px 7%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
-.logo {
-  font-size: 25px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-family: 'Manrope', sans-serif;
   font-weight: 800;
-  letter-spacing: 4px;
+  font-size: 23px;
+  letter-spacing: 3px;
+  color: white;
 }
 
-.logo span {
-  color: #6eb7f2;
+.brand-name span {
+  color: #65b4f4;
 }
 
 header nav {
   display: flex;
-  gap: 30px;
+  gap: 35px;
 }
 
 header nav a {
-  color: #d6e8f8;
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 1px;
+  color: #c5d7e8;
+  font-size: 12px;
   text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: .2s;
 }
 
 header nav a:hover {
@@ -78,126 +104,184 @@ header nav a:hover {
 /* HERO */
 
 .hero {
-  background:
-    linear-gradient(110deg, rgba(5,25,48,.96), rgba(9,54,94,.82)),
-    url("images/hero-wasser.jpg") center/cover;
-  color: white;
-  padding: 105px 8% 115px;
+  min-height: 580px;
   position: relative;
+  display: flex;
+  align-items: center;
+  padding: 90px 9%;
   overflow: hidden;
+  color: white;
+  background:
+    linear-gradient(100deg, rgba(4,20,39,.97) 0%, rgba(7,39,70,.91) 55%, rgba(9,55,96,.65) 100%),
+    url("images/hero-wasser.jpg") center/cover;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  right: -100px;
+  top: -180px;
+  width: 650px;
+  height: 650px;
+  border: 1px solid rgba(117,190,245,.18);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 55px rgba(117,190,245,.035),
+    0 0 0 110px rgba(117,190,245,.025),
+    0 0 0 165px rgba(117,190,245,.02);
 }
 
 .hero::after {
   content: "";
   position: absolute;
-  width: 500px;
-  height: 500px;
-  border: 1px solid rgba(255,255,255,.13);
-  border-radius: 50%;
-  right: -100px;
-  top: -170px;
-  box-shadow: 0 0 0 50px rgba(255,255,255,.025),
-              0 0 0 100px rgba(255,255,255,.02);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #66b4f2, transparent);
 }
 
 .hero-content {
-  max-width: 850px;
+  max-width: 820px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .eyebrow {
-  color: #83c5ff;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #8fc9f7;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 12px;
-  margin-bottom: 22px;
-}
-
-.hero h1 {
-  font-size: clamp(42px, 6vw, 76px);
-  line-height: 1.05;
-  letter-spacing: -2px;
   margin-bottom: 25px;
 }
 
+.eyebrow::before {
+  content: "";
+  width: 35px;
+  height: 1px;
+  background: #69b4f2;
+}
+
+.hero h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(48px, 7vw, 86px);
+  line-height: 1.02;
+  letter-spacing: -4px;
+  font-weight: 800;
+  margin-bottom: 28px;
+}
+
 .hero h1 span {
-  color: #79bdf3;
+  color: #69b4f2;
 }
 
 .hero p {
-  max-width: 650px;
-  font-size: 18px;
-  color: #d5e6f5;
-  line-height: 1.8;
+  max-width: 620px;
+  color: #d1e1ef;
+  font-size: 17px;
+  line-height: 1.9;
 }
 
-.hero-date {
-  margin-top: 38px;
-  display: inline-block;
-  padding: 11px 18px;
-  border: 1px solid rgba(255,255,255,.35);
-  color: #dceeff;
-  font-size: 12px;
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 40px;
+  color: #d8e9f8;
+  font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.hero-meta .line {
+  width: 45px;
+  height: 1px;
+  background: #69b4f2;
 }
 
 /* INTRO */
 
 .intro {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: auto;
-  padding: 85px 30px 65px;
+  padding: 105px 35px 95px;
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 90px;
+  align-items: start;
 }
 
 .section-label {
-  color: var(--bright);
+  color: var(--blue);
   font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-weight: bold;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 .intro h2 {
-  font-size: 34px;
+  font-family: 'Manrope', sans-serif;
   color: var(--navy);
-  margin-bottom: 20px;
+  font-size: 38px;
   line-height: 1.25;
+  letter-spacing: -1.5px;
 }
 
-.intro p {
-  max-width: 800px;
+.intro-copy {
+  padding-top: 30px;
+}
+
+.intro-copy p {
   color: var(--muted);
   font-size: 16px;
+  line-height: 2;
 }
 
 /* TIMELINE */
 
 .timeline-section {
-  padding: 55px 7% 100px;
   background: white;
+  padding: 95px 7% 115px;
 }
 
 .timeline-heading {
-  max-width: 1100px;
-  margin: 0 auto 55px;
+  max-width: 1180px;
+  margin: 0 auto 75px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 35px;
 }
 
 .timeline-heading h2 {
+  font-family: 'Manrope', sans-serif;
   color: var(--navy);
-  font-size: 38px;
-  margin-bottom: 12px;
+  font-size: 43px;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
 }
 
 .timeline-heading p {
+  max-width: 420px;
   color: var(--muted);
-  max-width: 650px;
+  font-size: 14px;
+}
+
+.timeline-period {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
 }
 
 .timeline {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: auto;
   position: relative;
 }
@@ -205,23 +289,19 @@ header nav a:hover {
 .timeline::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 5px;
   bottom: 0;
-  left: 145px;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    #8bbce4,
-    #dce9f4
-  );
+  left: 185px;
+  width: 1px;
+  background: linear-gradient(to bottom, #4b9bdc, #dce8f2);
 }
 
 .month {
   display: grid;
-  grid-template-columns: 145px 1fr;
-  gap: 45px;
+  grid-template-columns: 185px 1fr;
+  gap: 55px;
   position: relative;
-  padding-bottom: 65px;
+  padding-bottom: 75px;
 }
 
 .month:last-child {
@@ -230,109 +310,120 @@ header nav a:hover {
 
 .month-date {
   text-align: right;
+  padding-right: 32px;
   padding-top: 7px;
-  padding-right: 25px;
 }
 
 .month-date strong {
   display: block;
-  font-size: 18px;
   color: var(--navy);
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 .month-date span {
-  color: #8aa0b5;
-  font-size: 12px;
+  display: block;
+  margin-top: 6px;
+  color: #92a5b8;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .month-dot {
   position: absolute;
-  left: 137px;
-  top: 12px;
-  width: 18px;
-  height: 18px;
-  background: white;
-  border: 4px solid var(--bright);
+  top: 10px;
+  left: 178px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+  background: white;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 5px white;
   z-index: 2;
 }
 
 .month-content {
   background: var(--pale);
-  border: 1px solid #e4edf5;
-  border-radius: 9px;
-  padding: 28px;
-  transition: .25s;
+  border: 1px solid #e5edf5;
+  border-radius: 8px;
+  padding: 34px;
+  transition: .3s;
 }
 
 .month-content:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(8,43,77,.08);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
 }
 
 .month-content h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 23px;
   color: var(--navy);
-  font-size: 21px;
-  margin-bottom: 12px;
-}
-
-.month-content p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 17px;
+  margin-bottom: 20px;
 }
 
 .entry-label {
-  color: var(--bright);
+  color: var(--blue);
   font-size: 10px;
-  font-weight: bold;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 18px 0 6px;
+  margin: 23px 0 9px;
 }
 
 .month-content ul {
   padding-left: 18px;
-  color: var(--text);
+  color: #526c83;
   font-size: 14px;
 }
 
 .month-content li {
-  margin-bottom: 5px;
+  padding-left: 4px;
+  margin-bottom: 7px;
 }
 
-/* FOTO GALERIE */
+/* GALLERY */
 
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin-top: 22px;
+  margin-top: 18px;
 }
 
 .gallery img {
   width: 100%;
-  height: 165px;
+  height: 190px;
   object-fit: cover;
   border-radius: 5px;
   background: #dce8f2;
+  transition: .35s;
 }
 
 .gallery img:hover {
-  opacity: .88;
+  transform: scale(1.02);
+  filter: brightness(.9);
 }
 
-/* ERGEBNIS */
-
 .result {
-  margin-top: 20px;
-  padding: 15px 18px;
-  background: #e8f2fb;
-  border-left: 3px solid var(--bright);
-  color: #315675;
+  margin-top: 25px;
+  padding: 19px 22px;
+  background: #eaf3fb;
+  border-left: 2px solid var(--accent);
+  color: #42617d;
   font-size: 13px;
+  line-height: 1.8;
+}
+
+.result strong {
+  display: block;
+  color: var(--navy);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
 }
 
 /* FOOTER */
@@ -340,99 +431,181 @@ header nav a:hover {
 footer {
   background: var(--navy);
   color: white;
-  padding: 55px 8% 35px;
+  padding: 75px 8% 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  right: -180px;
+  bottom: -400px;
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgba(106,181,241,.15);
+  border-radius: 50%;
+  box-shadow: 0 0 0 50px rgba(106,181,241,.025),
+              0 0 0 100px rgba(106,181,241,.025);
 }
 
 .footer-inner {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 35px;
+  gap: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.footer-brand img {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
 }
 
 .footer-logo {
-  font-size: 25px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 26px;
   font-weight: 800;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 .footer-logo span {
-  color: #79bdf3;
+  color: #69b4f2;
 }
 
 .footer-text {
-  color: #a9c0d5;
+  color: #9fb8ce;
   font-size: 12px;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
-.funding {
+.logo-area {
   display: flex;
-  gap: 20px;
   align-items: center;
-  justify-content: flex-end;
+  gap: 18px;
 }
 
-.funding img {
-  max-width: 145px;
-  max-height: 65px;
-  object-fit: contain;
+.logo-box {
+  width: 175px;
+  height: 82px;
   background: white;
-  padding: 8px;
-  border-radius: 4px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+
+.logo-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.logo-placeholder {
+  color: #6b7e90;
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .copyright {
-  max-width: 1100px;
-  margin: 35px auto 0;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,.15);
-  color: #829bb2;
+  max-width: 1180px;
+  margin: 55px auto 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.13);
+  color: #718ba4;
   font-size: 11px;
+  position: relative;
+  z-index: 1;
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 700px) {
+@media(max-width: 850px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+
+  .intro-copy {
+    padding-top: 0;
+  }
+
+  .timeline-heading {
+    display: block;
+  }
+
+  .timeline-heading p {
+    margin-top: 18px;
+  }
+}
+
+@media(max-width: 650px) {
   header {
+    height: auto;
+    padding: 20px 6%;
     flex-direction: column;
     gap: 20px;
   }
 
   header nav {
-    gap: 15px;
+    gap: 18px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
+  header nav a {
+    font-size: 10px;
+  }
+
   .hero {
+    min-height: 500px;
     padding: 75px 7%;
   }
 
-  .intro {
-    padding: 60px 7%;
+  .hero h1 {
+    letter-spacing: -2px;
   }
 
   .timeline-section {
-    padding: 55px 6%;
+    padding: 70px 6%;
+  }
+
+  .timeline-heading h2 {
+    font-size: 34px;
   }
 
   .timeline::before {
-    left: 8px;
+    left: 7px;
   }
 
   .month {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 15px;
     padding-left: 30px;
-    padding-bottom: 45px;
+    padding-bottom: 48px;
   }
 
   .month-date {
     text-align: left;
     padding: 0;
+  }
+
+  .month-date strong {
+    font-size: 16px;
   }
 
   .month-dot {
@@ -441,7 +614,11 @@ footer {
   }
 
   .month-content {
-    padding: 20px;
+    padding: 22px;
+  }
+
+  .month-content h3 {
+    font-size: 20px;
   }
 
   .gallery {
@@ -449,7 +626,7 @@ footer {
   }
 
   .gallery img {
-    height: 120px;
+    height: 125px;
   }
 
   .footer-inner {
@@ -457,9 +634,13 @@ footer {
     align-items: flex-start;
   }
 
-  .funding {
-    justify-content: flex-start;
+  .logo-area {
     flex-wrap: wrap;
+  }
+
+  .logo-box {
+    width: 145px;
+    height: 70px;
   }
 }
 </style>
@@ -468,7 +649,12 @@ footer {
 <body>
 
 <header>
-  <div class="logo">BLUE<span>PRINTS</span></div>
+  <a class="brand" href="#">
+    <!-- Originales Projektlogo hier einsetzen -->
+    <img src="images/projektlogo.png" alt="BLUEPRINTS Projektlogo">
+    <div class="brand-name">BLUE<span>PRINTS</span></div>
+  </a>
+
   <nav>
     <a href="#projekt">Projekt</a>
     <a href="#zeitreihe">Zeitreihe</a>
@@ -479,37 +665,50 @@ footer {
 <section class="hero">
   <div class="hero-content">
     <div class="eyebrow">Forschung · Entwicklung · Wasserinfrastruktur</div>
+
     <h1>BLUEPRINTS<br><span>Projektchronik</span></h1>
+
     <p>
       Eine visuelle Dokumentation der Entwicklung einer neuen Generation
       urbaner Wasserinfrastrukturen für resiliente Schwammstädte.
     </p>
-    <div class="hero-date">
-      Oktober 2026 — September 2027
+
+    <div class="hero-meta">
+      <span>Oktober 2026</span>
+      <div class="line"></div>
+      <span>September 2027</span>
     </div>
   </div>
 </section>
 
 <section class="intro" id="projekt">
-  <div class="section-label">Das Projekt</div>
-  <h2>Wasser neu denken. Städte resilient gestalten.</h2>
-  <p>
-    BLUEPRINTS entwickelt modulare, intelligente und multifunktionale
-    Infrastrukturlösungen für einen zukunftsfähigen Umgang mit urbanem Wasser.
-    Die Projektchronik dokumentiert fortlaufend wichtige Ereignisse,
-    Entwicklungsprozesse, Erkenntnisse und Ergebnisse – ergänzt durch
-    Fotografien, Visualisierungen und Einblicke in die Projektarbeit.
-  </p>
+  <div>
+    <div class="section-label">Das Projekt</div>
+    <h2>Wasser neu denken. Städte resilient gestalten.</h2>
+  </div>
+
+  <div class="intro-copy">
+    <p>
+      BLUEPRINTS entwickelt modulare, intelligente und multifunktionale
+      Infrastrukturlösungen für einen zukunftsfähigen Umgang mit urbanem Wasser.
+      Die Projektchronik dokumentiert fortlaufend wichtige Ereignisse,
+      Entwicklungsprozesse, Erkenntnisse und Ergebnisse – ergänzt durch
+      Fotografien, Visualisierungen und Einblicke in die Projektarbeit.
+    </p>
+  </div>
 </section>
 
 <section class="timeline-section" id="zeitreihe">
 
   <div class="timeline-heading">
-    <div class="section-label">Oktober 2026 – September 2027</div>
-    <h2>Die Entwicklung im Zeitverlauf</h2>
+    <div>
+      <div class="timeline-period">Oktober 2026 — September 2027</div>
+      <h2>Die Entwicklung<br>im Zeitverlauf</h2>
+    </div>
+
     <p>
-      Monat für Monat: Ereignisse, Entwicklungen und Ergebnisse aus dem
-      BLUEPRINTS-Projekt.
+      Monat für Monat. Ereignisse, Entwicklungen und Ergebnisse aus dem
+      BLUEPRINTS-Projekt – dokumentiert in Bildern und kurzen Einblicken.
     </p>
   </div>
 
@@ -536,7 +735,7 @@ footer {
           <img src="images/oktober-03.jpg" alt="Projektfoto Oktober 2026">
         </div>
         <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
+          <strong>Ergebnis / Erkenntnis</strong>
           Hier ein erstes Ergebnis oder eine wichtige Erkenntnis eintragen.
         </div>
       </div>
@@ -552,20 +751,14 @@ footer {
       <div class="month-content">
         <h3>Entwicklungsphase</h3>
         <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul>
-          <li>Eintrag ergänzen</li>
-          <li>Eintrag ergänzen</li>
-        </ul>
+        <ul><li>Eintrag ergänzen</li><li>Eintrag ergänzen</li></ul>
         <div class="entry-label">Fotodokumentation</div>
         <div class="gallery">
           <img src="images/november-01.jpg" alt="Projektfoto November 2026">
           <img src="images/november-02.jpg" alt="Projektfoto November 2026">
           <img src="images/november-03.jpg" alt="Projektfoto November 2026">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse und Erkenntnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse und Erkenntnisse ergänzen.</div>
       </div>
     </article>
 
@@ -579,18 +772,13 @@ footer {
       <div class="month-content">
         <h3>Erkenntnisse und Zwischenstände</h3>
         <div class="entry-label">Ereignisse und Entwicklungen</div>
-        <ul>
-          <li>Eintrag ergänzen</li>
-        </ul>
+        <ul><li>Eintrag ergänzen</li></ul>
         <div class="entry-label">Fotodokumentation</div>
         <div class="gallery">
           <img src="images/dezember-01.jpg" alt="Projektfoto Dezember 2026">
           <img src="images/dezember-02.jpg" alt="Projektfoto Dezember 2026">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -610,10 +798,7 @@ footer {
           <img src="images/januar-01.jpg" alt="Projektfoto Januar 2027">
           <img src="images/januar-02.jpg" alt="Projektfoto Januar 2027">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -633,10 +818,7 @@ footer {
           <img src="images/februar-01.jpg" alt="Projektfoto Februar 2027">
           <img src="images/februar-02.jpg" alt="Projektfoto Februar 2027">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -656,10 +838,7 @@ footer {
           <img src="images/maerz-01.jpg" alt="Projektfoto März 2027">
           <img src="images/maerz-02.jpg" alt="Projektfoto März 2027">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -679,10 +858,7 @@ footer {
           <img src="images/april-01.jpg" alt="Projektfoto April 2027">
           <img src="images/april-02.jpg" alt="Projektfoto April 2027">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -702,10 +878,7 @@ footer {
           <img src="images/mai-01.jpg" alt="Projektfoto Mai 2027">
           <img src="images/mai-02.jpg" alt="Projektfoto Mai 2027">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -725,10 +898,7 @@ footer {
           <img src="images/juni-01.jpg" alt="Projektfoto Juni 2027">
           <img src="images/juni-02.jpg" alt="Projektfoto Juni 2027">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -748,10 +918,7 @@ footer {
           <img src="images/juli-01.jpg" alt="Projektfoto Juli 2027">
           <img src="images/juli-02.jpg" alt="Projektfoto Juli 2027">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -771,10 +938,7 @@ footer {
           <img src="images/august-01.jpg" alt="Projektfoto August 2027">
           <img src="images/august-02.jpg" alt="Projektfoto August 2027">
         </div>
-        <div class="result">
-          <strong>Ergebnis / Erkenntnis:</strong>
-          Hier Ergebnisse ergänzen.
-        </div>
+        <div class="result"><strong>Ergebnis / Erkenntnis</strong>Hier Ergebnisse ergänzen.</div>
       </div>
     </article>
 
@@ -795,10 +959,7 @@ footer {
           <img src="images/september-02.jpg" alt="Projektfoto September 2027">
           <img src="images/september-03.jpg" alt="Projektfoto September 2027">
         </div>
-        <div class="result">
-          <strong>Abschließende Ergebnisse:</strong>
-          Hier die wesentlichen Projektergebnisse und den Ausblick eintragen.
-        </div>
+        <div class="result"><strong>Abschließende Ergebnisse</strong>Hier die wesentlichen Projektergebnisse und den Ausblick eintragen.</div>
       </div>
     </article>
 
@@ -807,17 +968,31 @@ footer {
 
 <footer id="kontakt">
   <div class="footer-inner">
+
     <div>
-      <div class="footer-logo">BLUE<span>PRINTS</span></div>
-      <div class="footer-text">
-        Urbane Wasserinfrastrukturen für resiliente Schwammstädte
+      <div class="footer-brand">
+        <img src="images/projektlogo.png" alt="BLUEPRINTS Projektlogo">
+        <div>
+          <div class="footer-logo">BLUE<span>PRINTS</span></div>
+          <div class="footer-text">
+            Urbane Wasserinfrastrukturen für resiliente Schwammstädte
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="funding">
-      <img src="images/projektlogo.png" alt="BLUEPRINTS Projektlogo">
-      <img src="images/foerderlogo.png" alt="Logo Fördermittelgeber">
+    <div class="logo-area">
+      <!-- Originales Projektlogo -->
+      <div class="logo-box">
+        <img src="images/projektlogo.png" alt="BLUEPRINTS Projektlogo">
+      </div>
+
+      <!-- Originales Fördermittelgeber-Logo -->
+      <div class="logo-box">
+        <img src="images/foerderlogo.png" alt="Logo des Fördermittelgebers">
+      </div>
     </div>
+
   </div>
 
   <div class="copyright">
